@@ -6,6 +6,8 @@ import { ListClientTypeComponent } from './lookups/ClientType/list-client-type/l
 import { ListGovernorateComponent } from './lookups/Governorate/list-governorate/list-governorate.component';
 import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cities.component';
 import { ListCitiesComponent } from './lookups/Cities/list-cities/list-cities.component';
+import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.component';
+import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,12 @@ const routes: Routes = [
       },
       {
         path:'update-city/:id', component: InsertCitiesComponent
+      },
+      {
+        path:'insert-call-reason', component: InsertCallReasonComponent
+      },
+      {
+        path:'Get-Call-Reason', component: CallReasonComponent
       },
     ]
   }

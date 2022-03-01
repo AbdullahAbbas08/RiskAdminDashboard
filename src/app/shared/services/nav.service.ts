@@ -83,7 +83,7 @@ export class NavService implements OnDestroy {
 
 	MENUITEMS: Menu[] = [
 		{
-			headTitle1: 'Sample', headTitle2: 'Ready Sample Page.',
+			headTitle1: 'لوحة تحكم المدير', headTitle2: 'إدارة محتويات النظام',
 		},
 		{
 			title: 'إدارة أنواع العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
@@ -101,6 +101,12 @@ export class NavService implements OnDestroy {
 			title: 'إدارة المدن', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
 				{ path: 'admin/insert-city', title: 'إضافة مدينة', type: 'link' },
 				{ path: 'admin/Get-cities', title: 'قائمة المدن', type: 'link' },
+			]
+		},
+		{
+			title: 'إدارة أسباب المكالمات', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/insert-call-reason', title: 'أسباب المكالمات', type: 'link' },
+				{ path: 'admin/Get-Call-Reason', title: 'قائمة أسباب المكالمات', type: 'link' },
 			]
 		},
 	];

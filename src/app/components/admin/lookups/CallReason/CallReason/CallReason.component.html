@@ -1,0 +1,50 @@
+<app-breadcrumb [title]="'إدارة أسباب المكالمات'"  [active_item]="'Form Wizard'"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="padding-bottom:5px !important ;">
+            <div *ngIf="update; else elseBlock1">
+              <h5 class="pb-2"> تعديل أسباب موجودة بالفعل</h5>
+              يمكنك تعديل سبب أو أكثر فى قائمة أسباب المكالمات 
+            </div>
+          <ng-template #elseBlock1>
+            <h5 class="pb-2">إضافة سبب جديد</h5>
+              يمكنك إضافة سبب أو أكثر فى قائمة أسباب المكالمات 
+            </ng-template>
+
+        </div>
+        <div class="card-body">
+            <form [formGroup]="InsertForm">
+                <div class="form-group">
+                  <label for="name">عنوان السبب</label>
+                  <input class="form-control" id="name" type="text" placeholder="شكوى" required="required"
+                    formControlName="Title" ><!-- onlyAlphabets -->
+                    
+                  <ng-container class="invalid" style="color: red;"
+                    *ngIf="InsertForm.get('Title').hasError('required') && InsertForm.get('Title').touched">
+                    عنوان السبب مطلوب</ng-container>
+                </div>
+                <div *ngIf="update; else elseBlock">
+                    <button  class="btn btn-primary pull-right" 
+                    type="submit"
+                    [disabled]="!InsertForm.valid"
+                    (click)="UpdateGovernorate()">
+                    تعديل
+                 </button>
+                </div>
+                <ng-template #elseBlock>
+                    <button  class="btn btn-primary pull-right" 
+                    type="submit"
+                    [disabled]="!InsertForm.valid"
+                    (click)="InsertGovernorate()">
+                    إضافة
+                 </button>
+                </ng-template>
+               
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

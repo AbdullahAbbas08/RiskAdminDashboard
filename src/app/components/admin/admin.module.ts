@@ -10,6 +10,9 @@ import { GovernorateComponent } from './lookups/Governorate/insert-Governorate/i
 import { ListGovernorateComponent } from './lookups/Governorate/list-governorate/list-governorate.component';
 import { ListCitiesComponent } from './lookups/Cities/list-cities/list-cities.component';
 import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cities.component';
+import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.component';
+import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
+import { EmployeeComponent } from './users/employee/employee.component';
 
 
 
@@ -20,7 +23,10 @@ import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cit
     GovernorateComponent,
     ListGovernorateComponent,
     ListCitiesComponent,
-    InsertCitiesComponent
+    InsertCitiesComponent,
+    EmployeeComponent,
+    CallReasonComponent,
+    InsertCallReasonComponent
   ],
   imports: [
     CommonModule,
