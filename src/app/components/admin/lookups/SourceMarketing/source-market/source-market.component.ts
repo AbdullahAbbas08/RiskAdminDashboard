@@ -1,40 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CallReasonApiService } from 'src/app/shared/API-Service/call-reason-api.service';
+import { SourceMarketApiService } from 'src/app/shared/API-Service/source-market-api.service';
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
 import { GetCallReason } from 'src/app/shared/Models/get-call-reason';
+import { GetSourceMarket } from 'src/app/shared/Models/get-source-market';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-CallReason',
-  templateUrl: './CallReason.component.html',
-  styleUrls: ['./CallReason.component.css']
+  selector: 'app-source-market',
+  templateUrl: './source-market.component.html',
+  styleUrls: ['./source-market.component.css']
 })
-export class CallReasonComponent implements OnInit {
+export class SourceMarketComponent implements OnInit {
 
   //#region  Declare Variables
-  response: GenericResponse<GetCallReason>;
-  Response_List: GetCallReason[];
+  response: GenericResponse<GetSourceMarket>;
+  Response_List: GetSourceMarket[];
 
   //#endregion
 
   //#region constructor
-  constructor(private ApiService: CallReasonApiService,
+  constructor(private ApiService: SourceMarketApiService,
     private router: Router) { }
   //#endregion
 
   //#region  ng OnInit
   ngOnInit(): void {
     this.Response_List = [];
-    this.GetCallReason();
+    this.Get();
   }
   //#endregion
 
   //#region Consume API's
 
   //#region  Get Call Reason
-  GetCallReason() {
-    this.ApiService.GetCallReason().subscribe(
+  Get() {
+    this.ApiService.Get().subscribe(
       response => {
         this.response = response;
         this.Response_List = response.data;
@@ -67,12 +68,12 @@ export class CallReasonComponent implements OnInit {
         if (result.isConfirmed) {
           console.log(id);
           
-          this.ApiService.DeleteCallReason(id).subscribe(
+          this.ApiService.Delete(id).subscribe(
             response => {
-              this.GetCallReason();
+              this.Get();
               Swal.fire({
                 icon: 'success',
-                title: "تم حذف العنصر  بنجاح",
+                title: "تم حذف العنصر بنجاح",
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -99,7 +100,7 @@ export class CallReasonComponent implements OnInit {
 
   //#region AddNew
   AddNew() {
-    this.router.navigateByUrl("admin/insert-call-reason");
+    this.router.navigateByUrl("admin/InsertSourceMarket");
   }
   //#endregion
 
@@ -107,8 +108,9 @@ export class CallReasonComponent implements OnInit {
   update(id: number,order: number, title: string) {
     this.ApiService.title = title;
     this.ApiService.order = order;
-    this.router.navigate(['admin/update-call-reason', id]);
+    this.router.navigate(['admin/updateSourceMarket', id]);
   }
   //#endregion
+
 
 }

@@ -13,6 +13,8 @@ import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cit
 import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.component';
 import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
 import { EmployeeComponent } from './users/employee/employee.component';
+import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/source-market.component';
+import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
 
 
 
@@ -26,7 +28,9 @@ import { EmployeeComponent } from './users/employee/employee.component';
     InsertCitiesComponent,
     EmployeeComponent,
     CallReasonComponent,
-    InsertCallReasonComponent
+    InsertCallReasonComponent,
+    SourceMarketComponent,
+    InsertSourceMarketComponent
   ],
   imports: [
     CommonModule,

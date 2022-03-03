@@ -3,15 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CallReasonApiService } from 'src/app/shared/API-Service/call-reason-api.service';
+import { SourceMarketApiService } from 'src/app/shared/API-Service/source-market-api.service';
 import { InsertCallReason } from 'src/app/shared/Models/insert-call-reason';
+import { InsertSourceMarket } from 'src/app/shared/Models/InsertSourceMarket';
 import Swal from 'sweetalert2';
-
 @Component({
-  selector: 'app-InsertCallReason',
-  templateUrl: './InsertCallReason.component.html',
-  styleUrls: ['./InsertCallReason.component.css']
+  selector: 'app-insert-source-market',
+  templateUrl: './insert-source-market.component.html',
+  styleUrls: ['./insert-source-market.component.css']
 })
-export class InsertCallReasonComponent implements OnInit {
+export class InsertSourceMarketComponent implements OnInit {
 
   //#region Decalre varaibles
   InsertForm: FormGroup;
@@ -22,7 +23,7 @@ export class InsertCallReasonComponent implements OnInit {
   //#region  constructor
   constructor(private _formBuilder: FormBuilder,
               private toaster: ToastrService,
-              private ApiService:CallReasonApiService,
+              private ApiService:SourceMarketApiService,
               private router:Router,
               private route: ActivatedRoute) 
   { 
@@ -61,21 +62,21 @@ export class InsertCallReasonComponent implements OnInit {
       Title: ['', Validators.required],
       Order: ['', Validators.required],
     });
-    this.GetCallReason()
+    this.Get()
   }
   //#endregion
 
   //#region  Insert Call Reason Method
-  InsertCallReason(){        
-    this.ApiService.InsertCallReason({title:this.InsertForm.get('Title').value , order:this.InsertForm.get('Order').value} as InsertCallReason  ).subscribe(
+  Insert(){        
+    this.ApiService.Insert({title:this.InsertForm.get('Title').value , order:this.InsertForm.get('Order').value} as InsertSourceMarket  ).subscribe(
       response=>{
         Swal.fire({
           icon: 'success',
-          title: "تم إضافة السبب  بنجاح",
+          title: "تم إضافة مصدر  بنجاح",
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-Call-Reason");
+        this.router.navigateByUrl("admin/GetSourceMarket");
       },
       err=>{
         Swal.fire({
@@ -89,17 +90,17 @@ export class InsertCallReasonComponent implements OnInit {
   //#endregion
 
   //#region Update Call Reason
-  UpdateCallReason(){
+  Update(){
     let id = +this.route.snapshot.paramMap.get('id');
-    this.ApiService.UpdateCallReason(id,{title:this.InsertForm.get('Title').value,order:this.InsertForm.get('Order').value} as InsertCallReason).subscribe(
+    this.ApiService.Update(id,{title:this.InsertForm.get('Title').value,order:this.InsertForm.get('Order').value} as InsertSourceMarket).subscribe(
       response=>{
         Swal.fire({
           icon: 'success',
-          title: "تم تعديل السبب بنجاح",
+          title: "تم تعديل المصدر بنجاح",
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-Call-Reason");
+        this.router.navigateByUrl("admin/GetSourceMarket");
       },
       err=>{
         Swal.fire({
@@ -113,8 +114,8 @@ export class InsertCallReasonComponent implements OnInit {
   //#endregion
 
     //#region  Get Call Reason
-    GetCallReason() {
-      this.ApiService.GetCallReason().subscribe(
+    Get() {
+      this.ApiService.Get().subscribe(
         response => {
          this.InsertForm.patchValue({Order:response.data.length+1});
         },
@@ -129,4 +130,5 @@ export class InsertCallReasonComponent implements OnInit {
     }
     //#endregion
 
-  }
+
+}

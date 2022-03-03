@@ -8,6 +8,8 @@ import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cit
 import { ListCitiesComponent } from './lookups/Cities/list-cities/list-cities.component';
 import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.component';
 import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
+import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/source-market.component';
+import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
 
 const routes: Routes = [
   {
@@ -43,7 +45,19 @@ const routes: Routes = [
         path:'insert-call-reason', component: InsertCallReasonComponent
       },
       {
+        path:'update-call-reason/:id', component: InsertCallReasonComponent
+      },
+      {
         path:'Get-Call-Reason', component: CallReasonComponent
+      },
+      {
+        path:'InsertSourceMarket', component: InsertSourceMarketComponent
+      },
+      {
+        path:'updateSourceMarket/:id', component: InsertSourceMarketComponent
+      },
+      {
+        path:'GetSourceMarket', component: SourceMarketComponent
       },
     ]
   }

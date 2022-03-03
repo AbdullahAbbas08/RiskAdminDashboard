@@ -86,6 +86,18 @@ export class NavService implements OnDestroy {
 			headTitle1: 'لوحة تحكم المدير', headTitle2: 'إدارة محتويات النظام',
 		},
 		{
+			title: 'إدارة الموظفين', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/client-type', title: 'إضافة موظف', type: 'link' },
+				{ path: 'admin/Get-client-type', title: 'قائمة الموظفين', type: 'link' },
+			]
+		},
+		{
+			title: 'إدارة العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/client-type', title: 'إضافة عميل', type: 'link' },
+				{ path: 'admin/Get-client-type', title: 'قائمة العملاء', type: 'link' },
+			]
+		},
+		{
 			title: 'إدارة أنواع العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
 				{ path: 'admin/client-type', title: 'إضافة نوع عميل', type: 'link' },
 				{ path: 'admin/Get-client-type', title: 'قائمة أنواع العملاء', type: 'link' },
@@ -107,6 +119,12 @@ export class NavService implements OnDestroy {
 			title: 'إدارة أسباب المكالمات', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
 				{ path: 'admin/insert-call-reason', title: 'أسباب المكالمات', type: 'link' },
 				{ path: 'admin/Get-Call-Reason', title: 'قائمة أسباب المكالمات', type: 'link' },
+			]
+		},
+		{
+			title: 'إدارة مصدر التسويق', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/InsertSourceMarket', title: 'مصدر التسويق', type: 'link' },
+				{ path: 'admin/GetSourceMarket', title: 'قائمة مصادر التسويق', type: 'link' },
 			]
 		},
 	];
