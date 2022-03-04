@@ -11,7 +11,9 @@
     "./src/app/shared/Models/GetGovernorate.ts",
     "src/app/shared/Models/InsertGovernorate.ts",
     "./src/app/shared/Models/InsertCities.ts",
-    "./src/app/shared/Models/getCities.ts"
+    "./src/app/shared/Models/getCities.ts",
+    "./src/app/shared/Models/GetClient.ts",
+    "./src/app/shared/Models/InsertClient.ts"
   ],
   "include": [
     "src/**/*.d.ts"

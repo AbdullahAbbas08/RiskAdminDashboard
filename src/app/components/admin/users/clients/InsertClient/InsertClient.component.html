@@ -1,0 +1,170 @@
+<app-breadcrumb [title]="'إدارة العملاء'" [active_item]="'Form Wizard'"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" style="padding-bottom: 5px !important">
+          <div *ngIf="update; else elseBlock1">
+            <h5 class="pb-2">تعديل بيانات عميل موجود</h5>
+            يمكنك تعديل بيانات عميل أو أكثر فى قائمة العملاء
+          </div>
+          <ng-template #elseBlock1>
+            <h5 class="pb-2">إضافة عميل جديد</h5>
+            يمكنك إضافة عميل أو أكثر فى قائمة العملاء
+          </ng-template>
+        </div>
+        <form [formGroup]="InsertForm">
+          <div class="card-body container row">
+            <div class="col-8">
+              <!-- name -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="name">أسم العميل </label>
+                  <input class="form-control" id="name" type="text" placeholder="أحمد" formControlName="name" />
+
+                  <ng-container class="invalid" style="color: red" *ngIf="
+                      InsertForm.get('name').hasError('required') &&
+                      InsertForm.get('name').touched
+                    ">
+                    أسم العميل مطلوب</ng-container>
+                </div>
+              </div>
+
+              <!-- username -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>أسم المستخدم </label>
+                  <input class="form-control" type="text" placeholder="ahmed_phone" formControlName="username" />
+
+                  <ng-container class="invalid" style="color: red" *ngIf="
+                      InsertForm.get('username').hasError('required') &&
+                      InsertForm.get('username').touched
+                    ">
+                    أسم المستخدم مطلوب</ng-container>
+                </div>
+              </div>
+
+              <!-- password -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>كلمة المرور </label>
+                  <input class="form-control" type="text" formControlName="password" />
+
+                  <ng-container class="invalid" style="color: red" *ngIf="
+                      InsertForm.get('password').hasError('required') &&
+                      InsertForm.get('password').touched
+                    ">
+                    كلمة المرور مطلوب</ng-container>
+                </div>
+              </div>
+
+              <!-- mobile -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>رقم الموبايل </label>
+                  <input class="form-control" type="text" placeholder="00000000000" formControlName="mobile" />
+
+                  <ng-container class="invalid" style="color: red" *ngIf="
+                      InsertForm.get('mobile').hasError('required') &&
+                      InsertForm.get('mobile').touched
+                    ">
+                    رقم الموبايل مطلوب</ng-container>
+                </div>
+              </div>
+
+              <!-- GovernorateId -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>أختر المحافظة</label>
+                  <Select class="form-control" formControlName="GovernorateId" aria-label="Default select example"
+                    (change)="SelectedGovernorate($event)">
+                    <option value="" selected disabled>
+                      {{ Governorate }}
+                    </option>
+                    <option *ngFor="let obj of Governorate_List" value="{{ obj.id }}">
+                      <h3 class="selected-value">{{ obj.title }}</h3>
+                    </option>
+                  </Select>
+                </div>
+              </div>
+
+              <!-- cityId -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>أختر المدينة</label>
+                  <Select class="form-control" formControlName="cityId" aria-label="Default select example"
+                    (change)="SelectedCity($event)">
+                    <option value="" selected disabled>
+                      {{ City }}
+                    </option>
+                    <option *ngFor="let obj of Filtered_cities_List" value="{{ obj.id }}">
+                      <h3 class="selected-value">{{ obj.title }}</h3>
+                    </option>
+                  </Select>
+                </div>
+              </div>
+
+              <!-- clientTypeId -->
+              <div class="col-12">
+                <div class="form-group">
+                  <label>أختر نوع العميل</label>
+                  <Select class="form-control" formControlName="clientTypeId" aria-label="Default select example"
+                    (change)="SelectedClientType($event)">
+                    <option value="" selected disabled>
+                      {{ clientType }}
+                    </option>
+                    <option *ngFor="let obj of Client_Type_List" value="{{ obj.typeId }}">
+                      <h3 class="selected-value">{{ obj.title }}</h3>
+                    </option>
+                  </Select>
+                </div>
+              </div>
+
+              <!-- address -->
+              <div class="col-12">
+                <textarea formControlName="address" class="form-control textForArabic" placeholder="Leave address here"
+                  style="height: 120px">
+                </textarea>
+              </div>
+            </div>
+
+            <!-- image -->
+            <div class="col-4 d-flex align-items-center">
+              <div class="col-12">
+                <div class="col-12 my-3 d-flex justify-content-center">
+                  <img src="{{ imgURL }}" class="image-style" />
+                </div>
+
+                <div class="col-12 ChangeProfilePhoto-block d-flex justify-content-center">
+                  <input type="file" formControlName="logo" #file accept="image/*" id="getFile" style="display: none"
+                    (change)="preview(file.files)" />
+
+                  <button onclick="document.getElementById('getFile').click()" class="changePhoto-btn">
+                    تغيير صورة البروفايل
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-12">
+              <div *ngIf="update; else elseBlock">
+                <button class="btn btn-primary pull-right" type="submit" [disabled]="!InsertForm.valid"
+                  (click)="UpdateCities()">
+                  تعديل
+                </button>
+              </div>
+
+              <ng-template #elseBlock>
+                <button class="btn btn-primary pull-right" type="submit" [disabled]="InsertForm.invalid"
+                  (click)="InsertClient()">
+                  إضافة
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

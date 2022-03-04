@@ -1,41 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientTypeApiService } from 'src/app/shared/API-Service/client-type-api.service';
+import { ClientApiService } from 'src/app/shared/API-Service/client-api.service';
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
+import { GetClient } from 'src/app/shared/Models/GetClient';
 import { GetClientType } from 'src/app/shared/Models/GetClientType';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-list-client-type',
-  templateUrl: './list-client-type.component.html',
-  styleUrls: ['./list-client-type.component.css']
+  selector: 'app-Client',
+  templateUrl: './Client.component.html',
+  styleUrls: ['./Client.component.css']
 })
-export class ListClientTypeComponent implements OnInit {
+export class ClientComponent implements OnInit {
 
   //#region  Declare Variables
-  response: GenericResponse<GetClientType>;
-  Client_Type_List: GetClientType[];
+  response: GenericResponse<GetClient>;
+  Client_List: GetClient[];
   //#endregion
 
   //#region constructor
-  constructor(private clientTypeApiService: ClientTypeApiService , private router:Router) { }
+  constructor(private ApiService: ClientApiService , private router:Router) { }
   //#endregion
 
   //#region  ng OnInit
   ngOnInit(): void {
-    this.Client_Type_List = [];
-    this.getClientType();
+    this.Client_List = [];
+    this.GetClient();
   }
   //#endregion
 
   //#region Consume API's
 
-  //#region  Get Client Types
-  getClientType() {
-    this.clientTypeApiService.GetClientType().subscribe(
+  //#region  Get Client
+  GetClient() {
+    this.ApiService.GetClient().subscribe(
       response => {
         this.response = response;
-        this.Client_Type_List = response.data;
+        this.Client_List = response.data;
+        console.log(this.Client_List);
+        
       },
       err => {
         Swal.fire({
@@ -48,8 +51,10 @@ export class ListClientTypeComponent implements OnInit {
   }
   //#endregion
 
-  //#region  Delete Client Type
+  //#region  Delete Client 
   DeleteClient(id:number){
+    console.log(id);
+    
     Swal.fire({
       title: ' تحذير !',
       text: "هل انت متأكد من حذف هذا العنصر ؟ ",
@@ -63,12 +68,12 @@ export class ListClientTypeComponent implements OnInit {
     .then((result) => {
 
       if (result.isConfirmed) {
-          this.clientTypeApiService.DeleteClientType(id).subscribe(
+          this.ApiService.DeleteClient(id).subscribe(
             response=>{
-              this.getClientType();
+              this.GetClient();
                Swal.fire({
                     icon: 'success',
-                    title: "تم حذف نوع عميل بنجاح",
+                    title: "تم حذف العميل بنجاح",
                     showConfirmButton: false,
                     timer: 1500}) 
                   },
@@ -77,7 +82,6 @@ export class ListClientTypeComponent implements OnInit {
                 icon: 'error',
                 title: 'خطأ',
                 text: err.error,
-                footer: '<a href="">Why do I have this issue?</a>'
               })
             }
           )
@@ -93,17 +97,20 @@ export class ListClientTypeComponent implements OnInit {
   
   //#endregion
 
-  //#region AddNew
-  AddNew(){
-    this.router.navigateByUrl("admin/client-type");
+  //#region Add New
+  NavigateToInsertClient(){
+    this.router.navigateByUrl("admin/InsertClient");
   }
   //#endregion
 
-  //#region updateClient
-  updateClient(id:number,title:string){
-    this.clientTypeApiService.title = title;
-    this.router.navigate(['admin/update-client-type',id]);
+  //#region update Client
+  updateClient(Client:GetClient){
+    this.ApiService.Client = Client;
+    console.log(Client.clientId);
+    
+    this.router.navigate(['admin/updateClient',Client.clientId]);
   }
   //#endregion
 
+ 
 }

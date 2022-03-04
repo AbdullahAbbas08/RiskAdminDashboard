@@ -10,6 +10,8 @@ import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.
 import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
 import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/source-market.component';
 import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
+import { ClientComponent } from './users/clients/Client/Client.component';
+import { InsertClientComponent } from './users/clients/InsertClient/InsertClient.component';
 
 const routes: Routes = [
   {
@@ -58,6 +60,15 @@ const routes: Routes = [
       },
       {
         path:'GetSourceMarket', component: SourceMarketComponent
+      },
+      {
+        path:'GetClient', component: ClientComponent
+      },
+      {
+        path:'InsertClient', component: InsertClientComponent
+      },
+      {
+        path:'updateClient/:id', component: InsertClientComponent
       },
     ]
   }

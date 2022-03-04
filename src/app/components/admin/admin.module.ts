@@ -15,6 +15,9 @@ import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason
 import { EmployeeComponent } from './users/employee/employee.component';
 import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/source-market.component';
 import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
+import { ClientComponent } from './users/clients/Client/Client.component';
+import { InsertClientComponent } from './users/clients/InsertClient/InsertClient.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -30,14 +33,17 @@ import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-so
     CallReasonComponent,
     InsertCallReasonComponent,
     SourceMarketComponent,
-    InsertSourceMarketComponent
+    InsertSourceMarketComponent,
+    ClientComponent,
+    InsertClientComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     ArchwizardModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    RouterModule
   ],
   exports:[ClientTypeComponent]
 })

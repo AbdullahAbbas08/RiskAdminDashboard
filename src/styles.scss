@@ -22,3 +22,10 @@
 body {
     font-family: "Cairo" !important;
   }
+
+  select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+}

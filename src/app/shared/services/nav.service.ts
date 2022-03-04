@@ -93,8 +93,8 @@ export class NavService implements OnDestroy {
 		},
 		{
 			title: 'إدارة العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
-				{ path: 'admin/client-type', title: 'إضافة عميل', type: 'link' },
-				{ path: 'admin/Get-client-type', title: 'قائمة العملاء', type: 'link' },
+				{ path: 'admin/InsertClient', title: 'إضافة عميل', type: 'link' },
+				{ path: 'admin/GetClient', title: 'قائمة العملاء', type: 'link' },
 			]
 		},
 		{
