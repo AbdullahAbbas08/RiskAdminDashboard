@@ -67,13 +67,15 @@ export class InsertClientComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.InitForm(this.ApiService.Client)
       this.update = true;
-    } else {
+    } else 
+    {
       this.update = false;
       this._InitForm();
       this.Governorate = "أختر المحافظة";
       this.City = "أختر المدينة";
       this.clientType = "أختر نوع العميل";
     }
+
   }
   //#endregion
 
@@ -93,7 +95,7 @@ export class InsertClientComponent implements OnInit {
       GovernorateId: [client.governorateId, Validators.nullValidator],
       cityId: [client.cityId, Validators.required],
       clientTypeId: [client.clientTypeId, Validators.required],
-      logo: [, Validators.required],
+      logo: ['', Validators.nullValidator],
     });
   }
   _InitForm() {
@@ -106,9 +108,11 @@ export class InsertClientComponent implements OnInit {
       GovernorateId: ['-1', Validators.nullValidator],
       cityId: ['-1', Validators.required],
       clientTypeId: ['-1', Validators.required],
-      logo: [, Validators.required],
-
+      logo: [, Validators.nullValidator],
     });
+    this.imgURL = "./assets/images/statics/personAvatar.png";
+console.log("imgURL : ",this.imgURL);
+
   }
   //#endregion
 
@@ -165,21 +169,29 @@ export class InsertClientComponent implements OnInit {
 
   //#region Update Cities
   UpdateCities() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    console.log('Title : ',this.InsertForm.get('Title').value);
+
+    this.logoForm.append("Id",this.ApiService.Client.clientId)
+    this.logoForm.append("Name",this.InsertForm.get('name').value)
+      this.logoForm.append("CityId",this.InsertForm.get('cityId').value)
+      this.logoForm.append("ClientTypeId",this.InsertForm.get('clientTypeId').value)
+      this.logoForm.append("UserName",this.InsertForm.get('username').value)
+      this.logoForm.append("Password",this.InsertForm.get('password').value)
+      this.logoForm.append("Mobile",this.InsertForm.get('mobile').value)
+      this.logoForm.append("Address",this.InsertForm.get('address').value)
+      this.logoForm.append("LogoPath",this.ApiService.Client.logoPath)
     
-    this.citiesApiService.UpdateCities(id, {
-      cityName: this.InsertForm.get('Title').value,
-      governorateID: this.citiesApiService.GovernorateId
-    } as InsertCities).subscribe(
+      if(!this.logoForm.has("Logo"))
+      this.logoForm.append("Logo",null)
+      
+    this.ApiService.UpdateClient(this.logoForm).subscribe(
       response => {
         Swal.fire({
           icon: 'success',
-          title: "تم تعديل المدينة بنجاح",
+          title: "تم تعديل العميل بنجاح",
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-cities");
+        this.router.navigateByUrl("admin/GetClient");
       },
       err => {
         Swal.fire({
@@ -294,7 +306,6 @@ export class InsertClientComponent implements OnInit {
     }
     this.logoForm.append("Logo",files[0])
   }
-
   //#endregion
 
 }

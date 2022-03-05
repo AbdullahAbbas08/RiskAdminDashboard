@@ -60,7 +60,7 @@
                           <a href="{{ item.WebsiteUrl }}">الموقع الرسمى</a></p>
                       </div> -->
                     </div>
-                    <div class="Category-Img-Title" style="background-image: url(./assets/images/MainDirectory/{{item.logoPath}}) ;background-size: zoom;width: 230px;height: 230px;">
+                    <div class="Category-Img-Title" style="background-image: url(./assets/images/MainDirectory/{{item.logoPath}}) ;background-size: cover;width: 230px;height: 230px;">
                        <!-- <img src="./assets/images/MainDirectory/{{item.logoPath}}" > -->
                   </div>
                     <div
@@ -102,15 +102,15 @@
                         {{item.address}}
                         </span>
                       </div>
-                      <div class="col-5"><span>نوع العيل </span></div>
+                      <div class="col-5"><span>نوع العميل </span></div>
                       <div class="col-7" style="color: #eb2067">
                         <span style="color: #eb2067"> 
-                          {{item.clientTypeId}}
+                          {{item.clientTypeTitle}}
                         </span>
                       </div>
                       <div class="col-5"><span> مدينة </span></div>
                       <div class="col-7" style="color: #eb2067">
-                        <span style="color: #eb2067">{{item.cityId}} </span>
+                        <span style="color: #eb2067">{{item.cityTitle}} </span>
                       </div>
                     </div>
                     <div

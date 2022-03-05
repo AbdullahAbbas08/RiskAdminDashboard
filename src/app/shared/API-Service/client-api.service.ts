@@ -6,6 +6,7 @@ import { GetClient } from '../Models/GetClient';
 import { environment } from '../../../environments/environment.prod';
 import { InsertClient } from '../Models/InsertClient';
 import { GenericResponseSingle } from '../Models/GenericResponseSingle';
+import { UpdateClient } from '../Models/UpdateClient';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ClientApiService {
 
     //#region Declare variables
     Client:GetClient;
+
     //#endregion
     //#region  constructor
     constructor(private http:HttpClient) { }
@@ -34,12 +36,12 @@ export class ClientApiService {
       InsertClient(form:any): Observable<GenericResponseSingle<InsertClient>> {
         return this.http.post<GenericResponseSingle<InsertClient>>(`${environment.Server_URL}/Authentication/RegisterClient`,form,this.httpOptions);
       }
-  
-      UpdateClient(id:number,Data:InsertClient): Observable<GenericResponseSingle<GetClient>> {
-        return this.http.put<GenericResponseSingle<GetClient>>(`${environment.Server_URL}/Client/${id}`,Data);
+
+      UpdateClient(form:any): Observable<GenericResponseSingle<UpdateClient>> {
+        return this.http.put<GenericResponseSingle<UpdateClient>>(`${environment.Server_URL}/Client`,form,this.httpOptions);
       }
   
-      DeleteClient(ClientId:number): Observable<GenericResponseSingle<InsertClient>> {
+      DeleteClient(ClientId:string): Observable<GenericResponseSingle<InsertClient>> {
         return this.http.delete<GenericResponseSingle<InsertClient>>(`${environment.Server_URL}/Client/${ClientId}`);
       }
 }

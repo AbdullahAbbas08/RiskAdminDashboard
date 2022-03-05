@@ -52,9 +52,7 @@ export class ClientComponent implements OnInit {
   //#endregion
 
   //#region  Delete Client 
-  DeleteClient(id:number){
-    console.log(id);
-    
+  DeleteClient(id:string){    
     Swal.fire({
       title: ' تحذير !',
       text: "هل انت متأكد من حذف هذا العنصر ؟ ",
@@ -106,11 +104,9 @@ export class ClientComponent implements OnInit {
   //#region update Client
   updateClient(Client:GetClient){
     this.ApiService.Client = Client;
-    console.log(Client.clientId);
     
     this.router.navigate(['admin/updateClient',Client.clientId]);
   }
   //#endregion
 
- 
 }

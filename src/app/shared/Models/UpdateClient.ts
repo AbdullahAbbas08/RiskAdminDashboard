@@ -1,5 +1,6 @@
 
-export class InsertClient {
+export class UpdateClient {
+    Id: string;
     logoPath: string;
     cityId: number;
     clientTypeId: number;
@@ -7,7 +8,5 @@ export class InsertClient {
     mobile: string;
     address: string;
     userName: string;
-    password:string
+    password: string;
 }
-
-

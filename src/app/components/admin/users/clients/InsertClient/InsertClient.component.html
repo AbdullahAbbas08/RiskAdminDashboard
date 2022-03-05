@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
+
         <div class="card-header" style="padding-bottom: 5px !important">
           <div *ngIf="update; else elseBlock1">
             <h5 class="pb-2">تعديل بيانات عميل موجود</h5>
@@ -13,9 +14,12 @@
             يمكنك إضافة عميل أو أكثر فى قائمة العملاء
           </ng-template>
         </div>
-        <form [formGroup]="InsertForm">
-          <div class="card-body container row">
-            <div class="col-8">
+
+        <form [formGroup]="InsertForm" >
+
+          <div class="card-body container row col-12" >
+
+            <div class="col-12 col-md-8">
               <!-- name -->
               <div class="col-12">
                 <div class="form-group">
@@ -48,7 +52,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label>كلمة المرور </label>
-                  <input class="form-control" type="text" formControlName="password" />
+                  <input class="form-control" type="password" formControlName="password" placeholder="***********" />
 
                   <ng-container class="invalid" style="color: red" *ngIf="
                       InsertForm.get('password').hasError('required') &&
@@ -129,14 +133,15 @@
             </div>
 
             <!-- image -->
-            <div class="col-4 d-flex align-items-center">
+            <div class="col-12 col-md-4 d-flex align-items-center" >
               <div class="col-12">
                 <div class="col-12 my-3 d-flex justify-content-center">
                   <img src="{{ imgURL }}" class="image-style" />
                 </div>
 
                 <div class="col-12 ChangeProfilePhoto-block d-flex justify-content-center">
-                  <input type="file" formControlName="logo" #file accept="image/*" id="getFile" style="display: none"
+                  <!--  -->
+                  <input type="file" formControlName="logo"  #file accept="image/*" id="getFile" style="display: none"
                     (change)="preview(file.files)" />
 
                   <button onclick="document.getElementById('getFile').click()" class="changePhoto-btn">
@@ -162,8 +167,10 @@
                 </button>
               </ng-template>
             </div>
+
           </div>
         </form>
+
       </div>
     </div>
   </div>

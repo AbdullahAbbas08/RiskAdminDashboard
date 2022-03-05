@@ -13,7 +13,8 @@
     "./src/app/shared/Models/InsertCities.ts",
     "./src/app/shared/Models/getCities.ts",
     "./src/app/shared/Models/GetClient.ts",
-    "./src/app/shared/Models/InsertClient.ts"
+    "./src/app/shared/Models/InsertClient.ts",
+    "./src/app/shared/Models/UpdateClient.ts"
   ],
   "include": [
     "src/**/*.d.ts"
