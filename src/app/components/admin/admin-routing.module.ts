@@ -12,6 +12,8 @@ import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/s
 import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
 import { ClientComponent } from './users/clients/Client/Client.component';
 import { InsertClientComponent } from './users/clients/InsertClient/InsertClient.component';
+import { EmployeeComponent } from './users/employee/List-Employees/employee.component';
+import { InsertEmployeeComponent } from './users/employee/insert-employee/insert-employee.component';
 
 const routes: Routes = [
   {
@@ -69,6 +71,15 @@ const routes: Routes = [
       },
       {
         path:'updateClient/:id', component: InsertClientComponent
+      },
+      {
+        path:'GetEmployee', component: EmployeeComponent
+      },
+      {
+        path:'InsertEmployee', component: InsertEmployeeComponent
+      },
+      {
+        path:'updateEmployee/:id', component: InsertEmployeeComponent
       },
     ]
   }

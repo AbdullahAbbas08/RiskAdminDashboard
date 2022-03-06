@@ -14,7 +14,9 @@
     "./src/app/shared/Models/getCities.ts",
     "./src/app/shared/Models/GetClient.ts",
     "./src/app/shared/Models/InsertClient.ts",
-    "./src/app/shared/Models/UpdateClient.ts"
+    "./src/app/shared/Models/UpdateClient.ts",
+    "./src/app/shared/Models/GetEmployee.ts",
+    "./src/app/shared/Models/InsertEmployee.ts"
   ],
   "include": [
     "src/**/*.d.ts"

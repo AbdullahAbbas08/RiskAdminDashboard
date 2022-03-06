@@ -41,7 +41,7 @@ export class InsertClientComponent implements OnInit {
   Filtered_cities_List: getCities[];
   Client_Type_List: GetClientType[];
   logoForm = new FormData();
-
+  pass:string;
   //#endregion
 
   //#region  constructor
@@ -89,7 +89,7 @@ export class InsertClientComponent implements OnInit {
     this.InsertForm = this._formBuilder.group({
       name: [client.name, Validators.required],
       username: [client.userName, Validators.required],
-      password: [client.password, Validators.required],
+      password: ['', Validators.nullValidator],
       mobile: [client.mobile, Validators.required],
       address: [client.address, Validators.required],
       GovernorateId: [client.governorateId, Validators.nullValidator],
@@ -102,7 +102,7 @@ export class InsertClientComponent implements OnInit {
     this.InsertForm = this._formBuilder.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.nullValidator],
       mobile: ['', Validators.required],
       address: ['', Validators.required],
       GovernorateId: ['-1', Validators.nullValidator],
@@ -130,6 +130,13 @@ console.log("imgURL : ",this.imgURL);
         icon: 'error',
         title: 'خطأ',
         text: "أختر نوع العميل أولا",
+      })
+    }
+    else if(this.InsertForm.get('password').value == ''){
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: "كلمة المرور مطلوبة",
       })
     }
     else
@@ -167,15 +174,20 @@ console.log("imgURL : ",this.imgURL);
   }
   //#endregion
 
-  //#region Update Cities
-  UpdateCities() {
+  //#region Update Client
+  UpdateClient() {
+
+    if(this.InsertForm.get('password').value == '')
+    this.pass = this.ApiService.Client.password;
+    else
+    this.pass = this.InsertForm.get('password').value;
 
     this.logoForm.append("Id",this.ApiService.Client.clientId)
     this.logoForm.append("Name",this.InsertForm.get('name').value)
       this.logoForm.append("CityId",this.InsertForm.get('cityId').value)
       this.logoForm.append("ClientTypeId",this.InsertForm.get('clientTypeId').value)
       this.logoForm.append("UserName",this.InsertForm.get('username').value)
-      this.logoForm.append("Password",this.InsertForm.get('password').value)
+      this.logoForm.append("Password",this.pass)
       this.logoForm.append("Mobile",this.InsertForm.get('mobile').value)
       this.logoForm.append("Address",this.InsertForm.get('address').value)
       this.logoForm.append("LogoPath",this.ApiService.Client.logoPath)

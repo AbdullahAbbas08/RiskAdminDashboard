@@ -87,8 +87,8 @@ export class NavService implements OnDestroy {
 		},
 		{
 			title: 'إدارة الموظفين', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
-				{ path: 'admin/client-type', title: 'إضافة موظف', type: 'link' },
-				{ path: 'admin/Get-client-type', title: 'قائمة الموظفين', type: 'link' },
+				{ path: 'admin/InsertEmployee', title: 'إضافة موظف', type: 'link' },
+				{ path: 'admin/GetEmployee', title: 'قائمة الموظفين', type: 'link' },
 			]
 		},
 		{

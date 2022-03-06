@@ -145,3 +145,40 @@
   </div>
 </div>
 <!-- Container-fluid Ends-->
+
+<app-breadcrumb [title]="'ادارة العملاء'" [items]="['Apps', 'Learning']" [active_item]="'List'"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-9 xl-60">
+      <div class="row"  *ngFor="let item of Client_List">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="blog-box blog-list row">
+              <div class="col-sm-5">
+                <img class="img-fluid sm-100-w" src="./assets/images/MainDirectory/{{item.logoPath}}" alt="">
+              </div>
+              <div class="col-sm-7">
+                <div class="blog-details">
+                  <div class="blog-date digits"><span>05</span> January 2019</div>
+                  <h6>{{item.clientTypeTitle}}</h6>
+                  <div class="blog-bottom-content">
+                    <ul class="blog-social">
+                      <li>{{item.name}}</li>
+                      <li class="digits">{{item.mobile}}</li>
+                    </ul>
+                    <hr>
+                    <p class="mt-0">
+                      {{item.address}}
+                    </p><hr>
+                    <ul class="">
+                      <li>{{item.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

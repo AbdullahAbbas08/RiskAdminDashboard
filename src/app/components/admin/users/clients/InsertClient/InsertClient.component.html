@@ -28,9 +28,11 @@
 
                   <ng-container class="invalid" style="color: red" *ngIf="
                       InsertForm.get('name').hasError('required') &&
-                      InsertForm.get('name').touched
-                    ">
-                    أسم العميل مطلوب</ng-container>
+                      InsertForm.get('name').touched">
+                    <span style="color: red;">
+                      أسم العميل مطلوب
+                    </span>
+                  </ng-container>
                 </div>
               </div>
 
@@ -42,23 +44,32 @@
 
                   <ng-container class="invalid" style="color: red" *ngIf="
                       InsertForm.get('username').hasError('required') &&
-                      InsertForm.get('username').touched
-                    ">
-                    أسم المستخدم مطلوب</ng-container>
+                      InsertForm.get('username').touched">
+                    <span style="color: red;">
+                      أسم المستخدم مطلوب
+                    </span>
+                  </ng-container>
                 </div>
               </div>
 
               <!-- password -->
               <div class="col-12">
                 <div class="form-group">
-                  <label>كلمة المرور </label>
+                  <div *ngIf="update; else elseBlock12">
+                    <label> تعديل كلمة المرور </label>
+                  </div>
+                  <ng-template #elseBlock12>
+                    <label>كلمة المرور </label>
+                  </ng-template>
                   <input class="form-control" type="password" formControlName="password" placeholder="***********" />
 
-                  <ng-container class="invalid" style="color: red" *ngIf="
+                  <!-- <ng-container class="invalid" style="color: red" *ngIf="
                       InsertForm.get('password').hasError('required') &&
-                      InsertForm.get('password').touched
-                    ">
-                    كلمة المرور مطلوب</ng-container>
+                      InsertForm.get('password').touched">
+                    <span style="color: red;">
+                      كلمة المرور مطلوب
+                    </span>
+                  </ng-container> -->
                 </div>
               </div>
 
@@ -72,7 +83,10 @@
                       InsertForm.get('mobile').hasError('required') &&
                       InsertForm.get('mobile').touched
                     ">
-                    رقم الموبايل مطلوب</ng-container>
+                    <span style="color: red;">
+                      رقم الموبايل مطلوب
+                    </span>
+                  </ng-container>
                 </div>
               </div>
 
@@ -155,7 +169,7 @@
             <div class="col-12">
               <div *ngIf="update; else elseBlock">
                 <button class="btn btn-primary pull-right" type="submit" [disabled]="!InsertForm.valid"
-                  (click)="UpdateCities()">
+                  (click)="UpdateClient()">
                   تعديل
                 </button>
               </div>

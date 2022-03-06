@@ -12,12 +12,13 @@ import { ListCitiesComponent } from './lookups/Cities/list-cities/list-cities.co
 import { InsertCitiesComponent } from './lookups/Cities/insert-cities/insert-cities.component';
 import { CallReasonComponent } from './lookups/CallReason/CallReason/CallReason.component';
 import { InsertCallReasonComponent } from './lookups/CallReason/InsertCallReason/InsertCallReason.component';
-import { EmployeeComponent } from './users/employee/employee.component';
 import { SourceMarketComponent } from './lookups/SourceMarketing/source-market/source-market.component';
 import { InsertSourceMarketComponent } from './lookups/SourceMarketing/insert-source-market/insert-source-market.component';
 import { ClientComponent } from './users/clients/Client/Client.component';
 import { InsertClientComponent } from './users/clients/InsertClient/InsertClient.component';
 import { RouterModule } from '@angular/router';
+import { InsertEmployeeComponent } from './users/employee/insert-employee/insert-employee.component';
+import { EmployeeComponent } from './users/employee/List-Employees/employee.component';
 
 
 
@@ -29,13 +30,15 @@ import { RouterModule } from '@angular/router';
     ListGovernorateComponent,
     ListCitiesComponent,
     InsertCitiesComponent,
-    EmployeeComponent,
     CallReasonComponent,
     InsertCallReasonComponent,
     SourceMarketComponent,
     InsertSourceMarketComponent,
     ClientComponent,
-    InsertClientComponent
+    InsertClientComponent,
+    InsertEmployeeComponent,
+    InsertEmployeeComponent,
+    EmployeeComponent
   ],
   imports: [
     CommonModule,

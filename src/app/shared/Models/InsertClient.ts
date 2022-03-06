@@ -1,6 +1,6 @@
 
 export class InsertClient {
-    logoPath: string;
+    LogoPath: string;
     cityId: number;
     clientTypeId: number;
     name: string;

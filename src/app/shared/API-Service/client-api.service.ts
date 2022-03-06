@@ -18,6 +18,7 @@ export class ClientApiService {
 
     //#endregion
     //#region  constructor
+    
     constructor(private http:HttpClient) { }
     //#endregion
   
