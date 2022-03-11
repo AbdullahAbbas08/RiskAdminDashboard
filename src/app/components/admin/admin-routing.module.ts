@@ -14,6 +14,8 @@ import { ClientComponent } from './users/clients/Client/Client.component';
 import { InsertClientComponent } from './users/clients/InsertClient/InsertClient.component';
 import { EmployeeComponent } from './users/employee/List-Employees/employee.component';
 import { InsertEmployeeComponent } from './users/employee/insert-employee/insert-employee.component';
+import { InsertCustomerServiceComponent } from './users/Customer-Service/InsertCustomerService/InsertCustomerService.component';
+import { CustomerServiceComponent } from './users/Customer-Service/customer-service/customer-service.component';
 
 const routes: Routes = [
   {
@@ -80,6 +82,15 @@ const routes: Routes = [
       },
       {
         path:'updateEmployee/:id', component: InsertEmployeeComponent
+      },
+      {
+        path:'GetCustomerService', component: CustomerServiceComponent
+      },
+      {
+        path:'InsertCustomerService', component: InsertCustomerServiceComponent
+      },
+      {
+        path:'updateCustomerService/:id', component: InsertCustomerServiceComponent
       },
     ]
   }

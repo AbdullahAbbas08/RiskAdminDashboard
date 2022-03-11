@@ -19,6 +19,9 @@ import { InsertClientComponent } from './users/clients/InsertClient/InsertClient
 import { RouterModule } from '@angular/router';
 import { InsertEmployeeComponent } from './users/employee/insert-employee/insert-employee.component';
 import { EmployeeComponent } from './users/employee/List-Employees/employee.component';
+import { CustomerServiceComponent } from './users/Customer-Service/customer-service/customer-service.component';
+import { InsertCustomerServiceComponent } from './users/Customer-Service/InsertCustomerService/InsertCustomerService.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -38,7 +41,9 @@ import { EmployeeComponent } from './users/employee/List-Employees/employee.comp
     InsertClientComponent,
     InsertEmployeeComponent,
     InsertEmployeeComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    CustomerServiceComponent,
+    InsertCustomerServiceComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +51,8 @@ import { EmployeeComponent } from './users/employee/List-Employees/employee.comp
     SharedModule,
     ArchwizardModule,
     SweetAlert2Module,
-    RouterModule
+    RouterModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   exports:[ClientTypeComponent]
 })

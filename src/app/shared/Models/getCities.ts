@@ -4,3 +4,5 @@ export class getCities {
     title: string;
     governorateId: number;
 }
+
+

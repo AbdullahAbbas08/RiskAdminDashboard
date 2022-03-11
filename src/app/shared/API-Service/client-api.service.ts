@@ -33,6 +33,10 @@ export class ClientApiService {
       GetClient(): Observable<GenericResponse<GetClient>> {
         return this.http.get<GenericResponse<GetClient>>(`${environment.Server_URL}/Client`);
       }
+
+      GetClientIdName(): Observable<GenericResponse<GetClient>> {
+        return this.http.get<GenericResponse<GetClient>>(`${environment.Server_URL}/Client/GetAllIdName`);
+      }
     
       InsertClient(form:any): Observable<GenericResponseSingle<InsertClient>> {
         return this.http.post<GenericResponseSingle<InsertClient>>(`${environment.Server_URL}/Authentication/RegisterClient`,form,this.httpOptions);

@@ -86,9 +86,15 @@ export class NavService implements OnDestroy {
 			headTitle1: 'لوحة تحكم المدير', headTitle2: 'إدارة محتويات النظام',
 		},
 		{
-			title: 'إدارة الموظفين', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
-				{ path: 'admin/InsertEmployee', title: 'إضافة موظف', type: 'link' },
-				{ path: 'admin/GetEmployee', title: 'قائمة الموظفين', type: 'link' },
+			title: 'مسئولى النظام', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/InsertEmployee', title: 'إضافة مسئول', type: 'link' },
+				{ path: 'admin/GetEmployee', title: 'قائمة المسئولين', type: 'link' },
+			]
+		},
+		{
+			title: 'موظفى خدمة العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/InsertCustomerService', title: 'إضافة موظف', type: 'link' },
+				{ path: 'admin/GetCustomerService', title: ' موظفى خدمة العملاء', type: 'link' },
 			]
 		},
 		{
