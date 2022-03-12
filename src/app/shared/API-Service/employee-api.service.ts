@@ -7,6 +7,8 @@ import { environment } from '../../../environments/environment.prod';
 import { InsertEmployee } from '../Models/InsertEmployee';
 import { GenericResponseSingle } from '../Models/GenericResponseSingle';
 import { UpdateClient } from '../Models/UpdateClient';
+import { Assign_ClientCustomer } from '../Models/Assign_ClientCustomer';
+import { ResponseRegister } from '../Models/ResponseRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +32,21 @@ export class EmployeeApiService {
            }) };
        //#endregion
    
-       GetEmployee(): Observable<GenericResponse<GetEmployee>> {
-         return this.http.get<GenericResponse<GetEmployee>>(`${environment.Server_URL}/Employee`);
+       GetEmployee(role:string): Observable<GenericResponse<GetEmployee>> {
+         return this.http.get<GenericResponse<GetEmployee>>(`${environment.Server_URL}/Employee?Role=${role}`);
+       }
+
+     
+       GetClientRelated(id:string): Observable<GenericResponse<Assign_ClientCustomer>> {
+         return this.http.get<GenericResponse<Assign_ClientCustomer>>(`${environment.Server_URL}/CustomerService?id=${id}`);
        }
      
-       InsertEmployee(data:InsertEmployee): Observable<GenericResponseSingle<InsertEmployee>> {
-         return this.http.post<GenericResponseSingle<InsertEmployee>>(`${environment.Server_URL}/Authentication/RegisterEmployee`,data,this.httpOptions);
+       InsertEmployee(data:InsertEmployee): Observable<ResponseRegister> {
+         return this.http.post<ResponseRegister>(`${environment.Server_URL}/Authentication/RegisterEmployee`,data,this.httpOptions);
+       }
+
+       AssignCustomerToClient(data:Assign_ClientCustomer[]): Observable<GenericResponseSingle<InsertEmployee>> {
+         return this.http.post<GenericResponseSingle<InsertEmployee>>(`${environment.Server_URL}/CustomerService`,data,this.httpOptions);
        }
  
        UpdateEmployee(data:GetEmployee): Observable<GenericResponseSingle<GetEmployee>> {

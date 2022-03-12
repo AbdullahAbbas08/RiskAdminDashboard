@@ -4,6 +4,7 @@ import { EmployeeApiService } from 'src/app/shared/API-Service/employee-api.serv
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
 import { GetClient } from 'src/app/shared/Models/GetClient';
 import { GetEmployee } from 'src/app/shared/Models/GetEmployee';
+import { Roles } from 'src/app/shared/Models/Roles';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,15 +27,15 @@ export class CustomerServiceComponent implements OnInit {
   //#region  ng OnInit
   ngOnInit(): void {
     this.Employee_List = [];
-    this.GetEmployee();
+    this.GetEmployee(Roles.Agent);
   }
   //#endregion
 
   //#region Consume API's
 
   //#region  Get Employee
-  GetEmployee() {
-    this.ApiService.GetEmployee().subscribe(
+  GetEmployee(role:string) {
+    this.ApiService.GetEmployee(role).subscribe(
       response => {
         this.response = response;
         this.Employee_List = response.data;        
@@ -67,7 +68,7 @@ export class CustomerServiceComponent implements OnInit {
       if (result.isConfirmed) {
           this.ApiService.DeleteEmployee(id).subscribe(
             response=>{
-              this.GetEmployee();
+              this.GetEmployee(Roles.Agent);
                Swal.fire({
                     icon: 'success',
                     title: "تم حذف الموظف بنجاح",
@@ -104,7 +105,7 @@ export class CustomerServiceComponent implements OnInit {
   updateEmployee(id:string,model:GetEmployee){
     this.ApiService.Employee = model;
     
-    this.router.navigate(['admin/updateEmployee',model.id]);
+    this.router.navigate(['admin/updateCustomerService',model.id]);
   }
   //#endregion
 

@@ -17,7 +17,10 @@
     "./src/app/shared/Models/UpdateClient.ts",
     "./src/app/shared/Models/GetEmployee.ts",
     "./src/app/shared/Models/InsertEmployee.ts",
-    "./src/app/shared/Models/IdNameList.ts"
+    "./src/app/shared/Models/IdNameList.ts",
+    "./src/app/shared/Models/Roles.ts",
+    "./src/app/shared/Models/Assign_ClientCustomer.ts",
+    "./src/app/shared/Models/ResponseRegister.ts"
   ],
   "include": [
     "src/**/*.d.ts"

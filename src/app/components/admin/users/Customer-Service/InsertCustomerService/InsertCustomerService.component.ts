@@ -11,6 +11,8 @@ import { IdNameList } from 'src/app/shared/Models/IdNameList';
 import { InsertEmployee } from 'src/app/shared/Models/InsertEmployee';
 import Swal from 'sweetalert2';
 import { GetClient } from 'src/app/shared/Models/GetClient';
+import { Roles } from 'src/app/shared/Models/Roles';
+import { Assign_ClientCustomer } from 'src/app/shared/Models/Assign_ClientCustomer';
 
 @Component({
   selector: 'app-InsertCustomerService',
@@ -28,8 +30,10 @@ export class InsertCustomerServiceComponent implements OnInit {
   Client_List: GetClient[];
   dropdownSettings: IDropdownSettings = {};
   dropdownList: any = [];
-  selectedItems: IdNameList[] = [];
+  selectedItems: any[] = [];
+  ClientCustumer: Assign_ClientCustomer[] = [];
   selectedItemsIds: number[] = [];
+  DefaultSelect:any;
   //#endregion
 
   //#region  constructor
@@ -58,12 +62,13 @@ export class InsertCustomerServiceComponent implements OnInit {
   //#region  ng OnInit
   ngOnInit(): void {
    
- 
+    
 
     if(this.route.snapshot.paramMap.get('id')){
 
       this.InitForm(this.ApiService.Employee)
       this.update = true;
+      this.GetClientRelated(this.ApiService.Employee.id)
     }else
     {
       this.update = false;
@@ -99,7 +104,7 @@ export class InsertCustomerServiceComponent implements OnInit {
 
 
   //#region  Insert Client-Type Method
-  InsertClientType(){    
+  InsertEmployee(){    
     
     if(this.EmployeeForm.get('password').value =='')
     {
@@ -118,15 +123,32 @@ export class InsertCustomerServiceComponent implements OnInit {
         address:this.EmployeeForm.get('address').value ,
         mobile:this.EmployeeForm.get('mobile').value ,
         password:this.EmployeeForm.get('password').value ,
+        Role:Roles.Agent
       } as InsertEmployee).subscribe(
       response=>{
-        Swal.fire({
-          icon: 'success',
-          title: "تم إضافة الموظف بنجاح",
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.router.navigateByUrl("admin/GetEmployee");
+
+        console.log("ID_Created : ",response.iD_Created);
+        console.log("this.selectedItems : ",this.selectedItems);
+        
+        
+        this.selectedItems.forEach(element => {
+          this.ClientCustumer.push({clientId:element.id,customerId:response.iD_Created}as Assign_ClientCustomer);
+        });
+
+        this.ApiService.AssignCustomerToClient( this.ClientCustumer ).subscribe(
+          data=>{
+            Swal.fire({
+              icon: 'success',
+              title: "تم إضافة الموظف بنجاح",
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.router.navigateByUrl("admin/GetCustomerService");
+          },
+          err=>{
+
+          }
+        )
       },
       err=>{
         Swal.fire({
@@ -211,4 +233,19 @@ export class InsertCustomerServiceComponent implements OnInit {
     // console.log(items);
   }
 
+  GetClientRelated(id:string){
+    this.ApiService.GetClientRelated(id).subscribe(
+      (response)=>{
+      //   this.dropdownList = response.data;
+      //   this.selectedItems = response.data;
+      //   response.data.forEach(element => {
+      //   this.DefaultSelect +=element.clientId; 
+      //  });
+      },
+      (err)=>{
+          console.log(err);
+          
+      }
+    )
+  }
 }

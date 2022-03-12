@@ -5,4 +5,5 @@ export class InsertEmployee {
     mobile: string;
     address: string;
     userName: string;
+    Role:string;
 }

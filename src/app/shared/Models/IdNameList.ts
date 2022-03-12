@@ -1,5 +1,7 @@
 
 export class IdNameList {
-    id: number;
-   name: string;
+    clientId: number;
+    customerId: string;
 }
+
+

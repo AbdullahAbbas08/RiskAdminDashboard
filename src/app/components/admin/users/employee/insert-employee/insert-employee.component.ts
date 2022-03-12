@@ -6,6 +6,7 @@ import { EmployeeApiService } from 'src/app/shared/API-Service/employee-api.serv
 import { GetEmployee } from 'src/app/shared/Models/GetEmployee';
 import { InsertClientType } from 'src/app/shared/Models/insert-client-type';
 import { InsertEmployee } from 'src/app/shared/Models/InsertEmployee';
+import { Roles } from 'src/app/shared/Models/Roles';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -90,6 +91,7 @@ export class InsertEmployeeComponent implements OnInit {
         address:this.EmployeeForm.get('address').value ,
         mobile:this.EmployeeForm.get('mobile').value ,
         password:this.EmployeeForm.get('password').value ,
+        Role:Roles.Admin
       } as InsertEmployee).subscribe(
       response=>{
         Swal.fire({

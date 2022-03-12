@@ -4,6 +4,7 @@ import { EmployeeApiService } from 'src/app/shared/API-Service/employee-api.serv
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
 import { GetClient } from 'src/app/shared/Models/GetClient';
 import { GetEmployee } from 'src/app/shared/Models/GetEmployee';
+import { Roles } from 'src/app/shared/Models/Roles';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,20 +27,22 @@ export class EmployeeComponent implements OnInit {
   //#region  ng OnInit
   ngOnInit(): void {
     this.Employee_List = [];
-    this.GetEmployee();
+    this.GetEmployee(Roles.Admin);
   }
   //#endregion
 
   //#region Consume API's
 
   //#region  Get Employee
-  GetEmployee() {
-    this.ApiService.GetEmployee().subscribe(
+  GetEmployee(role:string) {
+    this.ApiService.GetEmployee(role).subscribe(
       response => {
         this.response = response;
         this.Employee_List = response.data;        
       },
       err => {
+        console.log(err.error);
+        
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
@@ -67,7 +70,7 @@ export class EmployeeComponent implements OnInit {
       if (result.isConfirmed) {
           this.ApiService.DeleteEmployee(id).subscribe(
             response=>{
-              this.GetEmployee();
+              this.GetEmployee(Roles.Admin);
                Swal.fire({
                     icon: 'success',
                     title: "تم حذف الموظف بنجاح",
