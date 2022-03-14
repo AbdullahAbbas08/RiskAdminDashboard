@@ -97,7 +97,7 @@ export class CustomerServiceComponent implements OnInit {
 
   //#region Add New Employee
   NavigateToInsert(){
-    this.router.navigateByUrl("admin/InsertEmployee");
+    this.router.navigateByUrl("admin/InsertCustomerService");
   }
   //#endregion
 

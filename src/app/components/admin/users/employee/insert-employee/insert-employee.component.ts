@@ -133,6 +133,7 @@ export class InsertEmployeeComponent implements OnInit {
       address:this.EmployeeForm.get('address').value ,
       mobile:this.EmployeeForm.get('mobile').value ,
       password:this.pass ,
+      Role:Roles.Admin
     } as GetEmployee).subscribe(
       response=>{
         Swal.fire({

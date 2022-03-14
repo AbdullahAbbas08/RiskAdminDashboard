@@ -44,7 +44,28 @@ export class InsertCustomerServiceComponent implements OnInit {
               private router:Router,
               private route: ActivatedRoute) 
   { this.maxDate = new Date();
+    
+    
+  }
+  //#endregion
+
+  //#region  ng OnInit
+  ngOnInit(): void {
+   
     this.GetClient()
+    
+    if(this.route.snapshot.paramMap.get('id')){
+      
+      this.GetClientRelated(this.ApiService.Employee.id)
+      this.InitForm(this.ApiService.Employee)
+      this.update = true;
+    }else
+    {
+      this.update = false;
+      this._InitForm();
+    }
+
+   
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -55,25 +76,7 @@ export class InsertCustomerServiceComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-    
-  }
-  //#endregion
 
-  //#region  ng OnInit
-  ngOnInit(): void {
-   
-    
-
-    if(this.route.snapshot.paramMap.get('id')){
-
-      this.InitForm(this.ApiService.Employee)
-      this.update = true;
-      this.GetClientRelated(this.ApiService.Employee.id)
-    }else
-    {
-      this.update = false;
-      this._InitForm();
-    }
   }
   //#endregion
 
@@ -86,7 +89,8 @@ export class InsertCustomerServiceComponent implements OnInit {
       nationalId: [employee.nationalId, Validators.required],
       mobile: [employee.mobile, Validators.required],
       address: [employee.address, Validators.required],
-      Clients: [employee.address, Validators.required],
+      Clients: [this.selectedItems, Validators.required],
+
     });
   }
   _InitForm(){
@@ -102,8 +106,7 @@ export class InsertCustomerServiceComponent implements OnInit {
   }
   //#endregion
 
-
-  //#region  Insert Client-Type Method
+  //#region  Insert Employee Method
   InsertEmployee(){    
     
     if(this.EmployeeForm.get('password').value =='')
@@ -126,10 +129,6 @@ export class InsertCustomerServiceComponent implements OnInit {
         Role:Roles.Agent
       } as InsertEmployee).subscribe(
       response=>{
-
-        console.log("ID_Created : ",response.iD_Created);
-        console.log("this.selectedItems : ",this.selectedItems);
-        
         
         this.selectedItems.forEach(element => {
           this.ClientCustumer.push({clientId:element.id,customerId:response.iD_Created}as Assign_ClientCustomer);
@@ -163,7 +162,7 @@ export class InsertCustomerServiceComponent implements OnInit {
   }
   //#endregion
 
-  //#region Update Client
+  //#region Update Employee
   UpdateClientType(){
 
     let id = this.route.snapshot.paramMap.get('id');
@@ -181,6 +180,7 @@ export class InsertCustomerServiceComponent implements OnInit {
       address:this.EmployeeForm.get('address').value ,
       mobile:this.EmployeeForm.get('mobile').value ,
       password:this.pass ,
+      Role:Roles.Agent
     } as GetEmployee).subscribe(
       response=>{
         Swal.fire({
@@ -189,7 +189,7 @@ export class InsertCustomerServiceComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetEmployee");
+        this.router.navigateByUrl("admin/GetCustomerService");
       },
       err=>{
         Swal.fire({
@@ -207,7 +207,7 @@ export class InsertCustomerServiceComponent implements OnInit {
       this.clientApiService.GetClientIdName().subscribe(
         response => {
           this.dropdownList = response.data
-          console.log(this.dropdownList);
+          // console.log(this.dropdownList);
           
         //  response.data.forEach(element => {
         //    this.dropdownList.push({Id:element.clientId,Name:element.name} );
@@ -226,7 +226,7 @@ export class InsertCustomerServiceComponent implements OnInit {
     //#endregion
 
   onItemSelect(item: any) {
-    console.log(this.selectedItems)
+    // console.log(this.selectedItems)
   }
 
   onSelectAll(items: any) {
@@ -236,16 +236,13 @@ export class InsertCustomerServiceComponent implements OnInit {
   GetClientRelated(id:string){
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
-      //   this.dropdownList = response.data;
-      //   this.selectedItems = response.data;
-      //   response.data.forEach(element => {
-      //   this.DefaultSelect +=element.clientId; 
-      //  });
+        this.selectedItems = response.data;
       },
       (err)=>{
-          console.log(err);
+          // console.log(err);
           
       }
     )
   }
+
 }

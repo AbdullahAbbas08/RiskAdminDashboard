@@ -7,6 +7,7 @@ export class GetEmployee {
     address: string;
     userName: string;
     password:string;
+    Role:string;
 }
 
 
