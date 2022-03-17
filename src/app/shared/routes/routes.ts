@@ -10,4 +10,8 @@ export const content: Routes = [
     path: 'admin',
     loadChildren: () => import('../../components/admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path: 'agent',
+    loadChildren: () => import('../../components/Agent/agent-module.module').then(m => m.AgentModuleModule)
+  },
 ];

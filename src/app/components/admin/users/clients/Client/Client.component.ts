@@ -105,7 +105,7 @@ export class ClientComponent implements OnInit {
   updateClient(Client:GetClient){
     this.ApiService.Client = Client;
     
-    this.router.navigate(['admin/updateClient',Client.clientId]);
+    this.router.navigate(['/admin/updateClient',Client.clientId]);
   }
   //#endregion
 

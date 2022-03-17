@@ -20,6 +20,11 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 import { AdminModule } from "./components/admin/admin.module";
+import { AgentModuleModule } from "./components/Agent/agent-module.module";
+import { AgentComponent } from './components/Agent/agent/agent.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { LoginGuardService } from './shared/services/Loginguard.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +33,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AgentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoadingBarRouterModule,
     // for Core use:
     LoadingBarModule,
-    AdminModule
+    AdminModule,
+    AgentModuleModule,
+    NgxSpinnerModule
+    // LoginGuardService
   ],
   providers: [],
   bootstrap: [AppComponent]

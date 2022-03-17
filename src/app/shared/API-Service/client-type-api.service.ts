@@ -27,6 +27,10 @@ export class ClientTypeApiService {
     GetClientType(): Observable<GenericResponse<GetClientType>> {
       return this.http.get<GenericResponse<GetClientType>>(`${environment.Server_URL}/ClientType`);
     }
+
+    GetClientTypeById(id:number): Observable<GenericResponse<GetClientType>> {
+      return this.http.get<GenericResponse<GetClientType>>(`${environment.Server_URL}/ClientType?id=${id}`);
+    }
   
     InsertClientType(Data:InsertClientType): Observable<GenericResponseSingle<InsertClientType>> {
       return this.http.post<GenericResponseSingle<InsertClientType>>(`${environment.Server_URL}/ClientType`,Data);

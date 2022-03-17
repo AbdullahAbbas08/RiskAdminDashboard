@@ -10,6 +10,7 @@ export class SampleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // window.location.reload();
   }
 
 }

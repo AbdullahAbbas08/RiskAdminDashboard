@@ -33,6 +33,10 @@ export class CallReasonApiService {
           return this.http.post<GenericResponseSingle<GetCallReason>>(`${environment.Server_URL}/CallReason`,Data);
         }
     
+        CallReasonClientType(Data:any): Observable<any> {
+          return this.http.post<any>(`${environment.Server_URL}/CallReasonClientType/CallReasonClientType`,Data);
+        }
+    
         UpdateCallReason(id:number,Data:InsertCallReason): Observable<GenericResponseSingle<getCities>> {
           return this.http.put<GenericResponseSingle<getCities>>(`${environment.Server_URL}/CallReason/${id}`,Data);
         }

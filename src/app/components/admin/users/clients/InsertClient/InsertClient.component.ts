@@ -11,6 +11,7 @@ import { GetClient } from 'src/app/shared/Models/GetClient';
 import { GetClientType } from 'src/app/shared/Models/GetClientType';
 import { GetGovernorate } from 'src/app/shared/Models/GetGovernorate';
 import { InsertCities } from 'src/app/shared/Models/InsertCities';
+import { Roles } from 'src/app/shared/Models/Roles';
 import Swal from 'sweetalert2';
 import { CitiesApiService } from '../../../../../shared/API-Service/cities-api.service';
 
@@ -148,6 +149,7 @@ console.log("imgURL : ",this.imgURL);
       this.logoForm.append("Password",this.InsertForm.get('password').value)
       this.logoForm.append("Mobile",this.InsertForm.get('mobile').value)
       this.logoForm.append("Address",this.InsertForm.get('address').value)
+      this.logoForm.append("Role",Roles.Client)
 
       this.ApiService.InsertClient(this.logoForm).subscribe(
         response => {
@@ -177,9 +179,7 @@ console.log("imgURL : ",this.imgURL);
   //#region Update Client
   UpdateClient() {
 
-    if(this.InsertForm.get('password').value == '')
-    this.pass = this.ApiService.Client.password;
-    else
+    
     this.pass = this.InsertForm.get('password').value;
 
     this.logoForm.append("Id",this.ApiService.Client.clientId)
@@ -191,7 +191,8 @@ console.log("imgURL : ",this.imgURL);
       this.logoForm.append("Mobile",this.InsertForm.get('mobile').value)
       this.logoForm.append("Address",this.InsertForm.get('address').value)
       this.logoForm.append("LogoPath",this.ApiService.Client.logoPath)
-    
+      this.logoForm.append("Role",Roles.Client)
+      
       if(!this.logoForm.has("Logo"))
       this.logoForm.append("Logo",null)
       

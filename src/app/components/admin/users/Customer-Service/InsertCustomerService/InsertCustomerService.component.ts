@@ -130,8 +130,8 @@ export class InsertCustomerServiceComponent implements OnInit {
       } as InsertEmployee).subscribe(
       response=>{
         
-        this.selectedItems.forEach(element => {
-          this.ClientCustumer.push({clientId:element.id,customerId:response.iD_Created}as Assign_ClientCustomer);
+        this.EmployeeForm.get('Clients').value.forEach(element => {
+          this.ClientCustumer.push({ClientId:element.id,CustomerId:response.iD_Created}as Assign_ClientCustomer);
         });
 
         this.ApiService.AssignCustomerToClient( this.ClientCustumer ).subscribe(
@@ -145,9 +145,10 @@ export class InsertCustomerServiceComponent implements OnInit {
             this.router.navigateByUrl("admin/GetCustomerService");
           },
           err=>{
-
+            console.log(err.error); 
           }
         )
+        this.ClientCustumer = [];
       },
       err=>{
         Swal.fire({
@@ -167,9 +168,7 @@ export class InsertCustomerServiceComponent implements OnInit {
 
     let id = this.route.snapshot.paramMap.get('id');
 
-    if(this.EmployeeForm.get('password').value =='')
-     this.pass = this.ApiService.Employee.password;
-     else
+  
      this.pass = this.EmployeeForm.get('password').value;
 
     this.ApiService.UpdateEmployee({ 
@@ -183,6 +182,14 @@ export class InsertCustomerServiceComponent implements OnInit {
       Role:Roles.Agent
     } as GetEmployee).subscribe(
       response=>{
+
+        this.EmployeeForm.get('Clients').value.forEach(element => {
+          this.ClientCustumer.push({ClientId:element.id,CustomerId:id}as Assign_ClientCustomer);
+        });
+
+        this.ApiService.AssignCustomerToClient( this.ClientCustumer ).subscribe(
+          data=>{
+           
         Swal.fire({
           icon: 'success',
           title: "تم تعديل بيانات الموظف بنجاح",
@@ -190,6 +197,12 @@ export class InsertCustomerServiceComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("admin/GetCustomerService");
+          },
+          err=>{
+
+          }
+        )
+        this.ClientCustumer = [];
       },
       err=>{
         Swal.fire({
@@ -226,7 +239,7 @@ export class InsertCustomerServiceComponent implements OnInit {
     //#endregion
 
   onItemSelect(item: any) {
-    // console.log(this.selectedItems)
+    // console.log("---",this.EmployeeForm.get('Clients').value)
   }
 
   onSelectAll(items: any) {
@@ -237,6 +250,8 @@ export class InsertCustomerServiceComponent implements OnInit {
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
         this.selectedItems = response.data;
+        // console.log(response.data);
+        
       },
       (err)=>{
           // console.log(err);
@@ -245,4 +260,5 @@ export class InsertCustomerServiceComponent implements OnInit {
     )
   }
 
+ 
 }

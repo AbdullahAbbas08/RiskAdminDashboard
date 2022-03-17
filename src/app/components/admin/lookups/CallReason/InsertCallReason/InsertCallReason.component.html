@@ -1,9 +1,12 @@
-<app-breadcrumb [title]="'إدارة أسباب المكالمات'" [active_item]="'Form Wizard'"></app-breadcrumb>
+<app-breadcrumb
+  [title]="'إدارة أسباب المكالمات'"
+  [active_item]="'Form Wizard'"
+></app-breadcrumb>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header" style="padding-bottom:5px !important ;">
+        <div class="card-header" style="padding-bottom: 5px !important ">
           <div *ngIf="update; else elseBlock1">
             <h5 class="pb-2">تعديل سبب موجودة</h5>
             يمكنك تعديل سبب أو أكثر فى أسباب المكالمات
@@ -12,40 +15,81 @@
             <h5 class="pb-2">إضافة سبب جديد</h5>
             يمكنك إضافة سبب أو أكثر فى أسباب المكالمات
           </ng-template>
-
         </div>
         <div class="card-body">
           <form [formGroup]="InsertForm">
             <div class="form-group">
               <label for="name">عنوان السبب</label>
-              <input class="form-control" id="name" type="text" placeholder="شكوى" required="required"
-                formControlName="Title">
+              <input
+                class="form-control"
+                id="name"
+                type="text"
+                placeholder="شكوى"
+                required="required"
+                formControlName="Title"
+              />
 
-              <ng-container class="invalid" style="color: red;"
-                *ngIf="InsertForm.get('Title').hasError('required') && InsertForm.get('Title').touched">
+              <ng-container
+                class="invalid"
+                style="color: red"
+                *ngIf="
+                  InsertForm.get('Title').hasError('required') &&
+                  InsertForm.get('Title').touched
+                "
+              >
                 أسم السبب مطلوب
               </ng-container>
             </div>
             <div class="form-group">
               <label for="name">الترتيب</label>
-              <input class="form-control" type="text" formControlName="Order">
+              <input class="form-control" type="text" formControlName="Order" />
 
-              <ng-container class="invalid" style="color: red;"
-                *ngIf="InsertForm.get('Order').hasError('required') && InsertForm.get('Order').touched">
-                الترتيب مطلوب</ng-container>
+              <ng-container
+                class="invalid"
+                style="color: red"
+                *ngIf="
+                  InsertForm.get('Order').hasError('required') &&
+                  InsertForm.get('Order').touched
+                "
+              >
+                الترتيب مطلوب</ng-container
+              >
             </div>
-              <div *ngIf="update; else elseBlock">
-                <button class="btn btn-primary pull-right" type="submit" [disabled]="!InsertForm.valid"
-                  (click)="UpdateCallReason()">
-                  تعديل
-                </button>
-              </div>
-              <ng-template #elseBlock>
-                <button class="btn btn-primary pull-right" type="submit" [disabled]="!InsertForm.valid"
-                  (click)="InsertCallReason()">
-                  إضافة
-                </button>
-              </ng-template>
+            <div class="form-group">
+              <label> خصص عملاء لهذا السبب </label>
+
+              <ng-multiselect-dropdown
+                placeholder="أختر نوع عميل أو أكتر من القائمة"
+                [settings]="dropdownSettings"
+                formControlName="ClientTypes"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+              >
+              </ng-multiselect-dropdown>
+            </div>
+
+            <div *ngIf="update; else elseBlock">
+              <button
+                class="btn btn-primary pull-right"
+                type="submit"
+                [disabled]="!InsertForm.valid"
+                (click)="UpdateCallReason()"
+              >
+                تعديل
+              </button>
+            </div>
+            <ng-template #elseBlock>
+              <button
+                class="btn btn-primary pull-right"
+                type="submit"
+                [disabled]="!InsertForm.valid"
+                (click)="InsertCallReason()"
+              >
+                إضافة
+              </button>
+            </ng-template>
           </form>
         </div>
       </div>

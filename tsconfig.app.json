@@ -20,7 +20,9 @@
     "./src/app/shared/Models/IdNameList.ts",
     "./src/app/shared/Models/Roles.ts",
     "./src/app/shared/Models/Assign_ClientCustomer.ts",
-    "./src/app/shared/Models/ResponseRegister.ts"
+    "./src/app/shared/Models/ResponseRegister.ts",
+    "./src/app/shared/Models/CallClient.ts",
+    "./src/app/shared/Models/LoginResponse.ts"
   ],
   "include": [
     "src/**/*.d.ts"
