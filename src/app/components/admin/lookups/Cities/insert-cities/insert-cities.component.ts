@@ -54,7 +54,6 @@ export class InsertCitiesComponent implements OnInit {
             icon: 'error',
             title: 'خطأ',
             text: err.error,
-            footer: '<a href="">Why do I have this issue?</a>'
           })
         }
       )
@@ -92,7 +91,6 @@ export class InsertCitiesComponent implements OnInit {
         icon: 'error',
         title: 'خطأ',
         text: "أختر المحافظة أولا",
-        footer: '<a href="">Why do I have this issue?</a>'
       })
     }else
     {
@@ -107,7 +105,7 @@ export class InsertCitiesComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           })
-          this.router.navigateByUrl("admin/Get-cities");
+          this.router.navigateByUrl("content/admin/Get-cities");
         },
         err => {
           Swal.fire({
@@ -138,7 +136,7 @@ export class InsertCitiesComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-cities");
+        this.router.navigateByUrl("content/admin/Get-cities");
       },
       err => {
         Swal.fire({
@@ -171,7 +169,6 @@ export class InsertCitiesComponent implements OnInit {
             icon: 'error',
             title: 'خطأ',
             text: err.error,
-            footer: '<a href="">Why do I have this issue?</a>'
           })
         }
       )

@@ -149,7 +149,7 @@ export class InsertCallReasonComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
-            this.router.navigateByUrl("admin/Get-Call-Reason");
+            this.router.navigateByUrl("content/admin/Get-Call-Reason");
           },
           (err)=>{
 
@@ -187,7 +187,7 @@ export class InsertCallReasonComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
-            this.router.navigateByUrl("admin/Get-Call-Reason");
+            this.router.navigateByUrl("content/admin/Get-Call-Reason");
           },
           (err)=>{
 

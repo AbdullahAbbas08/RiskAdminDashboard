@@ -99,7 +99,7 @@ export class EmployeeComponent implements OnInit {
 
   //#region Add New Employee
   NavigateToInsert(){
-    this.router.navigateByUrl("admin/InsertEmployee");
+    this.router.navigateByUrl("content/admin/InsertEmployee");
   }
   //#endregion
 
@@ -107,7 +107,7 @@ export class EmployeeComponent implements OnInit {
   updateEmployee(id:string,model:GetEmployee){
     this.ApiService.Employee = model;
     
-    this.router.navigate(['admin/updateEmployee',model.id]);
+    this.router.navigate(['content/admin/updateEmployee',model.id]);
   }
   //#endregion
 

@@ -100,7 +100,7 @@ export class SourceMarketComponent implements OnInit {
 
   //#region AddNew
   AddNew() {
-    this.router.navigateByUrl("admin/InsertSourceMarket");
+    this.router.navigateByUrl("content/admin/InsertSourceMarket");
   }
   //#endregion
 
@@ -108,7 +108,7 @@ export class SourceMarketComponent implements OnInit {
   update(id: number,order: number, title: string) {
     this.ApiService.title = title;
     this.ApiService.order = order;
-    this.router.navigate(['admin/updateSourceMarket', id]);
+    this.router.navigate(['content/admin/updateSourceMarket', id]);
   }
   //#endregion
 

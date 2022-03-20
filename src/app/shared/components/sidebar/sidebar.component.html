@@ -83,7 +83,8 @@
         </a>
         <!-- 2nd Level Menu -->
         <ul class="sidebar-submenu" [ngClass]="{active: menuItem.active}"
-          [ngClass]="{'menu-open': menuItem.active, 'menu-close': !menuItem.active }" *ngIf="menuItem.children"
+                                    [ngClass]="{'menu-open': menuItem.active, 'menu-close': !menuItem.active }" 
+                                    *ngIf="menuItem.children"
           [style.display]="menuItem.active ? 'block' : 'none'">
           <li *ngFor="let childrenItem of menuItem.children" [ngClass]="{active: childrenItem.active}">
             <!-- Sub -->

@@ -97,7 +97,7 @@ export class ClientComponent implements OnInit {
 
   //#region Add New
   NavigateToInsertClient(){
-    this.router.navigateByUrl("admin/InsertClient");
+    this.router.navigateByUrl("content/admin/InsertClient");
   }
   //#endregion
 
@@ -105,7 +105,7 @@ export class ClientComponent implements OnInit {
   updateClient(Client:GetClient){
     this.ApiService.Client = Client;
     
-    this.router.navigate(['/admin/updateClient',Client.clientId]);
+    this.router.navigate(['content/admin/updateClient',Client.clientId]);
   }
   //#endregion
 

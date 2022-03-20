@@ -38,7 +38,7 @@ export class EmployeeApiService {
 
      
        GetClientRelated(id:string): Observable<GenericResponse<Assign_ClientCustomer>> {
-         return this.http.get<GenericResponse<Assign_ClientCustomer>>(`${environment.Server_URL}/CustomerService?id=${id}`);
+         return this.http.get<GenericResponse<Assign_ClientCustomer>>(`${environment.Server_URL}/CustomerService?Toaken=${id}`);
        }
      
        InsertEmployee(data:InsertEmployee): Observable<ResponseRegister> {

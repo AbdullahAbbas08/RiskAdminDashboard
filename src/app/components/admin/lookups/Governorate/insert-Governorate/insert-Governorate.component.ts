@@ -70,14 +70,13 @@ export class GovernorateComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-governorate");
+        this.router.navigateByUrl("content/admin/Get-governorate");
       },
       err=>{
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
           text: err.error,
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     )
@@ -95,14 +94,13 @@ export class GovernorateComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-governorate");
+        this.router.navigateByUrl("content/admin/Get-governorate");
       },
       err=>{
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
           text: err.error,
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     )

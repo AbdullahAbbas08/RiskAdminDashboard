@@ -159,7 +159,7 @@ console.log("imgURL : ",this.imgURL);
             showConfirmButton: false,
             timer: 1500
           })
-          this.router.navigateByUrl("admin/GetClient");
+          this.router.navigateByUrl("content/admin/GetClient");
         },
         err => {
           console.log(err.error);
@@ -204,7 +204,7 @@ console.log("imgURL : ",this.imgURL);
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetClient");
+        this.router.navigateByUrl("content/admin/GetClient");
       },
       err => {
         Swal.fire({
@@ -293,7 +293,6 @@ console.log("imgURL : ",this.imgURL);
             icon: 'error',
             title: 'خطأ',
             text: err.error,
-            footer: '<a href="">Why do I have this issue?</a>'
           })
         }
       )

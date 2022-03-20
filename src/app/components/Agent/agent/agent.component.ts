@@ -14,7 +14,7 @@ export class AgentComponent implements OnInit {
 
   ngOnInit(): void {
     this.imgURL = "../../../assets/images/statics/personAvatar.png";
-    this.GetClientRelated("8bd3fa24-8de6-4db0-ba95-a091eeef148d");
+    this.GetClientRelated(localStorage.getItem('RiskAuthorization'));
   }
 
   getClientData(id:string){
@@ -25,7 +25,7 @@ export class AgentComponent implements OnInit {
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
         this.Clients = response.data;
-        console.log(response.data);
+        console.log("---------- : ",response.data);
         
       },
       (err)=>{

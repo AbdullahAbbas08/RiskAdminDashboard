@@ -71,14 +71,13 @@ export class ClientTypeComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/Get-client-type");
+        this.router.navigateByUrl("content/admin/Get-client-type");
       },
       err=>{
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
           text: err.error,
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     )

@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       passowrd: ['', Validators.required],
     });
-
   }
 
   Login(){
@@ -41,17 +40,17 @@ export class LoginComponent implements OnInit {
 
     this.Authentication.RequestLogin(obj).subscribe(
       (response)=>{
-        // console.log(response['token']);
+        // console.log(response);
         
         localStorage.setItem('RiskAuthorization',response['token'])
+        localStorage.setItem('RiskRole',response['role'])
         // localStorage.setItem('Name',this.AuthenticatedUser.Data.Name);
         // localStorage.setItem("logo",this.AuthenticatedUser.Data.Image);
-        // this.toastr.success("تم تسجيل الدخول بنجاح", 'الحالة');
+        this.router.navigate(["/content"]);
+        this.toastr.success("تم تسجيل الدخول بنجاح", 'الحالة');
         window.setInterval(() => {
           // window.location.reload();
-          this.router.navigate([""]);
-          // this.SpinnerService.hide();
-         }, 3000);
+        }, 1000);
       },
       (err)=>{
         Swal.fire({

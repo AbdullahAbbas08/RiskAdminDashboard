@@ -17,10 +17,13 @@ export class LoginGuardService implements CanActivate {
   checkLogin(): boolean {
 	  if (this.Token) {
 		return true;
-	  }
+	  }else{
+      this.router.navigate(["/login"]);
+      return false;
+    }
   
 	  // Navigate to the login page with extras
 	  // this.router.navigate(["/login"]);
-	  return false;
+	  // return false;
 	}
 }

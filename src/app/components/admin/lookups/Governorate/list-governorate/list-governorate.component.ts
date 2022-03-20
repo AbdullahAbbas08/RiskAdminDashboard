@@ -42,7 +42,6 @@ export class ListGovernorateComponent implements OnInit {
           icon: 'error',
           title: 'خطأ',
           text: err.error,
-          footer: '<a href="">Why do I have this issue?</a>'
         })
       }
     )
@@ -78,7 +77,6 @@ export class ListGovernorateComponent implements OnInit {
                 icon: 'error',
                 title: 'خطأ',
                 text: err.error,
-                footer: '<a href="">Why do I have this issue?</a>'
               })
             }
           )
@@ -96,14 +94,14 @@ export class ListGovernorateComponent implements OnInit {
 
   //#region AddNew
   AddNew(){
-    this.router.navigateByUrl("admin/insert-governorate");
+    this.router.navigateByUrl("content/admin/insert-governorate");
   }
   //#endregion
 
   //#region Governoate
   update(id:number,title:string){
     this.governorateApiService.title = title;
-    this.router.navigate(['admin/update-governorate',id]);
+    this.router.navigate(['content/admin/update-governorate',id]);
   }
   //#endregion
 

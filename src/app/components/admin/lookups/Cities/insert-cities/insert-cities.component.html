@@ -16,6 +16,7 @@
         </div>
         <div class="card-body">
             <form [formGroup]="InsertForm">
+
                 <div class="form-group">
                   <label for="name">أسم المدينة</label>
                   <input class="form-control" id="name" type="text" placeholder="العباسية" required="required"
@@ -25,6 +26,7 @@
                     *ngIf="InsertForm.get('Title').hasError('required') && InsertForm.get('Title').touched">
                     أسم المدينة مطلوب</ng-container>
                 </div>
+
                 <div class="form-group">
                   <label >أختر المحافظة</label>
                     <Select class="form-control" 
@@ -38,6 +40,7 @@
                             </option>
                     </Select>
                 </div>
+                
                 <div *ngIf="update; else elseBlock">
                     <button  class="btn btn-primary pull-right" 
                     type="submit"

@@ -107,7 +107,7 @@ export class ListCitiesComponent implements OnInit {
 
   //#region AddNew
   AddNew() {
-    this.router.navigateByUrl("admin/insert-city");
+    this.router.navigateByUrl("content/admin/insert-city");
   }
   //#endregion
 
@@ -115,7 +115,7 @@ export class ListCitiesComponent implements OnInit {
   update(cityid: number,governid: number, title: string) {
     this.citiesApiService.title = title;
     this.citiesApiService.GovernorateId = governid;
-    this.router.navigate(['admin/update-city', cityid]);
+    this.router.navigate(['content/admin/update-city', cityid]);
   }
   //#endregion
 

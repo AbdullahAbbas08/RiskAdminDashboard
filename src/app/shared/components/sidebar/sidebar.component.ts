@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Menu, NavService } from '../../services/nav.service';
 import { LayoutService } from '../../services/layout.service';
+import { Roles } from '../../Models/Roles';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,23 +10,32 @@ import { LayoutService } from '../../services/layout.service';
   styleUrls: ['./sidebar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   public iconSidebar;
-  public menuItems: Menu[];
+  public menuItems: any[];
   public url: any;
   public fileurl: any;
-
   // For Horizontal Menu
   public margin: any = 0;
   public width: any = window.innerWidth;
   public leftArrowNone: boolean = true;
   public rightArrowNone: boolean = false;
+  ReturenRole:string;
+  UserRole:string;
+  
 
   constructor(private router: Router, public navServices: NavService,
     public layout: LayoutService) {
+      this.ReturenRole = localStorage.getItem('RiskRole');
+      this.UserRole =  Roles.Agent;
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems;
+      if(this.ReturenRole == this.UserRole){
+        for(let i=0;i<8;i++){ this.menuItems.pop()} 
+      }
+
+
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           menuItems.filter(items => {
@@ -50,6 +60,10 @@ export class SidebarComponent {
     });
   }
 
+  ngOnInit(): void {
+    
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.width = event.target.innerWidth - 500;
@@ -69,7 +83,7 @@ export class SidebarComponent {
         menuItem.active = true;
       }
       if (menuItem.children) {
-        menuItem.children.filter(submenuItems => {
+        menuItem.children.filter(submenuItems => {          
           if (submenuItems.children && submenuItems.children.includes(item)) {
             menuItem.active = true;
             submenuItems.active = true;
@@ -97,7 +111,6 @@ export class SidebarComponent {
     item.active = !item.active;
   }
 
-
   // For Horizontal Menu
   scrollToLeft() {
     if (this.margin >= -this.width) {
@@ -121,5 +134,8 @@ export class SidebarComponent {
     }
   }
   
+  counter(i: number) {
+    return new Array(i);
+}
 
 }

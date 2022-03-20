@@ -76,7 +76,7 @@ export class InsertSourceMarketComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetSourceMarket");
+        this.router.navigateByUrl("content/admin/GetSourceMarket");
       },
       err=>{
         Swal.fire({
@@ -100,7 +100,7 @@ export class InsertSourceMarketComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetSourceMarket");
+        this.router.navigateByUrl("content/admin/GetSourceMarket");
       },
       err=>{
         Swal.fire({

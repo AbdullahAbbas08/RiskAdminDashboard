@@ -101,7 +101,7 @@ export class CallReasonComponent implements OnInit {
 
   //#region AddNew
   AddNew() {
-    this.router.navigateByUrl("admin/insert-call-reason");
+    this.router.navigateByUrl("content/admin/insert-call-reason");
   }
   //#endregion
 
@@ -109,7 +109,7 @@ export class CallReasonComponent implements OnInit {
   update(id: number,order: number, title: string) {
     this.ApiService.title = title;
     this.ApiService.order = order;
-    this.router.navigate(['admin/update-call-reason', id]);
+    this.router.navigate(['content/admin/update-call-reason', id]);
   }
   //#endregion
 

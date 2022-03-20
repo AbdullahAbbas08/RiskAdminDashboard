@@ -77,7 +77,6 @@ export class ListClientTypeComponent implements OnInit {
                 icon: 'error',
                 title: 'خطأ',
                 text: err.error,
-                footer: '<a href="">Why do I have this issue?</a>'
               })
             }
           )
@@ -95,14 +94,14 @@ export class ListClientTypeComponent implements OnInit {
 
   //#region AddNew
   AddNew(){
-    this.router.navigateByUrl("admin/client-type");
+    this.router.navigateByUrl("content/admin/client-type");
   }
   //#endregion
 
   //#region updateClient
   updateClient(id:number,title:string){
     this.clientTypeApiService.title = title;
-    this.router.navigate(['admin/update-client-type',id]);
+    this.router.navigate(['content/admin/update-client-type',id]);
   }
   //#endregion
 

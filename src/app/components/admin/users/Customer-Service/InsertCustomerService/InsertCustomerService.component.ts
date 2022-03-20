@@ -142,7 +142,7 @@ export class InsertCustomerServiceComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
-            this.router.navigateByUrl("admin/GetCustomerService");
+            this.router.navigateByUrl("content/admin/GetCustomerService");
           },
           err=>{
             console.log(err.error); 
@@ -196,7 +196,7 @@ export class InsertCustomerServiceComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetCustomerService");
+        this.router.navigateByUrl("content/admin/GetCustomerService");
           },
           err=>{
 

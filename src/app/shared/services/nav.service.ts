@@ -26,7 +26,7 @@ export class NavService implements OnDestroy {
 
 	private unsubscriber: Subject<any> = new Subject();
 	public  screenWidth: BehaviorSubject<number> = new BehaviorSubject(window.innerWidth);
-
+	
 	// Search Box
 	public search: boolean = false;
 
@@ -46,6 +46,8 @@ export class NavService implements OnDestroy {
 
 	// Full screen
 	public fullScreen: boolean = false;
+
+	
 
 	constructor(private router: Router) {
 		this.setScreenWidth(window.innerWidth);
@@ -81,13 +83,17 @@ export class NavService implements OnDestroy {
 		this.screenWidth.next(width);
 	}
 
+
+
 	MENUITEMS: Menu[] = [
 		{
 			headTitle1: 'لوحة تحكم المدير', headTitle2: 'إدارة محتويات النظام',
 		},
 		{
 			title: 'خدمة العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
-				{ path: 'agent/main', title: 'العملاء', type: 'link' },
+				{ path: 'agent/main', title: 'الشركات', type: 'link' },
+				{ path: 'agent/stat', title: 'إحصائيات', type: 'link' },
+				{ path: 'agent/Customer', title: 'تسجيل بيانات', type: 'link' },
 			]
 		},
 		{

@@ -100,7 +100,7 @@ export class InsertEmployeeComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetEmployee");
+        this.router.navigateByUrl("content/admin/GetEmployee");
       },
       err=>{
         Swal.fire({
@@ -142,7 +142,7 @@ export class InsertEmployeeComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigateByUrl("admin/GetEmployee");
+        this.router.navigateByUrl("content/admin/GetEmployee");
       },
       err=>{
         Swal.fire({

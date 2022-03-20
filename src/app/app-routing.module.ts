@@ -7,25 +7,28 @@ import { LoginGuardService } from './shared/services/Loginguard.service';
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'sample-page',
+  //   // pathMatch: 'full'
+  // },
   {
     path: '',
-    redirectTo: 'sample-page',
-    pathMatch: 'full'
+    component:LoginComponent
   },
   {
     path: 'login',
     component:LoginComponent
   },
-  // canActivate: [LoginGuardService],
-  { 
-    path: '',
+  { canActivate: [LoginGuardService],
+    path: 'content',
     component: ContentComponent,
     children: content
   },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: ''
+  // }
 ];
 
 @NgModule({

@@ -1,0 +1,141 @@
+<app-breadcrumb [title]="'إضافة عميل جديد'" [active_item]="'Form Wizard'"></app-breadcrumb>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="padding-bottom:5px !important ;">
+                    <div *ngIf="update; else elseBlock1">
+                        <h5 class="pb-2">تعديل بيانات عميل موجود</h5>
+                        يمكنك تعديل بيانات عميل 
+                    </div>
+                    <ng-template #elseBlock1>
+                        <h5 class="pb-2">إضافة عميل جديد</h5>
+                        يمكنك إضافة عميل أو أكثر فى قائمة العملاء
+                    </ng-template>
+
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="EmployeeForm">
+
+                        <!-- name -->
+                        <div class="form-group">
+                            <label for="name"> أسم ألعميل</label>
+                            <input class="form-control" id="name" type="text" placeholder="أحمد" required="required"
+                                formControlName="name"><!-- onlyAlphabets -->
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="EmployeeForm.get('name').hasError('required') && EmployeeForm.get('name').touched">
+                                <span style="color: red;">
+                                    أسم العميل مطلوب
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="form-group">
+                            <label >أختر نوع العميل </label>
+                              <Select class="form-control" 
+                                      formControlName="Gender"
+                                      aria-label="Default select example"
+                                      (change)="SelectedItem($event)" >
+                                      <option value="" selected disabled> أختر نوع العميل </option>
+                                      <option value="1"  > ذكر </option>
+                                      <option value="0"  > أنثى </option>
+                              </Select>
+                          </div>
+
+                        <!-- mobile -->
+                        <div class="form-group">
+                            <label for="mobilenumber"> رقم الموبايل</label>
+                            <input class="form-control" id="mobilenumber" type="text" placeholder="رقم فقط 11"
+                                required="required" formControlName="mobile"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="11" minlength="11">
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="EmployeeForm.get('mobile').hasError('required') && EmployeeForm.get('mobile').touched">
+                                <span style="color: red;">
+                                    رقم الموبايل مطلوب
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <!-- DateOfBirth -->
+                        <div class="form-group">
+                            <label> تاريخ الميلاد </label>
+                            <input class="form-control" type="date"
+                                required="required" formControlName="DateOfBirth">
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="EmployeeForm.get('DateOfBirth').hasError('required') && EmployeeForm.get('DateOfBirth').touched">
+                                <span style="color: red;">
+                                    تاريخ الميلاد مطلوب
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <div class="form-group">
+                            <label >أختر المحافظة</label>
+                              <Select class="form-control" 
+                                      aria-label="Default select example"
+                                      (change)="SelectedGovernorate($event)" >
+          
+                                      <option value="" selected disabled> {{Governorate}} </option>
+                                      <option *ngFor="let obj of Governorate_List" value="{{ obj.id }}">
+                                          <h3 class="selected-value"> {{ obj.title }} </h3>
+                                      </option>
+                              </Select>
+                          </div>
+
+                          <div class="form-group">
+                            <label >أختر المدينة</label>
+                              <Select class="form-control" 
+                                      aria-label="Default select example"
+                                      formControlName="CityId"
+                                      (change)="SelectedCity($event)" >
+          
+                                      <option value="" selected disabled> {{City}} </option>
+                                      <option *ngFor="let obj of Filtered_List" value="{{ obj.id }}">
+                                          <h3 class="selected-value"> {{ obj.title }} </h3>
+                                      </option>
+                              </Select>
+                          </div>
+
+                        <!-- address -->
+                        <div class="form-group">
+                            <label for="mobilenumber"> العنوان</label>
+                            <textarea formControlName="address" class="form-control textForArabic"
+                                placeholder="أكتب العنوان بالتفصيل " style="height: 120px">
+                          </textarea>
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="EmployeeForm.get('address').hasError('required') && EmployeeForm.get('address').touched">
+                                <span style="color: red;">
+                                    العنوان مطلوب
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <!--update button -->
+                        <div *ngIf="update; else elseBlock">
+                            <button class="btn btn-primary pull-right" type="submit" [disabled]="!EmployeeForm.valid"
+                                (click)="UpdateClientType()">
+                                تعديل
+                            </button>
+                        </div>
+                        <!-- insert button -->
+                        <!--  -->
+                        <ng-template #elseBlock>
+                            <button class="btn btn-primary pull-right" type="submit" 
+                                    [disabled]="!EmployeeForm.valid"
+                                    (click)="insertCustomer()">
+                                إضافة
+                            </button>
+                        </ng-template>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
