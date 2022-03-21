@@ -12,6 +12,7 @@ export class CustomerApiService {
 
     //#region Declare variables
     title:string;
+    CustomerData:any;
     //#endregion
     
     //#region  constructor
@@ -22,8 +23,8 @@ export class CustomerApiService {
       httpOptionsWithTocken = { headers: new HttpHeaders({ 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhaG1lZGFiZHVsbGFoMjUwIiwianRpIjoiZDIwZjU0MGUtMjhiNy00YmNjLWE4ZDgtNzkxNzA2YzJmZDRhIiwiZW1haWwiOiJhaG1lZGFiZHVsbGFoQHlhaG9vLmNvbSIsInVpZCI6IjBiMzg5N2FiLTQ2ZmMtNGM0Yy04MTYyLTRiNDExZTY4OWE1NCIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTYzODM2OTM3NSwiaXNzIjoiU2VjdXJlQXBpIiwiYXVkIjoiU2VjdXJlQXBpVXNlciJ9.55LorE6Fclj3buy1Qw8wZ6CEe_ifW5jxwHe25wHRWsQ', 'Accept': ' */*' }) };
       //#endregion
   
-      GetCustomerById(id:string): Observable<GenericResponseSingle<any>> {
-        return this.http.get<GenericResponseSingle<any>>(`${environment.Server_URL}/Customer/GetCustomer?id=${id}`);
+      GetCustomerById(phone:string): Observable<GenericResponseSingle<any>> {
+        return this.http.get<GenericResponseSingle<any>>(`${environment.Server_URL}/Customer/GetCustomer?phone=${phone}`);
       }
 
       GetCustomerPhones(id:string): Observable<GenericResponseSingle<any>> {

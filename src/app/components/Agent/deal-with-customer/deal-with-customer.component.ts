@@ -57,31 +57,33 @@ export class DealWithCustomerComponent implements OnInit {
     this.Response_List = [];
     this.getGovernoate();
    
-    // if(this.route.snapshot.paramMap.get('id')){
+    if(this.customerApiService.CustomerData != null){
 
-    //   this.InitForm(this.ApiService.Employee)
-    //   this.update = true;
-    // }else
-    // {
+      this.InitForm(this.ApiService.Employee)
+      this.update = true;
+    }else
+    {
       this.update = false;
       this._InitForm();
       this.Governorate = "أختر المحافظة";
       this.City = "أختر المدينة";
-    // }
+    }
   }
   //#endregion
 
-  //#region  Init Form
-  // InitForm(employee:GetEmployee){
-  //   this.EmployeeForm = this._formBuilder.group({
-  //     name: [employee.name, Validators.required],
-  //     Gender: [employee.userName, Validators.required],
-  //     DateOfBirth: ['', Validators.required],
-  //     CityId: [employee.nationalId, Validators.required],
-  //     mobile: [employee.mobile, Validators.required],
-  //     address: [employee.address, Validators.required],
-  //   });
-  // }
+  // #region  Init Form
+  InitForm(data:any){
+    console.log("n : ",this.customerApiService.CustomerData["name"]);
+    
+    this.EmployeeForm = this._formBuilder.group({
+      name: [this.customerApiService.CustomerData["name"], Validators.required],
+      Gender: [this.customerApiService.CustomerData["gender"]== 1 ? "ذكر":"أنثى" , Validators.required],
+      DateOfBirth: [this.customerApiService.CustomerData["dateOfBirth"], Validators.required],
+      CityId: [, Validators.required],
+      mobile: [, Validators.required],
+      address: [, Validators.required],
+    });
+  }
 
   _InitForm(){
     this.EmployeeForm = this._formBuilder.group({
@@ -105,6 +107,7 @@ export class DealWithCustomerComponent implements OnInit {
      Gender: +this.Gender,
      dateOfBirth: this.EmployeeForm.get('DateOfBirth').value,
      address: this.EmployeeForm.get('address').value,
+     clientId:this.route.snapshot.paramMap.get('id')
     }
 
     // console.log("r ---- : ",obj);
@@ -246,6 +249,9 @@ export class DealWithCustomerComponent implements OnInit {
   }
   //#endregion
 
+   back(){
+    this.router.navigateByUrl("content/agent/main");
+  }
 
 
 }

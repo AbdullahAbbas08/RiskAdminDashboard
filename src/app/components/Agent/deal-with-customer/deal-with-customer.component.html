@@ -117,21 +117,26 @@
                         </div>
 
                         <!--update button -->
-                        <div *ngIf="update; else elseBlock">
+                        <!-- <div *ngIf="update; else elseBlock">
                             <button class="btn btn-primary pull-right" type="submit" [disabled]="!EmployeeForm.valid"
                                 (click)="UpdateClientType()">
                                 تعديل
                             </button>
+                        </div> -->
+                        <div>
+                            <button class="btn btn-primary pull-right" (click)="back()">
+                                رجوع
+                            </button>
                         </div>
                         <!-- insert button -->
                         <!--  -->
-                        <ng-template #elseBlock>
-                            <button class="btn btn-primary pull-right" type="submit" 
+                        <!-- <ng-template #elseBlock> -->
+                            <button class="btn btn-primary pull-right mx-2" type="submit" 
                                     [disabled]="!EmployeeForm.valid"
                                     (click)="insertCustomer()">
                                 إضافة
                             </button>
-                        </ng-template>
+                        <!-- </ng-template> -->
 
                     </form>
                 </div>
