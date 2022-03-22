@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('RiskRole',response['role'])
         // localStorage.setItem('Name',this.AuthenticatedUser.Data.Name);
         // localStorage.setItem("logo",this.AuthenticatedUser.Data.Image);
-        this.router.navigate(["/content"]);
+        this.router.navigate(["/content/agent/main"]);
         this.toastr.success("تم تسجيل الدخول بنجاح", 'الحالة');
         window.setInterval(() => {
           // window.location.reload();

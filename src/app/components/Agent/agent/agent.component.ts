@@ -14,14 +14,14 @@ export class AgentComponent implements OnInit {
 
   constructor( private ApiService:EmployeeApiService,
               private customerApiService:CustomerApiService,
-              private router:Router) { }
+              private router:Router) {    this.imgURL = "../../../assets/images/statics/personAvatar.png";
+            }
   imgURL:string ;
   Clients:any;
   MobileRes:any;
   passdata:string;
 
   ngOnInit(): void {
-    this.imgURL = "../../../assets/images/statics/personAvatar.png";
     this.GetClientRelated(localStorage.getItem('RiskAuthorization'));
   }
 
@@ -56,11 +56,11 @@ export class AgentComponent implements OnInit {
             console.log(res["data"]);
             if(res["data"] != null){
               this.customerApiService.CustomerData = res["data"];      
-              this.router.navigate(["content/agent/DisplayData",data]);
+              this.router.navigate(["/content/agent/DisplayData",data]);
             }
             else
             {
-              this.router.navigate(["content/agent/Customer",data]);
+              this.router.navigate(["/content/agent/Customer",data]);
             }
            
           },

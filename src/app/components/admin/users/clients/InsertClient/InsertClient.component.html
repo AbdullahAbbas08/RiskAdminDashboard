@@ -77,7 +77,8 @@
               <div class="col-12">
                 <div class="form-group">
                   <label>رقم الموبايل </label>
-                  <input class="form-control" type="text" placeholder="00000000000" formControlName="mobile" />
+                  <input class="form-control" type="text" placeholder="00000000000" formControlName="mobile" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="11" minlength="11" />
 
                   <ng-container class="invalid" style="color: red" *ngIf="
                       InsertForm.get('mobile').hasError('required') &&

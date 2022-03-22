@@ -1,19 +1,26 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CallApiService } from 'src/app/shared/API-Service/call-api.service';
 import { CitiesApiService } from 'src/app/shared/API-Service/cities-api.service';
 import { CustomerApiService } from 'src/app/shared/API-Service/customer-api.service';
 import { EmployeeApiService } from 'src/app/shared/API-Service/employee-api.service';
 import { GovernorateApiService } from 'src/app/shared/API-Service/governorate-api.service';
+import { SourceMarketApiService } from 'src/app/shared/API-Service/source-market-api.service';
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
+import { GetCallReason } from 'src/app/shared/Models/get-call-reason';
+import { GetSourceMarket } from 'src/app/shared/Models/get-source-market';
 import { getCities } from 'src/app/shared/Models/getCities';
 import { GetEmployee } from 'src/app/shared/Models/GetEmployee';
 import { GetGovernorate } from 'src/app/shared/Models/GetGovernorate';
 import { InsertClientType } from 'src/app/shared/Models/insert-client-type';
-import { InsertEmployee } from 'src/app/shared/Models/InsertEmployee';
+import * as moment from 'moment';
 import { Roles } from 'src/app/shared/Models/Roles';
 import Swal from 'sweetalert2';
+import { InsertCall } from 'src/app/shared/Models/InsertCall';
+import { CallReasonApiService } from 'src/app/shared/API-Service/call-reason-api.service';
 
 @Component({
   selector: 'app-deal-with-customer',
@@ -24,6 +31,7 @@ export class DealWithCustomerComponent implements OnInit {
 
   //#region Decalre varaibles
   EmployeeForm: FormGroup;
+  Form: FormGroup;
   _InsertClientType:InsertClientType;
   maxDate: Date;
   update:boolean;
@@ -38,6 +46,13 @@ export class DealWithCustomerComponent implements OnInit {
   Filtered_List: getCities[];
   CityId:number;
   Gender:number;
+  CallReason_List: GetCallReason[];
+  SourceMarket_List: GetSourceMarket[];
+  start_Call :any;
+  End_Call :any;
+  _InsertCall:InsertCall;
+  satis:boolean;
+
   //#endregion
 
   //#region  constructor
@@ -47,16 +62,30 @@ export class DealWithCustomerComponent implements OnInit {
               private governorateApiService:GovernorateApiService,
               private citiesApiService: CitiesApiService,
               private customerApiService: CustomerApiService,
+              private callApiService: CallApiService,
+              private callReasonApiService: CallReasonApiService,
+              private sourceMarketApiService: SourceMarketApiService,
               private router:Router,
               private route: ActivatedRoute) 
-  { this.maxDate = new Date(); }
+  { 
+    this.maxDate = new Date();
+
+    this.sourceMarketGet();
+    
+
+   }
   //#endregion
 
   //#region  ng OnInit
   ngOnInit(): void {
+    this.satis = false;
+    this._InsertCall = new InsertCall();
     this.Response_List = [];
     this.getGovernoate();
-   
+    this.GetCallReason();
+    this.InitCallForm();
+    this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+
     if(this.customerApiService.CustomerData != null){
 
       this.InitForm(this.ApiService.Employee)
@@ -93,6 +122,20 @@ export class DealWithCustomerComponent implements OnInit {
       CityId: [, Validators.nullValidator],
       mobile: [, Validators.nullValidator],
       address: [, Validators.nullValidator],
+    });
+  }
+
+  InitCallForm(){
+    this.Form = this._formBuilder.group({
+      reason: [, Validators.required],
+      description: [ , Validators.nullValidator],
+      notes: [, Validators.nullValidator],
+      // callType: [, Validators.required],
+      sourceMarketId: [, Validators.nullValidator],
+      satisfy: [, Validators.nullValidator],
+      // start: [, Validators.required],
+      // end: [, Validators.required],
+      callReasonId: [, Validators.nullValidator],
     });
   }
   //#endregion
@@ -143,6 +186,39 @@ export class DealWithCustomerComponent implements OnInit {
       })
       }
     )
+  }
+
+  submitCall(){
+    this._InsertCall.end =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+
+    this._InsertCall.reason = this.Form.get("reason").value;
+    this._InsertCall.description =  this.Form.get("description").value;
+    this._InsertCall.notes = this.Form.get("notes").value;
+
+    this.callApiService.InsertCall(this._InsertCall).subscribe(
+      (response)=>{
+        Swal.fire({
+          icon: 'success',
+          title: "تم إضافة ملخص المكالمة بنجاح",
+          showConfirmButton: false,
+          timer: 1500
+        })
+
+        this.router.navigateByUrl("/content/agent/main");
+      window.setInterval(()=>{
+        window.location.reload()
+      },1000 )
+
+      },
+      (err)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: err.error,
+        })
+      }
+    )
+
   }
 
   //#region Update Client
@@ -249,9 +325,64 @@ export class DealWithCustomerComponent implements OnInit {
   }
   //#endregion
 
+    //#region  Get Call Reason
+    GetCallReason() {
+      this.callReasonApiService.GetCallReason().subscribe(
+        response => {
+          this.response = response;
+          this.CallReason_List = response.data;
+          // console.log("call reason : ",response.data);    
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'خطأ',
+            text: err.error,
+          })
+        }
+      )
+    }
+    //#endregion
+
+    //#region sourceMarketGet
+      sourceMarketGet() {
+    this.sourceMarketApiService.Get().subscribe(
+      response => {
+        this.response = response;
+        this.SourceMarket_List = response.data;
+      },
+      err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: err.error,
+        })
+      }
+    )
+  }
+  //#endregion
+
    back(){
     this.router.navigateByUrl("content/agent/main");
   }
 
+
+  SelectedsourceMarket(event:any){
+    this._InsertCall.sourceMarketId =+event.target.value; 
+  }
+
+  SelectedcallReason(event:any){
+    this._InsertCall.callReasonId =+event.target.value; 
+  }
+
+  toggle_click(){
+    if(this._InsertCall.satisfy == true)
+    this._InsertCall.satisfy = false;
+    else
+    this._InsertCall.satisfy = true
+
+    // console.log( this._InsertCall.satisfy);
+    
+  }
 
 }

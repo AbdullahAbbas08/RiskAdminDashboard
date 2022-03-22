@@ -112,7 +112,7 @@ export class InsertClientComponent implements OnInit {
       logo: [, Validators.nullValidator],
     });
     this.imgURL = "./assets/images/statics/personAvatar.png";
-console.log("imgURL : ",this.imgURL);
+// console.log("imgURL : ",this.imgURL);
 
   }
   //#endregion
@@ -206,11 +206,11 @@ console.log("imgURL : ",this.imgURL);
         })
         this.router.navigateByUrl("content/admin/GetClient");
       },
-      err => {
+      err => {        
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
-          text: err.error,
+          text: "هناك خطأ ما برجاء المحاولة مرة اخرى",
         })
       }
     )

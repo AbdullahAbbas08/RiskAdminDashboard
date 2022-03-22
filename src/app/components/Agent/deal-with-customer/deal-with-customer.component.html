@@ -1,9 +1,9 @@
-<app-breadcrumb [title]="'إضافة عميل جديد'" [active_item]="'Form Wizard'"></app-breadcrumb>
+<!-- <app-breadcrumb [title]="'إضافة عميل جديد'" [active_item]="'Form Wizard'"></app-breadcrumb> -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header" style="padding-bottom:5px !important ;">
+        <div class="col-12 col-md-6">
+            <div class="card" style="margin-top: 30px;">
+                <!-- <div class="card-header" style="padding-bottom:5px !important ;">
                     <div *ngIf="update; else elseBlock1">
                         <h5 class="pb-2">تعديل بيانات عميل موجود</h5>
                         يمكنك تعديل بيانات عميل 
@@ -13,7 +13,7 @@
                         يمكنك إضافة عميل أو أكثر فى قائمة العملاء
                     </ng-template>
 
-                </div>
+                </div> -->
                 <div class="card-body">
                     <form [formGroup]="EmployeeForm">
 
@@ -116,13 +116,6 @@
                             </ng-container>
                         </div>
 
-                        <!--update button -->
-                        <!-- <div *ngIf="update; else elseBlock">
-                            <button class="btn btn-primary pull-right" type="submit" [disabled]="!EmployeeForm.valid"
-                                (click)="UpdateClientType()">
-                                تعديل
-                            </button>
-                        </div> -->
                         <div>
                             <button class="btn btn-primary pull-right" (click)="back()">
                                 رجوع
@@ -138,6 +131,94 @@
                             </button>
                         <!-- </ng-template> -->
 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-header" style="padding-bottom:5px !important ;">
+                        <h5 class="pb-2">ملخص المكالمة</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="Form">
+
+                        <div class="form-group">
+                            <label > سبب المكالمة</label>
+                              <Select class="form-control" 
+                                      formControlName="callReasonId"
+                                      aria-label="Default select example"
+                                      (change)="SelectedcallReason($event)" >
+                                      <option value="" selected disabled> أختر سبب المكالمة </option>
+                                      <option *ngFor="let obj of CallReason_List" value="{{ obj.id }}">
+                                        <h3> {{ obj.title }} </h3>
+                                    </option>
+                                    
+                              </Select>
+                          </div>
+
+                        <div class="form-group">
+                            <label> سبب المكالمة</label>
+                            <input class="form-control" type="text" placeholder="أكتب سبب المكالمة هنا"
+                                formControlName="reason">
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="Form.get('reason').hasError('required') && Form.get('reason').touched">
+                                <span style="color: red;">
+                                    سبب المكالمة مطلوب
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <div class="form-group">
+                            <label> وصف المكالمة</label>
+                            <input class="form-control" type="text" placeholder="أكتب تفاصيل المكالمة هنا "
+                                formControlName="description"><!-- onlyAlphabets -->
+
+                            <ng-container class="invalid" style="color: red;"
+                                *ngIf="Form.get('description').hasError('required') && Form.get('description').touched">
+                                <span style="color: red;">
+                                    تفاصيل المكالمة مطلوبة
+                                </span>
+                            </ng-container>
+                        </div>
+
+                        <div class="form-group">
+                            <label> ملاحظات عن  المكالمة</label>
+                            <input class="form-control" type="text" placeholder="أكتب ملاحظات المكالة هنا "
+                                formControlName="notes">
+                        </div>
+
+                        <div class="form-group">
+                            <label > مصدر الاعلان</label>
+                              <Select class="form-control" 
+                                      formControlName="sourceMarketId"
+                                      aria-label="Default select example"
+                                      (change)="SelectedsourceMarket($event)" >
+                                      <option value="" selected disabled> أختر مصدر الاعلان </option>
+                                      <option *ngFor="let obj of SourceMarket_List" value="{{ obj.id }}">
+                                        <h3> {{ obj.title }} </h3>
+                                    </option>
+                                    
+                              </Select>
+                          </div>
+
+                          <!-- [checked]="item.Active" -->
+                        <div class="form-group"><br>
+                            <label > رضاء العميل عن المكالة</label><br>
+                              <label class="switch" >
+                                <input type="checkbox" (click)="toggle_click()" >
+                                <span class="slider round"></span>
+                            </label>
+                          </div>
+
+                        <!--update button -->
+                        <div>
+                            <button class="btn btn-primary pull-right" type="submit" [disabled]="!Form.valid"
+                                (click)="submitCall()">
+                                تسجيل
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
