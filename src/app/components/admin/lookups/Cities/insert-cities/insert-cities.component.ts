@@ -84,7 +84,7 @@ export class InsertCitiesComponent implements OnInit {
 
   //#region  Insert Cities Method
   InsertCities() {
-    console.log("this.InsertForm.get('GovernorateId') : ",this.InsertForm.get('GovernorateId').value);
+    // console.log("this.InsertForm.get('GovernorateId') : ",this.InsertForm.get('GovernorateId').value);
     
     if(this.Govern_id == -1){
       Swal.fire({

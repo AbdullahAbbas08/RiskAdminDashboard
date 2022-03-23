@@ -35,8 +35,7 @@ export class ClientTypeComponent implements OnInit {
   ngOnInit(): void {
    
     if(this.route.snapshot.paramMap.get('id')){
-
-      this.InitForm(this.clientTypeApiService.title)
+      this.InitForm( localStorage.getItem("clientTypeTitle"))
       this.update = true;
     }else
     {

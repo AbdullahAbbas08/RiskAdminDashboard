@@ -247,10 +247,10 @@ export class InsertCustomerServiceComponent implements OnInit {
   }
 
   GetClientRelated(id:string){
-    this.ApiService.GetClientRelated(id).subscribe(
+    this.ApiService.GetClientsRelatedWithAgent(id).subscribe(
       (response)=>{
         this.selectedItems = response.data;
-        // console.log(response.data);
+        // console.log("--- : ",response.data);
         
       },
       (err)=>{

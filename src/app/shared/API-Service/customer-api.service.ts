@@ -13,6 +13,7 @@ export class CustomerApiService {
     //#region Declare variables
     title:string;
     CustomerData:any;
+    mobile:string;
     //#endregion
     
     //#region  constructor

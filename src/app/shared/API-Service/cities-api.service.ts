@@ -8,6 +8,7 @@ import { InsertClientType } from '../Models/insert-client-type';
 import { GenericResponseSingle } from '../Models/GenericResponseSingle';
 import { getCities } from '../Models/getCities';
 import { InsertCities } from '../Models/InsertCities';
+import { getCitiesWithGovernorate } from '../Models/getCitiesWithGovernorate';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class CitiesApiService {
   
       GetCities(): Observable<GenericResponse<getCities>> {
         return this.http.get<GenericResponse<getCities>>(`${environment.Server_URL}/City`);
+      }
+
+      GetCitiesWithGovernorate(): Observable<GenericResponse<getCitiesWithGovernorate>> {
+        return this.http.get<GenericResponse<getCitiesWithGovernorate>>(`${environment.Server_URL}/City/GetCitiesWithGovernorate`);
       }
     
       InsertCities(Data:InsertCities): Observable<GenericResponseSingle<getCities>> {

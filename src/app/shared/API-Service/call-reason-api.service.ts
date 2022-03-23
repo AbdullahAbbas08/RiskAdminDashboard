@@ -28,6 +28,10 @@ export class CallReasonApiService {
         GetCallReason(): Observable<GenericResponse<GetCallReason>> {
           return this.http.get<GenericResponse<GetCallReason>>(`${environment.Server_URL}/CallReason`);
         }
+
+        GetReasonsRelatedWithClientType(ClientId:string): Observable<GenericResponse<GetCallReason>> {
+          return this.http.get<GenericResponse<GetCallReason>>(`${environment.Server_URL}/CallReasonClientType/GetReasonsRelatedWithClientType?ClientID=${ClientId}`);
+        }
       
         InsertCallReason(Data:InsertCallReason): Observable<GenericResponseSingle<GetCallReason>> {
           return this.http.post<GenericResponseSingle<GetCallReason>>(`${environment.Server_URL}/CallReason`,Data);

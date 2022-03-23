@@ -26,7 +26,6 @@ export class AgentComponent implements OnInit {
   }
 
   getClientData(data:any){
-    // console.log(data);
     Swal.fire({
       title: 'أدخل رقم الموبايل',
       input: 'text',
@@ -53,13 +52,14 @@ export class AgentComponent implements OnInit {
         
         this.customerApiService.GetCustomerById(this.passdata).subscribe(
           (res)=>{
-            console.log(res["data"]);
+            // console.log(res["data"]);
             if(res["data"] != null){
               this.customerApiService.CustomerData = res["data"];      
               this.router.navigate(["/content/agent/DisplayData",data]);
             }
             else
             {
+              this.customerApiService.mobile = this.passdata;
               this.router.navigate(["/content/agent/Customer",data]);
             }
            
@@ -96,7 +96,7 @@ export class AgentComponent implements OnInit {
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
         this.Clients = response.data;
-        // console.log("---------- : ",response.data);
+        console.log("---------- : ",response.data);
         
       },
       (err)=>{

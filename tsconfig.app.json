@@ -23,6 +23,8 @@
     "./src/app/shared/Models/ResponseRegister.ts",
     "./src/app/shared/Models/CallClient.ts",
     "./src/app/shared/Models/LoginResponse.ts",
+    "./src/app/shared/Models/getCitiesWithGovernorate.ts",
+    "./src/app/shared/Models/IdName.ts",
     "./src/app/shared/Models/GetCall.ts"
   ],
   "include": [

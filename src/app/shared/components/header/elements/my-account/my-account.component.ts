@@ -15,8 +15,12 @@ export class MyAccountComponent implements OnInit {
   logout(){
     localStorage.removeItem("RiskAuthorization");
     localStorage.removeItem("RiskRole");
-    // window.location.reload();
-    this.router.navigate(["login"]);
-  }
 
+    this.router.navigate(["/login"]);
+
+    window.setInterval(()=>{
+      window.location.reload();
+    },1000);
+
+  }
 }

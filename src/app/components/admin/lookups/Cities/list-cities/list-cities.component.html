@@ -36,15 +36,17 @@
                         <thead>
                             <tr class="bg-dark ">
                                 <th scope="col" class="font-style-header" style="width: 10%;">#</th>
-                                <th scope="col" class="font-style-header" style="width: 60%;">أسم المدينة</th>
-                                <th scope="col" class="font-style-header" style="width: 30%;">إعدادت</th>
+                                <th scope="col" class="font-style-header" style="width: 35%;">أسم المحافظة</th>
+                                <th scope="col" class="font-style-header" style="width: 35%;">أسم المدينة</th>
+                                <th scope="col" class="font-style-header" style="width: 20%;">إعدادت</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of Filtered_List;let i=index">
                                 <th scope="row" class="font-style" style="width: 10%;">{{i+1}}</th>
-                                <td style="width: 60%;" class="font-style">{{item.title}}</td>
-                                <td class="font-style" style="width: 30%;">
+                                <td style="width: 35%;" class="font-style">{{item.governorate.title}}</td>
+                                <td style="width: 35%;" class="font-style">{{item.title}}</td>
+                                <td class="font-style" style="width: 20%;">
                                     <button class="btn btn-danger mx-1" (click)="Delete(item.id)">حذف</button>
                                     <button class="btn btn-success" (click)="update(item.id,item.governorateId, item.title)">تعديل</button>
                                 </td>

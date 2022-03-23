@@ -4,6 +4,7 @@ import { CitiesApiService } from 'src/app/shared/API-Service/cities-api.service'
 import { GovernorateApiService } from 'src/app/shared/API-Service/governorate-api.service';
 import { GenericResponse } from 'src/app/shared/Models/GenericResponse';
 import { getCities } from 'src/app/shared/Models/getCities';
+import { getCitiesWithGovernorate } from 'src/app/shared/Models/getCitiesWithGovernorate';
 import { GetGovernorate } from 'src/app/shared/Models/GetGovernorate';
 import Swal from 'sweetalert2';
 
@@ -15,7 +16,7 @@ import Swal from 'sweetalert2';
 export class ListCitiesComponent implements OnInit {
 
   //#region  Declare Variables
-  response: GenericResponse<GetGovernorate>;
+  response: getCitiesWithGovernorate[];
   Response_List: getCities[];
   Filtered_List: getCities[];
   Govern_id: number;
@@ -41,9 +42,11 @@ export class ListCitiesComponent implements OnInit {
 
   //#region  get Governoate
   GetCities() {
-    this.citiesApiService.GetCities().subscribe(
+    this.citiesApiService.GetCitiesWithGovernorate().subscribe(
       response => {
-        this.response = response;
+        this.response = response.data;
+        // console.log("----- : ",this.response[0].governorate.title);
+        
         this.Response_List = response.data;
         this.Filtered_List = response.data;
       },

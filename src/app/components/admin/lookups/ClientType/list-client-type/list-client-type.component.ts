@@ -101,6 +101,7 @@ export class ListClientTypeComponent implements OnInit {
   //#region updateClient
   updateClient(id:number,title:string){
     this.clientTypeApiService.title = title;
+    localStorage.setItem("clientTypeTitle",title);
     this.router.navigate(['content/admin/update-client-type',id]);
   }
   //#endregion

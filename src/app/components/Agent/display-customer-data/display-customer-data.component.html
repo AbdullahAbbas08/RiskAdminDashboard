@@ -87,12 +87,6 @@
                           </textarea>
                         </div>
 
-                        <!--update button -->
-                        <div>
-                            <button class="btn btn-primary pull-right" (click)="back()" >
-                                رجوع
-                            </button>
-                        </div>
                         <!-- insert button -->
                         <!--  -->
                         <!-- <ng-template #elseBlock>
@@ -145,8 +139,11 @@
 
                         <div class="form-group">
                             <label> وصف المكالمة</label>
-                            <input class="form-control" type="text" placeholder="أكتب تفاصيل المكالمة هنا "
-                                formControlName="description"><!-- onlyAlphabets -->
+                            <!-- <input class="form-control" type="text" placeholder="أكتب تفاصيل المكالمة هنا "
+                                formControlName="description"> -->
+                                <textarea formControlName="description" class="form-control textForArabic"
+                                placeholder="أكتب تفاصيل المكالمة هنا " style="height: 75px">
+                          </textarea>
 
                             <ng-container class="invalid" style="color: red;"
                                 *ngIf="Form.get('description').hasError('required') && Form.get('description').touched">
@@ -187,9 +184,12 @@
 
                         <!--update button -->
                         <div>
-                            <button class="btn btn-primary pull-right" type="submit" [disabled]="!Form.valid"
+                            <button class="btn btn-primary pull-right m-1" type="submit" [disabled]="!Form.valid"
                                 (click)="submitCall()">
                                 تسجيل
+                            </button>
+                            <button class="btn btn-primary pull-right m-1" (click)="back()" >
+                                رجوع
                             </button>
                         </div>
                     </form>

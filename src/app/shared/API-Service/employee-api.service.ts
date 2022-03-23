@@ -9,6 +9,7 @@ import { GenericResponseSingle } from '../Models/GenericResponseSingle';
 import { UpdateClient } from '../Models/UpdateClient';
 import { Assign_ClientCustomer } from '../Models/Assign_ClientCustomer';
 import { ResponseRegister } from '../Models/ResponseRegister';
+import { IdName } from '../Models/IdName';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,10 @@ export class EmployeeApiService {
      
        GetClientRelated(id:string): Observable<GenericResponse<Assign_ClientCustomer>> {
          return this.http.get<GenericResponse<Assign_ClientCustomer>>(`${environment.Server_URL}/CustomerService?Toaken=${id}`);
+       }
+
+       GetClientsRelatedWithAgent(id:string): Observable<GenericResponse<IdName>> {
+         return this.http.get<GenericResponse<IdName>>(`${environment.Server_URL}/CustomerService/GetClientsRelatedWithAgent?AgentID=${id}`);
        }
      
        InsertEmployee(data:InsertEmployee): Observable<ResponseRegister> {

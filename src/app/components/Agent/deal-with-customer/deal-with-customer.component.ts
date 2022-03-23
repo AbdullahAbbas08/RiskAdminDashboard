@@ -82,7 +82,7 @@ export class DealWithCustomerComponent implements OnInit {
     this._InsertCall = new InsertCall();
     this.Response_List = [];
     this.getGovernoate();
-    this.GetCallReason();
+    this.GetCallReason(this.route.snapshot.paramMap.get('id'));
     this.InitCallForm();
     this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
@@ -102,7 +102,7 @@ export class DealWithCustomerComponent implements OnInit {
 
   // #region  Init Form
   InitForm(data:any){
-    console.log("n : ",this.customerApiService.CustomerData["name"]);
+    // console.log("n : ",this.customerApiService.CustomerData["name"]);
     
     this.EmployeeForm = this._formBuilder.group({
       name: [this.customerApiService.CustomerData["name"], Validators.required],
@@ -120,7 +120,7 @@ export class DealWithCustomerComponent implements OnInit {
       Gender: [, Validators.nullValidator],
       DateOfBirth: [, Validators.nullValidator],
       CityId: [, Validators.nullValidator],
-      mobile: [, Validators.nullValidator],
+      mobile: [ this.customerApiService.mobile, Validators.nullValidator],
       address: [, Validators.nullValidator],
     });
   }
@@ -140,7 +140,7 @@ export class DealWithCustomerComponent implements OnInit {
   }
   //#endregion
 
-  insertCustomer(){
+  submitData(){
     // console.log("form : ", this.EmployeeForm);
     
     let obj = {
@@ -160,13 +160,16 @@ export class DealWithCustomerComponent implements OnInit {
       (response)=>{
         // console.log("response : ",response['message']);
         if(response['message'] =="تم إضافة العميل بنجاح"){
-          Swal.fire({
-            icon: 'success',
-            title: response['message'],
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.router.navigateByUrl("content/agent/main");
+          // Swal.fire({
+          //   icon: 'success',
+          //   title: response['message'],
+          //   showConfirmButton: false,
+          //   timer: 1500
+          // })
+          // console.log("response : ",response);
+          
+          this._InsertCall.customerId = response["data"];
+          this.submitCall();
         } else
           {
             Swal.fire({
@@ -203,7 +206,6 @@ export class DealWithCustomerComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-
         this.router.navigateByUrl("/content/agent/main");
       window.setInterval(()=>{
         window.location.reload()
@@ -326,12 +328,12 @@ export class DealWithCustomerComponent implements OnInit {
   //#endregion
 
     //#region  Get Call Reason
-    GetCallReason() {
-      this.callReasonApiService.GetCallReason().subscribe(
+    GetCallReason(ClientId:string) {
+      this.callReasonApiService.GetReasonsRelatedWithClientType(ClientId).subscribe(
         response => {
           this.response = response;
           this.CallReason_List = response.data;
-          // console.log("call reason : ",response.data);    
+          console.log("call reason : ", this.CallReason_List);    
         },
         err => {
           Swal.fire({

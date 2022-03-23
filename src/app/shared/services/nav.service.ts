@@ -87,7 +87,7 @@ export class NavService implements OnDestroy {
 
 	MENUITEMS: Menu[] = [
 		{
-			headTitle1: 'لوحة تحكم المدير', headTitle2: 'إدارة محتويات النظام',
+			headTitle1: 'لوحة التحكم ', headTitle2: 'إدارة المحتويات الموجودة',
 		},
 		{
 			title: 'خدمة العملاء', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [

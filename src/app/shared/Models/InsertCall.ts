@@ -10,4 +10,5 @@ export class InsertCall {
     start           : string;
     end             : string;
     callReasonId    : number;
+    customerId      : string;
 }

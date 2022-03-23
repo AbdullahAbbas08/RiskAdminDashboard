@@ -105,7 +105,7 @@
                         <div class="form-group">
                             <label for="mobilenumber"> العنوان</label>
                             <textarea formControlName="address" class="form-control textForArabic"
-                                placeholder="أكتب العنوان بالتفصيل " style="height: 120px">
+                                placeholder="أكتب العنوان بالتفصيل " style="height: 160px">
                           </textarea>
 
                             <ng-container class="invalid" style="color: red;"
@@ -116,19 +116,15 @@
                             </ng-container>
                         </div>
 
-                        <div>
-                            <button class="btn btn-primary pull-right" (click)="back()">
-                                رجوع
-                            </button>
-                        </div>
+                      
                         <!-- insert button -->
                         <!--  -->
                         <!-- <ng-template #elseBlock> -->
-                            <button class="btn btn-primary pull-right mx-2" type="submit" 
+                            <!-- <button class="btn btn-primary pull-right mx-2" type="submit" 
                                     [disabled]="!EmployeeForm.valid"
                                     (click)="insertCustomer()">
                                 إضافة
-                            </button>
+                            </button> -->
                         <!-- </ng-template> -->
 
                     </form>
@@ -151,7 +147,7 @@
                                       (change)="SelectedcallReason($event)" >
                                       <option value="" selected disabled> أختر سبب المكالمة </option>
                                       <option *ngFor="let obj of CallReason_List" value="{{ obj.id }}">
-                                        <h3> {{ obj.title }} </h3>
+                                        <h3> {{ obj.name }} </h3>
                                     </option>
                                     
                               </Select>
@@ -172,8 +168,11 @@
 
                         <div class="form-group">
                             <label> وصف المكالمة</label>
-                            <input class="form-control" type="text" placeholder="أكتب تفاصيل المكالمة هنا "
-                                formControlName="description"><!-- onlyAlphabets -->
+                            <!-- <input class="form-control" type="text" placeholder="أكتب تفاصيل المكالمة هنا "
+                                formControlName="description"> -->
+                                <textarea formControlName="description" class="form-control textForArabic"
+                                placeholder="أكتب تفاصيل المكالمة هنا " style="height: 75px">
+                          </textarea>
 
                             <ng-container class="invalid" style="color: red;"
                                 *ngIf="Form.get('description').hasError('required') && Form.get('description').touched">
@@ -213,11 +212,15 @@
                           </div>
 
                         <!--update button -->
-                        <div>
-                            <button class="btn btn-primary pull-right" type="submit" [disabled]="!Form.valid"
-                                (click)="submitCall()">
+                        <div >
+                            <button class="btn btn-primary pull-right m-1" type="submit" 
+                                    [disabled]="!Form.valid && !EmployeeForm.valid"
+                                (click)="submitData()">
                                 تسجيل
                             </button>
+                                <button class="btn btn-primary pull-right m-1" (click)="back()">
+                                    رجوع
+                                </button>
                         </div>
                     </form>
                 </div>
