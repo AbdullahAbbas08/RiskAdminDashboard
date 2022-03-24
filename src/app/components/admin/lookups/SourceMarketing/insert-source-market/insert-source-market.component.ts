@@ -35,14 +35,18 @@ export class InsertSourceMarketComponent implements OnInit {
   ngOnInit(): void {
    
     if(this.route.snapshot.paramMap.get('id')){
+      // MARKETTitle
+      // MARKETOrder
+      this.ApiService.title = localStorage.getItem("MARKETTitle");
+      this.ApiService.order = +localStorage.getItem("MARKETOrder");
 
       this.InitForm(this.ApiService.title , this.ApiService.order)
       this.update = true;
-      console.log(this.update);
+      // console.log(this.update);
     }else
     {
       this.update = false;
-      console.log(this.update);
+      // console.log(this.update);
       
       this._InitForm();
     }
@@ -101,6 +105,9 @@ export class InsertSourceMarketComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/GetSourceMarket");
+        localStorage.removeItem("MARKETTitle");
+        localStorage.removeItem("MARKETOrder");
+
       },
       err=>{
         Swal.fire({

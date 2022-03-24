@@ -106,6 +106,7 @@ export class EmployeeComponent implements OnInit {
   //#region update Employee
   updateEmployee(id:string,model:GetEmployee){
     this.ApiService.Employee = model;
+    localStorage.setItem("RiskEmployeeData",JSON.stringify(this.ApiService.Employee));
     
     this.router.navigate(['content/admin/updateEmployee',model.id]);
   }

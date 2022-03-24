@@ -33,7 +33,7 @@ export class GovernorateComponent implements OnInit {
   ngOnInit(): void {
    
     if(this.route.snapshot.paramMap.get('id')){
-
+      this.governorateApiService.title = localStorage.getItem("riskgovernorate");
       this.InitForm(this.governorateApiService.title)
       this.update = true;
       console.log(this.update);
@@ -95,6 +95,7 @@ export class GovernorateComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/Get-governorate");
+        localStorage.removeItem("riskgovernorate");
       },
       err=>{
         Swal.fire({

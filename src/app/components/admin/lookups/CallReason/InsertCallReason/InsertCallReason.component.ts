@@ -47,6 +47,9 @@ export class InsertCallReasonComponent implements OnInit {
 
     if(this.route.snapshot.paramMap.get('id')){
 
+      this.ApiService.title = localStorage.getItem("reasonTitle")
+       this.ApiService.order = +localStorage.getItem("reasonOrder")
+
       this.InitForm(this.ApiService.title , this.ApiService.order)
       this.update = true;
       // console.log(this.update);
@@ -188,6 +191,9 @@ export class InsertCallReasonComponent implements OnInit {
               timer: 1500
             })
             this.router.navigateByUrl("content/admin/Get-Call-Reason");
+            localStorage.removeItem("reasonTitle");
+            localStorage.removeItem("reasonOrder");
+
           },
           (err)=>{
 

@@ -109,6 +109,8 @@ export class CallReasonComponent implements OnInit {
   update(id: number,order: number, title: string) {
     this.ApiService.title = title;
     this.ApiService.order = order;
+    localStorage.setItem("reasonTitle",title)
+    localStorage.setItem("reasonOrder",JSON.stringify(order))
     this.router.navigate(['content/admin/update-call-reason', id]);
   }
   //#endregion

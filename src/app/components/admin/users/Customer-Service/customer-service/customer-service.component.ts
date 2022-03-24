@@ -104,6 +104,7 @@ export class CustomerServiceComponent implements OnInit {
   //#region update Employee
   updateEmployee(id:string,model:GetEmployee){
     this.ApiService.Employee = model;
+    localStorage.setItem("RiskCustomerServiceData",JSON.stringify(model));
     
     this.router.navigate(['content/admin/updateCustomerService',model.id]);
   }

@@ -66,6 +66,7 @@ export class InsertClientComponent implements OnInit {
     this.getClientType();
 
     if (this.route.snapshot.paramMap.get('id')) {
+      this.ApiService.Client=JSON.parse(localStorage.getItem("RiskClientData"));
       this.InitForm(this.ApiService.Client)
       this.update = true;
     } else {
@@ -208,6 +209,7 @@ export class InsertClientComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/GetClient");
+        localStorage.removeItem("RiskClientData")
         window.setInterval(()=>{
           window.location.reload;
         },1000)

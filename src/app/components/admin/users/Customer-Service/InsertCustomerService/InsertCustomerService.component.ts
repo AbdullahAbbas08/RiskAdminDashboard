@@ -55,7 +55,7 @@ export class InsertCustomerServiceComponent implements OnInit {
     this.GetClient()
     
     if(this.route.snapshot.paramMap.get('id')){
-      
+      this.ApiService.Employee =JSON.parse(localStorage.getItem("RiskCustomerServiceData")) ;
       this.GetClientRelated(this.ApiService.Employee.id)
       this.InitForm(this.ApiService.Employee)
       this.update = true;
@@ -197,6 +197,7 @@ export class InsertCustomerServiceComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/GetCustomerService");
+        localStorage.removeItem("RiskCustomerServiceData");
           },
           err=>{
 

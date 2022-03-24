@@ -101,6 +101,7 @@ export class ListGovernorateComponent implements OnInit {
   //#region Governoate
   update(id:number,title:string){
     this.governorateApiService.title = title;
+    localStorage.setItem("riskgovernorate",title)
     this.router.navigate(['content/admin/update-governorate',id]);
   }
   //#endregion

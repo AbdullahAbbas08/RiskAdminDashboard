@@ -118,6 +118,8 @@ export class ListCitiesComponent implements OnInit {
   update(cityid: number,governid: number, title: string) {
     this.citiesApiService.title = title;
     this.citiesApiService.GovernorateId = governid;
+    localStorage.setItem("Governoratetitle",title);
+    localStorage.setItem("GovernorateId",JSON.stringify(governid));
     this.router.navigate(['content/admin/update-city', cityid]);
   }
   //#endregion

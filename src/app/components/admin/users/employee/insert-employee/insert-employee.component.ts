@@ -37,8 +37,8 @@ export class InsertEmployeeComponent implements OnInit {
   ngOnInit(): void {
    
     if(this.route.snapshot.paramMap.get('id')){
-
-      this.InitForm(this.ApiService.Employee)
+      this.ApiService.Employee =  JSON.parse(localStorage.getItem("RiskEmployeeData"));
+      this.InitForm(JSON.parse(localStorage.getItem("RiskEmployeeData")))
       this.update = true;
     }else
     {
@@ -53,7 +53,7 @@ export class InsertEmployeeComponent implements OnInit {
     this.EmployeeForm = this._formBuilder.group({
       name: [employee.name, Validators.required],
       username: [employee.userName, Validators.required],
-      password: ['', Validators.nullValidator],
+      password: ['***', Validators.nullValidator],
       nationalId: [employee.nationalId, Validators.required],
       mobile: [employee.mobile, Validators.required],
       address: [employee.address, Validators.required],
@@ -120,7 +120,7 @@ export class InsertEmployeeComponent implements OnInit {
 
     let id = this.route.snapshot.paramMap.get('id');
 
-    if(this.EmployeeForm.get('password').value =='')
+    if(this.EmployeeForm.get('password').value =='***')
      this.pass = this.ApiService.Employee.password;
      else
      this.pass = this.EmployeeForm.get('password').value;
@@ -143,6 +143,7 @@ export class InsertEmployeeComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/GetEmployee");
+        localStorage.removeItem("RiskEmployeeData")
       },
       err=>{
         Swal.fire({

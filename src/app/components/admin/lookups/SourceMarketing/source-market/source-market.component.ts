@@ -108,6 +108,8 @@ export class SourceMarketComponent implements OnInit {
   update(id: number,order: number, title: string) {
     this.ApiService.title = title;
     this.ApiService.order = order;
+    localStorage.setItem("MARKETTitle",title)
+    localStorage.setItem("MARKETOrder",JSON.stringify(order))
     this.router.navigate(['content/admin/updateSourceMarket', id]);
   }
   //#endregion

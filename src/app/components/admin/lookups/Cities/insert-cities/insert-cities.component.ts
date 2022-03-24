@@ -42,7 +42,9 @@ export class InsertCitiesComponent implements OnInit {
     this.Govern_id = -1;
     this.getGovernoate();
     
-    
+    this.citiesApiService.title = localStorage.getItem("Governoratetitle");
+    this.citiesApiService.GovernorateId = +localStorage.getItem("GovernorateId")
+
     if (this.route.snapshot.paramMap.get('id')) {
       this.InitForm(this.citiesApiService.title)
       this.governorateApiService.GetGovernorate().subscribe(
@@ -137,6 +139,8 @@ export class InsertCitiesComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("content/admin/Get-cities");
+        localStorage.removeItem("Governoratetitle");
+        localStorage.removeItem("GovernorateId");
       },
       err => {
         Swal.fire({

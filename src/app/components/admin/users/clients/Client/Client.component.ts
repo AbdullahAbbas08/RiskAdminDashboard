@@ -104,6 +104,7 @@ export class ClientComponent implements OnInit {
   //#region update Client
   updateClient(Client:GetClient){
     this.ApiService.Client = Client;
+    localStorage.setItem("RiskClientData",JSON.stringify(Client));
     
     this.router.navigate(['content/admin/updateClient',Client.clientId]);
   }
