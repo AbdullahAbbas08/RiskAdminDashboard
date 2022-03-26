@@ -54,7 +54,8 @@ export class AgentComponent implements OnInit {
           (res)=>{
             // console.log(res["data"]);
             if(res["data"] != null){
-              this.customerApiService.CustomerData = res["data"];      
+              this.customerApiService.CustomerData = res["data"]; 
+              localStorage.setItem("Risk_Customer_Data",JSON.stringify( res["data"]));     
               this.router.navigate(["/content/agent/DisplayData",data]);
             }
             else
@@ -96,7 +97,7 @@ export class AgentComponent implements OnInit {
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
         this.Clients = response.data;
-        console.log("---------- : ",response.data);
+        // console.log("---------- : ",response.data);
         
       },
       (err)=>{

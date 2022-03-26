@@ -110,6 +110,8 @@ export class DealWithCustomerComponent implements OnInit {
       DateOfBirth: [this.customerApiService.CustomerData["dateOfBirth"], Validators.required],
       CityId: [, Validators.required],
       mobile: [, Validators.required],
+      mobile2: [, Validators.required],
+      phone: [, Validators.required],
       address: [, Validators.required],
     });
   }
@@ -207,6 +209,7 @@ export class DealWithCustomerComponent implements OnInit {
           timer: 1500
         })
         this.router.navigateByUrl("/content/agent/main");
+        
       window.setInterval(()=>{
         window.location.reload()
       },1000 )
@@ -267,7 +270,7 @@ export class DealWithCustomerComponent implements OnInit {
     getGovernoate() {
       this.governorateApiService.GetGovernorate().subscribe(
         response => {
-          // console.log("-----",response.data);
+          console.log("Governorate_List : ",response.data);
           
           this.Governorate_List = response.data;
           response.data.forEach(element => {
@@ -292,6 +295,8 @@ export class DealWithCustomerComponent implements OnInit {
         this.response = response;
         this.Response_List = response.data;
         this.Filtered_List = response.data;
+        console.log(response.data);
+        
       },
       err => {
         Swal.fire({

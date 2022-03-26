@@ -121,7 +121,7 @@ export class InsertEmployeeComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
 
     if(this.EmployeeForm.get('password').value =='***')
-     this.pass = this.ApiService.Employee.password;
+     this.pass = "***";
      else
      this.pass = this.EmployeeForm.get('password').value;
 

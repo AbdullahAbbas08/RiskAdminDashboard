@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -73,16 +74,18 @@ export class DisplayCustomerDataComponent implements OnInit {
   ngOnInit(): void {
     this._InsertCall = new InsertCall();
 
+    this.getGovernoate();
     this.GetCities();
     this.GetCallReason();
     this.InitCallForm();
     this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
     // if(this.customerApiService.CustomerData != null){
+      this.customerApiService.CustomerData =JSON.parse(localStorage.getItem("Risk_Customer_Data")) ;
 
       this.InitForm(this.customerApiService.CustomerData)
       this.InitCallForm();
-
+      this.Governorate = "أختر المحافظة";
       // this.update = true;
     // }else
     // {
@@ -101,7 +104,7 @@ export class DisplayCustomerDataComponent implements OnInit {
     this.EmployeeForm = this._formBuilder.group({
       name: [this.customerApiService.CustomerData["name"], Validators.required],
       Gender: [ , Validators.required],
-      DateOfBirth: [this.customerApiService.CustomerData["dateOfBirth"], Validators.required],
+      DateOfBirth: ['1980-01-01', Validators.required],
       CityId: [this.customerApiService.CustomerData["cityId"], Validators.required],
       mobile: [this.customerApiService.CustomerData["mobile"], Validators.required],
       address: [this.customerApiService.CustomerData["address"], Validators.required],
@@ -119,9 +122,11 @@ export class DisplayCustomerDataComponent implements OnInit {
     this.EmployeeForm = this._formBuilder.group({
       name: [, Validators.nullValidator],
       Gender: [, Validators.nullValidator],
-      DateOfBirth: [, Validators.nullValidator],
+      DateOfBirth:[, Validators.nullValidator],
       CityId: [, Validators.nullValidator],
       mobile: [, Validators.nullValidator],
+      mobile2: [, Validators.nullValidator],
+      phone: [, Validators.nullValidator],
       address: [, Validators.nullValidator],
     });
   }
@@ -234,25 +239,25 @@ export class DisplayCustomerDataComponent implements OnInit {
   //#endregion
 
     //#region  get Governoate
-    // getGovernoate() {
-    //   this.governorateApiService.GetGovernorate().subscribe(
-    //     response => {
-    //       // console.log("-----",response.data);
+    getGovernoate() {
+      this.governorateApiService.GetGovernorate().subscribe(
+        response => {
+          // console.log("-----",response.data);
           
-    //       this.Governorate_List = response.data;
-    //       response.data.forEach(element => {
-    //         this.Governorate_Dictionary[element.id] = element.title;            
-    //       });
-    //     },
-    //     err => {
-    //       Swal.fire({
-    //         icon: 'error',
-    //         title: 'خطأ',
-    //         text: err.error,
-    //       })
-    //     }
-    //   )
-    // }
+          this.Governorate_List = response.data;
+          response.data.forEach(element => {
+            this.Governorate_Dictionary[element.id] = element.title;            
+          });
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'خطأ',
+            text: err.error,
+          })
+        }
+      )
+    }
     //#endregion
 
 
@@ -274,6 +279,7 @@ export class DisplayCustomerDataComponent implements OnInit {
   
           // location.href = location.href;
           this.router.navigateByUrl("/content/agent/main");
+          localStorage.removeItem("Risk_Customer_Data");
         window.setInterval(()=>{
           window.location.reload()
         },1000 )
@@ -296,10 +302,11 @@ export class DisplayCustomerDataComponent implements OnInit {
         // this.response = response;
         // this.Response_List = response.data;
         // this.Filtered_List = response.data;
-        let obj = response.data.filter(x=>x.id == this.customerApiService.CustomerData["cityId"] )
+        this.City = response.data[0].title
+        // let obj = response.data.filter(x=>x.id == this.customerApiService.CustomerData["cityId"] )
         // console.log("--- : ",obj[0].title);
         
-        this.EmployeeForm.patchValue({CityId:obj[0].title})
+        // this.EmployeeForm.patchValue({CityId:obj[0].title})
       },
       err => {
         Swal.fire({
@@ -319,20 +326,20 @@ export class DisplayCustomerDataComponent implements OnInit {
     //#endregion
 
     //#region Selected City
-    // SelectedCity(event:any){
-    //   this.CityId = event.target.value
-    // }
+    SelectedCity(event:any){
+      this.CityId = event.target.value
+    }
     //#endregion
 
   //#region Selected Governorate
-  // SelectedGovernorate(event: any) {
-  //   this.GetCities();
-  //   this.Govern_id = event.target.value;
-  //   if (event.target.value == -1)
-  //     this.Filtered_List = this.Response_List;
-  //   else
-  //     this.Filtered_List = this.Response_List.filter(x => x.governorateId == event.target.value);
-  // }
+  SelectedGovernorate(event: any) {
+    this.GetCities();
+    this.Govern_id = event.target.value;
+    if (event.target.value == -1)
+      this.Filtered_List = this.Response_List;
+    else
+      this.Filtered_List = this.Response_List.filter(x => x.governorateId == event.target.value);
+  }
   //#endregion
 
   back(){
