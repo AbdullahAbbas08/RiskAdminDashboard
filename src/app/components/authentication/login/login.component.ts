@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
         }, 1000);
       },
       (err)=>{
+        console.log(err);
+        
         Swal.fire({
           icon: 'error',
           title: 'خطأ',

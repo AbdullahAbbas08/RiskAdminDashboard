@@ -13,8 +13,9 @@ export class MyAccountComponent implements OnInit {
   ngOnInit() {
   }
   logout(){
-    localStorage.removeItem("RiskAuthorization");
-    localStorage.removeItem("RiskRole");
+    // localStorage.removeItem("RiskAuthorization");
+    // localStorage.removeItem("RiskRole");
+    localStorage.clear();
 
     this.router.navigate(["/login"]);
 

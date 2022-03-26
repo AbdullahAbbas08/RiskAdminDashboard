@@ -81,6 +81,7 @@
                 <span style="color: red"> رقم الموبايل مطلوب </span>
               </ng-container>
             </div>
+
             <!-- mobile 2 -->
             <div class="form-group">
               <label> رقم الموبايل أخر </label>
@@ -106,9 +107,10 @@
                 <span style="color: red"> رقم الموبايل مطلوب </span>
               </ng-container>
             </div>
+
             <!-- phone -->
             <div class="form-group">
-              <label> رقم الموبايل</label>
+              <label> رقم تليفون</label>
               <input
                 class="form-control"
                 type="text"
@@ -221,6 +223,21 @@
         </div>
         <div class="card-body">
           <form [formGroup]="Form">
+
+            <div class="form-group">
+              <label>نوع المكالمة</label>
+              <Select
+                class="form-control"
+                formControlName="callType"
+                aria-label="Default select example"
+                (change)="SelectedcallType($event)" >
+                <option value="" selected disabled>أختر نوع المكالمة</option>
+                <option value="0" >صادرة</option>
+                <option value="1" >واردة</option>
+               
+              </Select>
+            </div>
+
             <div class="form-group">
               <label> سبب المكالمة</label>
               <Select

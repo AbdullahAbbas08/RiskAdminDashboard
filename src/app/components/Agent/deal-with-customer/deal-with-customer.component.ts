@@ -86,17 +86,17 @@ export class DealWithCustomerComponent implements OnInit {
     this.InitCallForm();
     this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
-    if(this.customerApiService.CustomerData != null){
+    // if(this.customerApiService.CustomerData != null){
 
-      this.InitForm(this.ApiService.Employee)
-      this.update = true;
-    }else
-    {
+    //   this.InitForm(this.ApiService.Employee)
+    //   this.update = true;
+    // }else
+    // {
       this.update = false;
       this._InitForm();
       this.Governorate = "أختر المحافظة";
       this.City = "أختر المدينة";
-    }
+    // }
   }
   //#endregion
 
@@ -122,14 +122,17 @@ export class DealWithCustomerComponent implements OnInit {
       Gender: [, Validators.nullValidator],
       DateOfBirth: [, Validators.nullValidator],
       CityId: [, Validators.nullValidator],
-      mobile: [ this.customerApiService.mobile, Validators.nullValidator],
+      mobile: [ this.customerApiService.mobile, Validators.required],
       address: [, Validators.nullValidator],
+      mobile2: [, Validators.nullValidator],
+      phone: [, Validators.nullValidator],
     });
   }
 
   InitCallForm(){
     this.Form = this._formBuilder.group({
       reason: [, Validators.required],
+      callType: [, Validators.required],
       description: [ , Validators.nullValidator],
       notes: [, Validators.nullValidator],
       // callType: [, Validators.required],
@@ -148,6 +151,8 @@ export class DealWithCustomerComponent implements OnInit {
     let obj = {
      name: this.EmployeeForm.get('name').value,
      mobileNumber: this.EmployeeForm.get('mobile').value,
+     mobileNumber2: this.EmployeeForm.get('mobile2').value,
+     phone: this.EmployeeForm.get('phone').value,
      CityId: +this.CityId,
      Gender: +this.Gender,
      dateOfBirth: this.EmployeeForm.get('DateOfBirth').value,
@@ -182,7 +187,7 @@ export class DealWithCustomerComponent implements OnInit {
           }
       },
       (err)=>{
-        console.log(err.error);
+        // console.log(err.error);
         
   Swal.fire({
         icon: 'error',
@@ -269,10 +274,9 @@ export class DealWithCustomerComponent implements OnInit {
     //#region  get Governoate
     getGovernoate() {
       this.governorateApiService.GetGovernorate().subscribe(
-        response => {
-          console.log("Governorate_List : ",response.data);
-          
+        response => {  
           this.Governorate_List = response.data;
+          // console.log("Governorate_List : ", this.Governorate_List );
           response.data.forEach(element => {
             this.Governorate_Dictionary[element.id] = element.title;            
           });
@@ -294,8 +298,8 @@ export class DealWithCustomerComponent implements OnInit {
       response => {
         this.response = response;
         this.Response_List = response.data;
-        this.Filtered_List = response.data;
-        console.log(response.data);
+        // this.Filtered_List = response.data;
+        // console.log(response.data);
         
       },
       err => {
@@ -325,10 +329,15 @@ export class DealWithCustomerComponent implements OnInit {
   SelectedGovernorate(event: any) {
     this.GetCities();
     this.Govern_id = event.target.value;
-    if (event.target.value == -1)
-      this.Filtered_List = this.Response_List;
-    else
+    if (event.target.value == -1){
+      // this.Filtered_List = this.Response_List;
+      // console.log("not filter : ",this.Filtered_List)
+
+    }
+    else{
       this.Filtered_List = this.Response_List.filter(x => x.governorateId == event.target.value);
+      // console.log("filter : ",this.Filtered_List)
+    }
   }
   //#endregion
 
@@ -338,7 +347,7 @@ export class DealWithCustomerComponent implements OnInit {
         response => {
           this.response = response;
           this.CallReason_List = response.data;
-          console.log("call reason : ", this.CallReason_List);    
+          // console.log("call reason : ", this.CallReason_List);    
         },
         err => {
           Swal.fire({
@@ -388,8 +397,12 @@ export class DealWithCustomerComponent implements OnInit {
     else
     this._InsertCall.satisfy = true
 
-    // console.log( this._InsertCall.satisfy);
+    console.log( "fdsfsdf : ",this._InsertCall.satisfy);
     
+  }
+
+  SelectedcallType(event:any){
+    this._InsertCall.callType = +event.target.value;
   }
 
 }

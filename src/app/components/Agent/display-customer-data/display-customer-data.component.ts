@@ -73,6 +73,7 @@ export class DisplayCustomerDataComponent implements OnInit {
   //#region  ng OnInit
   ngOnInit(): void {
     this._InsertCall = new InsertCall();
+    this._InsertCall.callType = -1;
 
     this.getGovernoate();
     this.GetCities();
@@ -81,8 +82,7 @@ export class DisplayCustomerDataComponent implements OnInit {
     this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
     // if(this.customerApiService.CustomerData != null){
-      this.customerApiService.CustomerData =JSON.parse(localStorage.getItem("Risk_Customer_Data")) ;
-
+      this.customerApiService.CustomerData =JSON.parse(localStorage.getItem("Risk_Customer_Data")) ;      
       this.InitForm(this.customerApiService.CustomerData)
       this.InitCallForm();
       this.Governorate = "أختر المحافظة";
@@ -99,22 +99,23 @@ export class DisplayCustomerDataComponent implements OnInit {
 
   // #region  Init Form
   InitForm(data:any){
-    // console.log("n : ",this.customerApiService.CustomerData["name"]);
+    // console.log("n : ",this.customerApiService.CustomerData["dateOfBirth"].split("T",1)[0]);
     
     this.EmployeeForm = this._formBuilder.group({
-      name: [this.customerApiService.CustomerData["name"], Validators.required],
-      Gender: [ , Validators.required],
-      DateOfBirth: ['1980-01-01', Validators.required],
+      Gender: [ , Validators.nullValidator],
+      name: [this.customerApiService.CustomerData["name"], Validators.nullValidator],
+      mobile: [this.customerApiService.CustomerData["mobile"], Validators.nullValidator],
+      mobile2: [this.customerApiService.CustomerData["mobile2"], Validators.nullValidator],
+      phone: [this.customerApiService.CustomerData["phone"], Validators.nullValidator],
       CityId: [this.customerApiService.CustomerData["cityId"], Validators.required],
-      mobile: [this.customerApiService.CustomerData["mobile"], Validators.required],
       address: [this.customerApiService.CustomerData["address"], Validators.required],
+      DateOfBirth: [this.customerApiService.CustomerData["dateOfBirth"].split("T",1)[0], Validators.required],
     });
 
     if(this.customerApiService.CustomerData["gender"] == 1)
       this.EmployeeForm.patchValue({Gender:'ذكر'})
     else
       this.EmployeeForm.patchValue({Gender:'أنثى'})
-
 
   }
 
@@ -136,6 +137,7 @@ export class DisplayCustomerDataComponent implements OnInit {
   InitCallForm(){
     this.Form = this._formBuilder.group({
       reason: [, Validators.required],
+      callType: [, Validators.nullValidator],
       description: [ , Validators.nullValidator],
       notes: [, Validators.nullValidator],
       // callType: [, Validators.required],
@@ -267,32 +269,46 @@ export class DisplayCustomerDataComponent implements OnInit {
       this._InsertCall.reason = this.Form.get("reason").value;
       this._InsertCall.description =  this.Form.get("description").value;
       this._InsertCall.notes = this.Form.get("notes").value;
+      this._InsertCall.customerId = this.customerApiService.CustomerData["id"];
+
+      if( !(this._InsertCall.callType == 0 || this._InsertCall.callType == 1 ) )
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: "أختر نوع المكالمة",
+        })
+      }
+      else
+      {
+        this.callApiService.InsertCall(this._InsertCall).subscribe(
+          (response)=>{
+            Swal.fire({
+              icon: 'success',
+              title: "تم إضافة ملخص المكالمة بنجاح",
+              showConfirmButton: false,
+              timer: 1500
+            })
+    
+            // location.href = location.href;
+            this.router.navigateByUrl("/content/agent/main");
+            localStorage.removeItem("Risk_Customer_Data");
+          window.setInterval(()=>{
+            window.location.reload()
+          },1000 )
+    
+          },
+          (err)=>{
+            Swal.fire({
+              icon: 'error',
+              title: 'خطأ',
+              text: "هناك خطأ ! تأكد من إدخال البيانات بشكل كامل ثم حاول مرة اخرى ",
+            })
+          }
+        )
+      }
   
-      this.callApiService.InsertCall(this._InsertCall).subscribe(
-        (response)=>{
-          Swal.fire({
-            icon: 'success',
-            title: "تم إضافة ملخص المكالمة بنجاح",
-            showConfirmButton: false,
-            timer: 1500
-          })
-  
-          // location.href = location.href;
-          this.router.navigateByUrl("/content/agent/main");
-          localStorage.removeItem("Risk_Customer_Data");
-        window.setInterval(()=>{
-          window.location.reload()
-        },1000 )
-  
-        },
-        (err)=>{
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
-        }
-      )
+   
     }
 
       //#region  get Cities
@@ -399,6 +415,10 @@ export class DisplayCustomerDataComponent implements OnInit {
   
       // console.log( this._InsertCall.satisfy);
       
+    }
+
+    SelectedcallType(event:any){
+      this._InsertCall.callType = +event.target.value;
     }
 
 }
