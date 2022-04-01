@@ -97,7 +97,7 @@ export class AgentComponent implements OnInit {
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
         this.Clients = response.data;
-        // console.log("---------- : ",response.data);
+        console.log("---------- : ",response.data);
         
       },
       (err)=>{
