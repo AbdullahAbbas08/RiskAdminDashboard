@@ -22,6 +22,11 @@ import { EmployeeComponent } from './users/employee/List-Employees/employee.comp
 import { CustomerServiceComponent } from './users/Customer-Service/customer-service/customer-service.component';
 import { InsertCustomerServiceComponent } from './users/Customer-Service/InsertCustomerService/InsertCustomerService.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ClientAgentComponent } from './Reports/client-agent/client-agent.component';
+import { NgxPrintElementModule } from 'ngx-print-element';
+import { ClientsComponent } from './Reports/clients/clients.component';
+import { ClientCallComponent } from './Reports/client-call/client-call.component';
+import { ClientCallDetailsComponent } from './Reports/client-call-details/client-call-details.component';
 
 
 
@@ -43,7 +48,11 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     InsertEmployeeComponent,
     EmployeeComponent,
     CustomerServiceComponent,
-    InsertCustomerServiceComponent
+    InsertCustomerServiceComponent,
+    ClientAgentComponent,
+    ClientsComponent,
+    ClientCallComponent,
+    ClientCallDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +61,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ArchwizardModule,
     SweetAlert2Module,
     RouterModule,
+    NgxPrintElementModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   exports:[ClientTypeComponent]

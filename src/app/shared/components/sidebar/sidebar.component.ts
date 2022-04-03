@@ -21,19 +21,19 @@ export class SidebarComponent implements OnInit {
   public width: any = window.innerWidth;
   public leftArrowNone: boolean = true;
   public rightArrowNone: boolean = false;
-  ReturenRole:string;
-  UserRole:string;
+  // ReturenRole:string;
+  // UserRole:string;
   
 
   constructor(private router: Router, public navServices: NavService,
     public layout: LayoutService) {
-      this.ReturenRole = localStorage.getItem('RiskRole');
-      this.UserRole =  Roles.Agent;
+      // this.ReturenRole = localStorage.getItem('RiskRole');
+      // this.UserRole =  Roles.Agent;
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems;
-      if(this.ReturenRole == this.UserRole){
-        for(let i=0;i<8;i++){ this.menuItems.pop()} 
-      }
+      // if(this.ReturenRole == this.UserRole){
+      //   for(let i=0;i<8;i++){ this.menuItems.pop()} 
+      // }
 
 
       this.router.events.subscribe((event) => {

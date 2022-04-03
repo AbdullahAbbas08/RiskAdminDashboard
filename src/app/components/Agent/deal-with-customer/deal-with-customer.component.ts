@@ -84,7 +84,6 @@ export class DealWithCustomerComponent implements OnInit {
     this.getGovernoate();
     this.GetCallReason(this.route.snapshot.paramMap.get('id'));
     this.InitCallForm();
-    this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
     // if(this.customerApiService.CustomerData != null){
 
@@ -97,6 +96,8 @@ export class DealWithCustomerComponent implements OnInit {
       this.Governorate = "أختر المحافظة";
       this.City = "أختر المدينة";
     // }
+    this._InsertCall.StartCall = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+
   }
   //#endregion
 
@@ -165,15 +166,7 @@ export class DealWithCustomerComponent implements OnInit {
 
     this.customerApiService.InsertCustomer(obj).subscribe(
       (response)=>{
-        // console.log("response : ",response['message']);
         if(response['message'] =="تم إضافة العميل بنجاح"){
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: response['message'],
-          //   showConfirmButton: false,
-          //   timer: 1500
-          // })
-          // console.log("response : ",response);
           
           this._InsertCall.customerId = response["data"];
           this.submitCall();
@@ -199,12 +192,15 @@ export class DealWithCustomerComponent implements OnInit {
   }
 
   submitCall(){
-    this._InsertCall.end =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
-
+    this._InsertCall.EndCall =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+    console.log(this._InsertCall.StartCall);
+    console.log(this._InsertCall.EndCall);
+    
     this._InsertCall.reason = this.Form.get("reason").value;
     this._InsertCall.description =  this.Form.get("description").value;
     this._InsertCall.notes = this.Form.get("notes").value;
 
+    this._InsertCall.AgentId = localStorage.getItem("RiskuserId");
     this.callApiService.InsertCall(this._InsertCall).subscribe(
       (response)=>{
         Swal.fire({

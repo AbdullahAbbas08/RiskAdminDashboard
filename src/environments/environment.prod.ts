@@ -8,6 +8,6 @@ export const environment = {
     storageBucket: "Your StorageBucket url",
     messagingSenderId: "Your Sender Id"
   },
-  // Server_URL:'https://localhost:7296/api'
-  Server_URL:'http://api.riskegypt.com/api',
+  Server_URL:'https://localhost:7296/api'
+  // Server_URL:'http://api.riskegypt.com/api',
 };

@@ -1,5 +1,5 @@
 
 export class IdName {
-    id: number;
+    id: any;
     name: string;
 }

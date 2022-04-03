@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, BehaviorSubject, fromEvent } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Roles } from '../Models/Roles';
 
 // Menu
 export interface Menu {
@@ -21,6 +22,8 @@ export interface Menu {
 @Injectable({
 	providedIn: 'root'
 })
+
+
 
 export class NavService implements OnDestroy {
 
@@ -47,9 +50,10 @@ export class NavService implements OnDestroy {
 	// Full screen
 	public fullScreen: boolean = false;
 
-	
+	 Role :string= localStorage.getItem("RiskRole");
 
 	constructor(private router: Router) {
+		// this.Role  = localStorage.getItem("RiskRole");
 		this.setScreenWidth(window.innerWidth);
 		fromEvent(window, 'resize').pipe(
 			debounceTime(1000),
@@ -94,6 +98,19 @@ export class NavService implements OnDestroy {
 				{ path: 'agent/main', title: 'الشركات', type: 'link' },
 				{ path: 'agent/stat', title: 'إحصائيات', type: 'link' },
 				// { path: 'agent/Customer', title: 'تسجيل بيانات', type: 'link' },
+			]
+		}
+	];
+
+	MENUITEMS_Admin: Menu[] = [
+		{
+			headTitle1: 'لوحة التحكم ', headTitle2: 'إدارة المحتويات الموجودة',
+		},
+		{
+			title: 'التقارير', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/client-report', title: 'العملاء', type: 'link' },
+				{ path: 'admin/client-agent-report', title: 'العملاء - موظفى الخدمة', type: 'link' },
+				{ path: 'admin/client-call-report', title: 'العملاء - المكالمات', type: 'link' },
 			]
 		},
 		{
@@ -212,7 +229,7 @@ export class NavService implements OnDestroy {
 	];
 
 	// Array
-	items = new BehaviorSubject<Menu[]>(this.MENUITEMS);
+	items = new BehaviorSubject<Menu[]>(this.Role == Roles.Agent?this.MENUITEMS:this.MENUITEMS_Admin);
 	megaItems = new BehaviorSubject<Menu[]>(this.MEGAMENUITEMS);
 	levelmenuitems = new BehaviorSubject<Menu[]>(this.LEVELMENUITEMS);
 

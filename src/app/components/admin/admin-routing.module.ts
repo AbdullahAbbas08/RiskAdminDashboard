@@ -16,10 +16,26 @@ import { EmployeeComponent } from './users/employee/List-Employees/employee.comp
 import { InsertEmployeeComponent } from './users/employee/insert-employee/insert-employee.component';
 import { InsertCustomerServiceComponent } from './users/Customer-Service/InsertCustomerService/InsertCustomerService.component';
 import { CustomerServiceComponent } from './users/Customer-Service/customer-service/customer-service.component';
+import { ClientAgentComponent } from './Reports/client-agent/client-agent.component';
+import { ClientsComponent } from './Reports/clients/clients.component';
+import { ClientCallComponent } from './Reports/client-call/client-call.component';
+import { ClientCallDetailsComponent } from './Reports/client-call-details/client-call-details.component';
 
 const routes: Routes = [
   {
     path: '',children:[
+      {
+        path:'client-agent-report', component: ClientAgentComponent
+      },
+      {
+        path:'client-report', component: ClientsComponent
+      },
+      {
+        path:'client-call-report', component: ClientCallComponent
+      },
+      {
+        path:'client-call-detail', component: ClientCallDetailsComponent
+      },
       {
         path:'client-type', component: ClientTypeComponent
       },

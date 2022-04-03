@@ -79,8 +79,8 @@ export class DisplayCustomerDataComponent implements OnInit {
     this.GetCities();
     this.GetCallReason();
     this.InitCallForm();
-    this._InsertCall.start = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
 
+    
     // if(this.customerApiService.CustomerData != null){
       this.customerApiService.CustomerData =JSON.parse(localStorage.getItem("Risk_Customer_Data")) ;      
       this.InitForm(this.customerApiService.CustomerData)
@@ -94,6 +94,8 @@ export class DisplayCustomerDataComponent implements OnInit {
     //   // this.Governorate = "أختر المحافظة";
     //   // this.City = "أختر المدينة";
     // }
+    this._InsertCall.StartCall = new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+
   }
   //#endregion
 
@@ -264,13 +266,15 @@ export class DisplayCustomerDataComponent implements OnInit {
 
 
     submitCall(){
-      this._InsertCall.end =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
+      this._InsertCall.EndCall =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
   
       this._InsertCall.reason = this.Form.get("reason").value;
       this._InsertCall.description =  this.Form.get("description").value;
       this._InsertCall.notes = this.Form.get("notes").value;
       this._InsertCall.customerId = this.customerApiService.CustomerData["id"];
+      this._InsertCall.AgentId = localStorage.getItem("RiskuserId");
 
+      
       if( !(this._InsertCall.callType == 0 || this._InsertCall.callType == 1 ) )
       {
         Swal.fire({
