@@ -41,13 +41,13 @@ export class EmployeeComponent implements OnInit {
         this.Employee_List = response.data;        
       },
       err => {
-        console.log(err.error);
+        // console.log(err.error);
         
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -78,11 +78,11 @@ export class EmployeeComponent implements OnInit {
                     timer: 1500}) 
                   },
             err=>{
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
         

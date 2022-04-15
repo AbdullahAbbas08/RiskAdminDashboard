@@ -7,6 +7,51 @@
                 <div class="card-header px-0 " style="padding-bottom: 5px;">
                     <div class="row m-0 mb-2">
                          <div class="col-12 col-md-10">
+                             
+                            <div class="row">
+
+                                <div class="col-12 col-md-3">
+                                     <div class="form-group">
+                                         <label> تاريخ المكالمة من <span style="color: red;">*</span>  </label>
+                                        <input type="date" (change)="datefromchange($event)" class="form-control">
+                                     </div>
+                                 </div>
+                                 
+                                 <div class="col-12 col-md-3">
+                                     <div class="form-group">
+                                         <label>تاريخ المكالمة الى  <span style="color: red;">*</span>    </label>
+                                        <input type="date" (change)="datetochange($event)" class="form-control">
+                                     </div>
+                                 </div>
+
+                                 <div class="col-12 col-md-3">
+                                     <div class="form-group">
+                                         <label>أختر المحافظة</label>
+                                         <Select class="form-control " formControlName="GovernorateId"
+                                             aria-label="Default select example" (change)="governorateChange($event)">
+             
+                                             <option value="" selected disabled>أختر المحافظة  </option>
+                                             <option value="-1" >الكل  </option>
+                                             <option *ngFor="let obj of Governorate_List" value="{{ obj.id }}">
+                                                 <h3 class="selected-value"> {{ obj.title }} </h3>
+                                             </option>
+                                         </Select>
+                                     </div>
+                                 </div>
+
+                                 <div class="col-12 col-md-3">
+                                     <div class="form-group">
+                                         <label>أختر المدينة</label>
+                                         <Select class="form-control " formControlName="GovernorateId"
+                                             aria-label="Default select example" (change)="cityChange($event)">
+                                             <option value="-1" >الكل  </option>
+                                             <option *ngFor="let obj of City_Filtered_List" value="{{ obj.id }}">
+                                                 <h3 class="selected-value"> {{ obj.title }} </h3>
+                                             </option>
+                                         </Select>
+                                     </div>
+                                 </div>
+                           </div>
                               <div class="row">
 
                                    <div class="col-12 col-md-3">
@@ -54,50 +99,6 @@
                                     </div>
                               </div>
 
-                              <div class="row">
-
-                                   <div class="col-12 col-md-3">
-                                        <div class="form-group">
-                                            <label>تاريخ المكالمة من </label>
-                                           <input type="date" (change)="datefromchange($event)" class="form-control">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-12 col-md-3">
-                                        <div class="form-group">
-                                            <label>تاريخ المكالمة الى </label>
-                                           <input type="date" (change)="datetochange($event)" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-3">
-                                        <div class="form-group">
-                                            <label>أختر المحافظة</label>
-                                            <Select class="form-control " formControlName="GovernorateId"
-                                                aria-label="Default select example" (change)="governorateChange($event)">
-                
-                                                <option value="" selected disabled>أختر المحافظة  </option>
-                                                <option value="-1" >الكل  </option>
-                                                <option *ngFor="let obj of Governorate_List" value="{{ obj.id }}">
-                                                    <h3 class="selected-value"> {{ obj.title }} </h3>
-                                                </option>
-                                            </Select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-3">
-                                        <div class="form-group">
-                                            <label>أختر المدينة</label>
-                                            <Select class="form-control " formControlName="GovernorateId"
-                                                aria-label="Default select example" (change)="cityChange($event)">
-                                                <option value="-1" >الكل  </option>
-                                                <option *ngFor="let obj of City_Filtered_List" value="{{ obj.id }}">
-                                                    <h3 class="selected-value"> {{ obj.title }} </h3>
-                                                </option>
-                                            </Select>
-                                        </div>
-                                    </div>
-                              </div>
                              
                          </div>           
 

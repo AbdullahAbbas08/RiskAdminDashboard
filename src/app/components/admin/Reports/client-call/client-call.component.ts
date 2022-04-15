@@ -93,13 +93,13 @@ export class ClientCallComponent implements OnInit {
         this.Filtered_List = response.data;
       },
       err => {
-        console.log(err);
+        // console.log(err);
         
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -112,11 +112,11 @@ export class ClientCallComponent implements OnInit {
         this.CallReason_List = response.data;        
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -133,23 +133,23 @@ export class ClientCallComponent implements OnInit {
          
         },
         err => {
-          console.log(err);
+          // console.log(err);
           
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
     else
     {
-      Swal.fire({
-        icon: 'error',
-        title: 'خطأ',
-        text: "أختر تاريخ بداية ونهاية المكالمات",
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'خطأ',
+      //   text: "أختر تاريخ بداية ونهاية المكالمات",
+      // })
     }
   }
   //#endregion
@@ -167,11 +167,11 @@ export class ClientCallComponent implements OnInit {
   
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
@@ -187,11 +187,11 @@ export class ClientCallComponent implements OnInit {
         // });
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -205,11 +205,11 @@ export class ClientCallComponent implements OnInit {
         // this.City_Filtered_List = response.data;
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

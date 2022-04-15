@@ -52,11 +52,11 @@ export class InsertCitiesComponent implements OnInit {
           this.Governorate = response.data.find(x=>x.id == this.citiesApiService.GovernorateId)?.title;
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
            
@@ -110,11 +110,11 @@ export class InsertCitiesComponent implements OnInit {
           this.router.navigateByUrl("content/admin/Get-cities");
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
@@ -143,11 +143,11 @@ export class InsertCitiesComponent implements OnInit {
         localStorage.removeItem("GovernorateId");
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -169,11 +169,11 @@ export class InsertCitiesComponent implements OnInit {
           });
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

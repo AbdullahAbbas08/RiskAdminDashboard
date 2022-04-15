@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -27,7 +27,7 @@ import Swal from 'sweetalert2';
   templateUrl: './display-customer-data.component.html',
   styleUrls: ['./display-customer-data.component.css']
 })
-export class DisplayCustomerDataComponent implements OnInit {
+export class DisplayCustomerDataComponent implements OnInit,OnDestroy {
 
   //#region Decalre varaibles
   EmployeeForm: FormGroup;
@@ -66,8 +66,16 @@ export class DisplayCustomerDataComponent implements OnInit {
               private callApiService: CallApiService,
               private router:Router,
               private route: ActivatedRoute) 
-  { this.maxDate = new Date();     this.sourceMarketGet();
+  {
+     this.maxDate = new Date();     
+     this.sourceMarketGet();
   }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem("RiskuserId");
+    localStorage.removeItem("ClientData");
+  }
+
   //#endregion
 
   //#region  ng OnInit
@@ -254,11 +262,11 @@ export class DisplayCustomerDataComponent implements OnInit {
           });
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
@@ -267,14 +275,15 @@ export class DisplayCustomerDataComponent implements OnInit {
 
     submitCall(){
       this._InsertCall.EndCall =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
-  
+      this._InsertCall.ClientId =  localStorage.getItem("ClientData");
+
       this._InsertCall.reason = this.Form.get("reason").value;
       this._InsertCall.description =  this.Form.get("description").value;
       this._InsertCall.notes = this.Form.get("notes").value;
       this._InsertCall.customerId = this.customerApiService.CustomerData["id"];
       this._InsertCall.AgentId = localStorage.getItem("RiskuserId");
 
-      
+      console.log(this._InsertCall);
       if( !(this._InsertCall.callType == 0 || this._InsertCall.callType == 1 ) )
       {
         Swal.fire({
@@ -303,11 +312,11 @@ export class DisplayCustomerDataComponent implements OnInit {
     
           },
           (err)=>{
-            Swal.fire({
-              icon: 'error',
-              title: 'خطأ',
-              text: "هناك خطأ ! تأكد من إدخال البيانات بشكل كامل ثم حاول مرة اخرى ",
-            })
+            // Swal.fire({
+            //   icon: 'error',
+            //   title: 'خطأ',
+            //   text: "هناك خطأ ! تأكد من إدخال البيانات بشكل كامل ثم حاول مرة اخرى ",
+            // })
           }
         )
       }
@@ -329,11 +338,11 @@ export class DisplayCustomerDataComponent implements OnInit {
         // this.EmployeeForm.patchValue({CityId:obj[0].title})
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -374,11 +383,11 @@ export class DisplayCustomerDataComponent implements OnInit {
             // console.log("call reason : ",response.data);    
           },
           err => {
-            Swal.fire({
-              icon: 'error',
-              title: 'خطأ',
-              text: err.error,
-            })
+            // Swal.fire({
+            //   icon: 'error',
+            //   title: 'خطأ',
+            //   text: err.error,
+            // })
           }
         )
       }
@@ -392,11 +401,11 @@ export class DisplayCustomerDataComponent implements OnInit {
           this.SourceMarket_List = response.data;
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

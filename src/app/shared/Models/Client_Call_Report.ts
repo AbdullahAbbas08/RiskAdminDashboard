@@ -18,4 +18,5 @@ export class Client_Call_Report {
     GovernorateId :number
     GovernorateTitle:string
     CallReasonId:number
+    duration:any
 }

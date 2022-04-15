@@ -29,7 +29,8 @@
     "./src/app/shared/Models/Client_Agent_Report.ts",
     "./src/app/shared/Models/Client_Report.ts",
     "./src/app/shared/Models/Client_Call_Report.ts",
-    "./src/app/shared/Models/Client_Call_Report_input.ts"
+    "./src/app/shared/Models/Client_Call_Report_input.ts",
+    "./src/app/shared/Models/Call_Start_End_Report_input.ts"
   ],
   "include": [
     "src/**/*.d.ts"

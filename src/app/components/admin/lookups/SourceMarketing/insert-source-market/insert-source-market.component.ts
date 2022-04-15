@@ -83,11 +83,11 @@ export class InsertSourceMarketComponent implements OnInit {
         this.router.navigateByUrl("content/admin/GetSourceMarket");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -110,11 +110,11 @@ export class InsertSourceMarketComponent implements OnInit {
 
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -127,11 +127,11 @@ export class InsertSourceMarketComponent implements OnInit {
          this.InsertForm.patchValue({Order:response.data.length+1});
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

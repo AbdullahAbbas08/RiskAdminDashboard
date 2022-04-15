@@ -52,13 +52,13 @@ export class ClientsComponent implements OnInit {
         this.Filtered_List = response.data;
       },
       err => {
-        console.log(err);
+        // console.log(err);
         
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -92,11 +92,11 @@ export class ClientsComponent implements OnInit {
   
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

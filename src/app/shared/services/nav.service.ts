@@ -111,6 +111,7 @@ export class NavService implements OnDestroy {
 				{ path: 'admin/client-report', title: 'العملاء', type: 'link' },
 				{ path: 'admin/client-agent-report', title: 'العملاء - موظفى الخدمة', type: 'link' },
 				{ path: 'admin/client-call-report', title: 'العملاء - المكالمات', type: 'link' },
+				{ path: 'admin/call-start-end-report', title: 'ملخص المكالمات', type: 'link' },
 			]
 		},
 		{

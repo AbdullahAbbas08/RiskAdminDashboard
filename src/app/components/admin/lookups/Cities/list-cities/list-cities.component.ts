@@ -51,11 +51,11 @@ export class ListCitiesComponent implements OnInit {
         this.Filtered_List = response.data;
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -89,11 +89,11 @@ export class ListCitiesComponent implements OnInit {
               })
             },
             err => {
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
 
@@ -144,11 +144,11 @@ export class ListCitiesComponent implements OnInit {
         // });
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

@@ -38,11 +38,11 @@ export class ListClientTypeComponent implements OnInit {
         this.Client_Type_List = response.data;
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -73,11 +73,11 @@ export class ListClientTypeComponent implements OnInit {
                     timer: 1500}) 
                   },
             err=>{
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
         

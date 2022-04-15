@@ -9,6 +9,7 @@ import { IdName } from '../Models/IdName';
 import { Client_Report } from '../Models/Client_Report';
 import { Client_Call_Report } from '../Models/Client_Call_Report';
 import { Client_Call_Report_input } from '../Models/Client_Call_Report_input';
+import { Call_Start_End_Report_input } from '../Models/Call_Start_End_Report_input';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class ReportsApiService {
 
     Client_Call_Report(date:Client_Call_Report_input): Observable<GenericResponse<Client_Call_Report>> {
       return this.http.post<GenericResponse<Client_Call_Report>>(`${environment.Server_URL}/Admin/ClientCallReport`,date,this.httpOptionsWithTocken);
+    }
+
+    Call_Start_End_Report(date:Call_Start_End_Report_input): Observable<GenericResponse<Client_Call_Report>> {
+      return this.http.post<GenericResponse<Client_Call_Report>>(`${environment.Server_URL}/Admin/CallStartEnd`,date,this.httpOptionsWithTocken);
     }
   
 }

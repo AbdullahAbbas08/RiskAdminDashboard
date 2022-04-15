@@ -1,4 +1,4 @@
-<app-breadcrumb [title]="'تفاصيل عن تقرير العملاء - المكالمات'" [items]="['Tables', 'Bootstrap Tables']" [active_item]="'Basic'">
+<app-breadcrumb [title]="'تفاصيل عن تقرير المكالمات'" [items]="['Tables', 'Bootstrap Tables']" [active_item]="'Basic'">
 </app-breadcrumb>
 <div class="container-fluid">
     <div class="row">
@@ -21,7 +21,7 @@
                                     <span class="form-control">أسم الموظف </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control text-left">{{Client_Call_list[0].agentName}}</span>                                  
+                                    <span class="form-control text-left">{{Client_Call_list?.agentName}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -29,7 +29,7 @@
                                     <span class="form-control">الموبايل </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].mobileNumber}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.mobileNumber}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -37,7 +37,7 @@
                                     <span class="form-control">أسم المتصل </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].customerName}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.customerName}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -45,7 +45,7 @@
                                     <span class="form-control">المدينة  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].cityName}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.cityName}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -53,7 +53,7 @@
                                     <span class="form-control">العنوان  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].address}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.address}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -61,7 +61,7 @@
                                     <span class="form-control">النوع  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control" *ngIf="Client_Call_list[0].gender == 1;else genblock" >ذكر</span> 
+                                    <span class="form-control" *ngIf="Client_Call_list?.gender == 1;else genblock" >ذكر</span> 
                                     <ng-template #genblock>أنثى</ng-template>                                 
                                 </td>
                             </tr>
@@ -70,7 +70,7 @@
                                     <span class="form-control">تاريخ الميلاد  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].dob | date:'shortDate' }}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.dob | date:'shortDate' }}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -78,8 +78,8 @@
                                     <span class="form-control">نوع المكالمة   </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control" *ngIf="Client_Call_list[0].callType == 1;else genblock" >صادرة</span> 
-                                    <ng-template #genblock>واردة</ng-template>                                 
+                                    <span class="form-control" *ngIf="Client_Call_list?.callType == 1;else genblockout" >صادرة</span> 
+                                    <ng-template #genblockout>واردة</ng-template>                                 
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -87,7 +87,7 @@
                                     <span class="form-control">رضاء العميل   </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control" *ngIf="Client_Call_list[0].satisfy == true;else genblock" >راضى</span> 
+                                    <span class="form-control" *ngIf="Client_Call_list?.satisfy == true;else genblock" >راضى</span> 
                                     <ng-template #genblock>غير راضى</ng-template>                              
                                 </td>
                             </tr>
@@ -96,7 +96,7 @@
                                     <span class="form-control">وصف المكالمة  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].callDescription}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.callDescription}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -104,7 +104,7 @@
                                     <span class="form-control">ملاحظات المكالمة  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].notes}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.notes}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -112,7 +112,7 @@
                                     <span class="form-control">بداية المكالمة  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].callStart | date:'mediumTime'}}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.callStart | date:'mediumTime'}}</span>                                  
                                 </td>
                             </tr>
                             <tr style="width: 90%;">  
@@ -120,7 +120,16 @@
                                     <span class="form-control">نهاية المكالمة  </span> 
                                 </td>
                                 <td>
-                                    <span class="form-control">{{Client_Call_list[0].callEnd | date:'mediumTime' }}</span>                                  
+                                    <span class="form-control">{{Client_Call_list?.callEnd | date:'mediumTime' }}</span>                                  
+                                </td>
+                            </tr>
+
+                            <tr style="width: 90%;">  
+                                <td class="font-style-header " style="width: 20%;" >
+                                    <span class="form-control">مدة  المكالمة  </span> 
+                                </td>
+                                <td>
+                                    <span class="form-control">{{Client_Call_list?.duration }}</span>                                  
                                 </td>
                             </tr>  
                     </table>

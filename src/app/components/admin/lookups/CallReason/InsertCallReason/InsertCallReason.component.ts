@@ -104,11 +104,11 @@ export class InsertCallReasonComponent implements OnInit {
               this.dropdownList = response.data;                
             },
             err => {
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
         }
@@ -124,11 +124,11 @@ export class InsertCallReasonComponent implements OnInit {
                
             },
             err => {
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
         }
@@ -161,11 +161,7 @@ export class InsertCallReasonComponent implements OnInit {
         this.callClient =[];
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+      
       }
     )
   }
@@ -201,11 +197,11 @@ export class InsertCallReasonComponent implements OnInit {
         )
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -218,11 +214,11 @@ export class InsertCallReasonComponent implements OnInit {
          this.InsertForm.patchValue({Order:response.data.length+1});
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -27,7 +27,7 @@ import { CallReasonApiService } from 'src/app/shared/API-Service/call-reason-api
   templateUrl: './deal-with-customer.component.html',
   styleUrls: ['./deal-with-customer.component.css']
 })
-export class DealWithCustomerComponent implements OnInit {
+export class DealWithCustomerComponent implements OnInit,OnDestroy {
 
   //#region Decalre varaibles
   EmployeeForm: FormGroup;
@@ -74,6 +74,10 @@ export class DealWithCustomerComponent implements OnInit {
     
 
    }
+  ngOnDestroy(): void {
+    localStorage.removeItem("RiskuserId");
+    localStorage.removeItem("ClientData");
+  }
   //#endregion
 
   //#region  ng OnInit
@@ -82,6 +86,7 @@ export class DealWithCustomerComponent implements OnInit {
     this._InsertCall = new InsertCall();
     this.Response_List = [];
     this.getGovernoate();
+    this.GetCities();
     this.GetCallReason(this.route.snapshot.paramMap.get('id'));
     this.InitCallForm();
 
@@ -182,25 +187,26 @@ export class DealWithCustomerComponent implements OnInit {
       (err)=>{
         // console.log(err.error);
         
-  Swal.fire({
-        icon: 'error',
-        title: 'خطأ',
-        text:err.error,
-      })
+  // Swal.fire({
+  //       icon: 'error',
+  //       title: 'خطأ',
+  //       text:err.error,
+  //     })
       }
     )
   }
 
   submitCall(){
     this._InsertCall.EndCall =  new Date().toLocaleDateString()  +" "+ new Date().toLocaleTimeString();
-    console.log(this._InsertCall.StartCall);
-    console.log(this._InsertCall.EndCall);
+    this._InsertCall.ClientId =  localStorage.getItem("ClientData");
     
     this._InsertCall.reason = this.Form.get("reason").value;
     this._InsertCall.description =  this.Form.get("description").value;
     this._InsertCall.notes = this.Form.get("notes").value;
 
     this._InsertCall.AgentId = localStorage.getItem("RiskuserId");
+    console.log(this._InsertCall);
+    
     this.callApiService.InsertCall(this._InsertCall).subscribe(
       (response)=>{
         Swal.fire({
@@ -217,11 +223,11 @@ export class DealWithCustomerComponent implements OnInit {
 
       },
       (err)=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
 
@@ -257,11 +263,11 @@ export class DealWithCustomerComponent implements OnInit {
         this.router.navigateByUrl("content/admin/GetEmployee");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.message,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.message,
+        // })
       }
     )
   }
@@ -272,17 +278,17 @@ export class DealWithCustomerComponent implements OnInit {
       this.governorateApiService.GetGovernorate().subscribe(
         response => {  
           this.Governorate_List = response.data;
-          // console.log("Governorate_List : ", this.Governorate_List );
+          console.log("Governorate_List : ", this.Governorate_List );
           response.data.forEach(element => {
             this.Governorate_Dictionary[element.id] = element.title;            
           });
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
@@ -295,15 +301,15 @@ export class DealWithCustomerComponent implements OnInit {
         this.response = response;
         this.Response_List = response.data;
         // this.Filtered_List = response.data;
-        // console.log(response.data);
+        // console.log("Response_List ", this.Response_List);
         
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -323,7 +329,6 @@ export class DealWithCustomerComponent implements OnInit {
 
   //#region Selected Governorate
   SelectedGovernorate(event: any) {
-    this.GetCities();
     this.Govern_id = event.target.value;
     if (event.target.value == -1){
       // this.Filtered_List = this.Response_List;
@@ -346,11 +351,11 @@ export class DealWithCustomerComponent implements OnInit {
           // console.log("call reason : ", this.CallReason_List);    
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+        //   Swal.fire({
+        //     icon: 'error',
+        //     title: 'خطأ',
+        //     text: err.error,
+        //   })
         }
       )
     }
@@ -364,11 +369,11 @@ export class DealWithCustomerComponent implements OnInit {
         this.SourceMarket_List = response.data;
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

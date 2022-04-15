@@ -76,11 +76,11 @@ export class InsertEmployeeComponent implements OnInit {
     
     if(this.EmployeeForm.get('password').value =='')
     {
-      Swal.fire({
-        icon: 'error',
-        title: 'خطأ',
-        text:'كلمة المرور مطلوبة',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'خطأ',
+      //   text:'كلمة المرور مطلوبة',
+      // })
     }
     else
     {
@@ -103,11 +103,11 @@ export class InsertEmployeeComponent implements OnInit {
         this.router.navigateByUrl("content/admin/GetEmployee");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
     }
@@ -146,11 +146,11 @@ export class InsertEmployeeComponent implements OnInit {
         localStorage.removeItem("RiskEmployeeData")
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.message,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.message,
+        // })
       }
     )
   }

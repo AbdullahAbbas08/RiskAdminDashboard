@@ -20,6 +20,7 @@ import { ClientAgentComponent } from './Reports/client-agent/client-agent.compon
 import { ClientsComponent } from './Reports/clients/clients.component';
 import { ClientCallComponent } from './Reports/client-call/client-call.component';
 import { ClientCallDetailsComponent } from './Reports/client-call-details/client-call-details.component';
+import { CallStartEndReportComponent } from './Reports/Call_Start_End/call-start-end-report.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
       },
       {
         path:'client-call-report', component: ClientCallComponent
+      },
+      {
+        path:'call-start-end-report', component: CallStartEndReportComponent
       },
       {
         path:'client-call-detail', component: ClientCallDetailsComponent

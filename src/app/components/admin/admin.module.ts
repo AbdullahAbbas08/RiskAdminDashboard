@@ -27,6 +27,7 @@ import { NgxPrintElementModule } from 'ngx-print-element';
 import { ClientsComponent } from './Reports/clients/clients.component';
 import { ClientCallComponent } from './Reports/client-call/client-call.component';
 import { ClientCallDetailsComponent } from './Reports/client-call-details/client-call-details.component';
+import { CallStartEndReportComponent } from './Reports/Call_Start_End/call-start-end-report.component';
 
 
 
@@ -52,7 +53,8 @@ import { ClientCallDetailsComponent } from './Reports/client-call-details/client
     ClientAgentComponent,
     ClientsComponent,
     ClientCallComponent,
-    ClientCallDetailsComponent
+    ClientCallDetailsComponent,
+    CallStartEndReportComponent
   ],
   imports: [
     CommonModule,

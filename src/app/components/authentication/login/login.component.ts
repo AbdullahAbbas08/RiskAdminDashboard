@@ -46,10 +46,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('RiskAuthorization',response['token'])
         localStorage.setItem('RiskRole',response['role'])
         localStorage.setItem('RiskuserId',response['id'])
+        localStorage.setItem('RiskuserName',response['name'])
         // localStorage.setItem('Name',this.AuthenticatedUser.Data.Name);
         // localStorage.setItem("logo",this.AuthenticatedUser.Data.Image);
         if(response['role'] == Roles.Admin)
-          this.router.navigate(["/content/admin/client-report"]);
+          this.router.navigate(["content/admin/client-report"]);
         else
           this.router.navigate(["/content/agent/main"]);
         this.toastr.success("تم تسجيل الدخول بنجاح", 'الحالة');

@@ -54,6 +54,8 @@ export class ClientCallDetailsComponent implements OnInit , OnDestroy {
   //#region  ng OnInit
   ngOnInit(): void {
     this.Client_Call_list = JSON.parse(localStorage.getItem("clientcalldetail"))
+    console.log(" this.Client_Call_list : ", this.Client_Call_list);
+    
 
   }
   //#endregion

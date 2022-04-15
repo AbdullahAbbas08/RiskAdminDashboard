@@ -41,11 +41,11 @@ export class CustomerServiceComponent implements OnInit {
         this.Employee_List = response.data;        
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -76,11 +76,11 @@ export class CustomerServiceComponent implements OnInit {
                     timer: 1500}) 
                   },
             err=>{
-              Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: err.error,
-              })
+              // Swal.fire({
+              //   icon: 'error',
+              //   title: 'خطأ',
+              //   text: err.error,
+              // })
             }
           )
         
@@ -97,7 +97,7 @@ export class CustomerServiceComponent implements OnInit {
 
   //#region Add New Employee
   NavigateToInsert(){
-    this.router.navigateByUrl("content/admin/InsertCustomerService");
+    this.router.navigateByUrl("/content/admin/InsertCustomerService");
   }
   //#endregion
 

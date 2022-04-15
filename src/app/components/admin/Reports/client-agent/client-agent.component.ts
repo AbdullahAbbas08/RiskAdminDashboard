@@ -44,11 +44,11 @@ export class ClientAgentComponent implements OnInit {
         console.log("qq : ", this.Client_Agent_Report)
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -62,11 +62,11 @@ export class ClientAgentComponent implements OnInit {
         console.log("----- : ", this.ClientList)
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

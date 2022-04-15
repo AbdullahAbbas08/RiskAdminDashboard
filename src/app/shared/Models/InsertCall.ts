@@ -7,9 +7,10 @@ export class InsertCall {
     sourceMarketId  : number;
     satisfy         : boolean;
     creationDate    : Date;
-    StartCall           : string;
-    EndCall             : string;
+    StartCall       : string;
+    EndCall         : string;
     callReasonId    : number;
     customerId      : string;
-    AgentId      : string;
+    AgentId         : string;
+    ClientId        : string;
 }

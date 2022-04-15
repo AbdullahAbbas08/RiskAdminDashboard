@@ -50,17 +50,19 @@ export class AgentComponent implements OnInit {
 
       if (result.isConfirmed) {
         
-        this.customerApiService.GetCustomerById(this.passdata).subscribe(
+        this.customerApiService.GetCustomerByphone(this.passdata).subscribe(
           (res)=>{
             // console.log(res["data"]);
             if(res["data"] != null){
               this.customerApiService.CustomerData = res["data"]; 
-              localStorage.setItem("Risk_Customer_Data",JSON.stringify( res["data"]));     
+              localStorage.setItem("ClientData",data);
+              localStorage.setItem("Risk_Customer_Data",JSON.stringify( res["data"])); 
               this.router.navigate(["/content/agent/DisplayData",data]);
             }
             else
             {
               this.customerApiService.mobile = this.passdata;
+              localStorage.setItem("ClientData",data);    
               this.router.navigate(["/content/agent/Customer",data]);
             }
            
@@ -96,9 +98,7 @@ export class AgentComponent implements OnInit {
   GetClientRelated(id:string){
     this.ApiService.GetClientRelated(id).subscribe(
       (response)=>{
-        this.Clients = response.data;
-        console.log("---------- : ",response.data);
-        
+        this.Clients = response.data;        
       },
       (err)=>{
           // console.log(err);

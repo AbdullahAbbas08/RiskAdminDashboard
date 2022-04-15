@@ -73,11 +73,11 @@ export class GovernorateComponent implements OnInit {
         this.router.navigateByUrl("content/admin/Get-governorate");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -98,11 +98,11 @@ export class GovernorateComponent implements OnInit {
         localStorage.removeItem("riskgovernorate");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

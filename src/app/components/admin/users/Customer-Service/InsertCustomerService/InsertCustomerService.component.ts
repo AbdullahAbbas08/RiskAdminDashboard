@@ -145,17 +145,17 @@ export class InsertCustomerServiceComponent implements OnInit {
             this.router.navigateByUrl("content/admin/GetCustomerService");
           },
           err=>{
-            console.log(err.error); 
+            // console.log(err.error); 
           }
         )
         this.ClientCustumer = [];
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
     }
@@ -206,11 +206,11 @@ export class InsertCustomerServiceComponent implements OnInit {
         this.ClientCustumer = [];
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.message,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.message,
+        // })
       }
     )
   }
@@ -229,11 +229,11 @@ export class InsertCustomerServiceComponent implements OnInit {
         //  });  
         },
         err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }

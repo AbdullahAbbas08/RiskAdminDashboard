@@ -6,4 +6,5 @@ export class LoginResponse {
     username: string;
     token: string;
     expiresOn: Date;
+    Name:string
 }

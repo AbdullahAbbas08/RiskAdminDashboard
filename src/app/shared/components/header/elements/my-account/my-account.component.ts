@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-account.component.scss']
 })
 export class MyAccountComponent implements OnInit {
-
-  constructor(private router:Router) { }
+EmployeeName:string = "";
+  constructor(private router:Router) {
+    this.EmployeeName = localStorage.getItem('RiskuserName')
+   }
 
   ngOnInit() {
   }

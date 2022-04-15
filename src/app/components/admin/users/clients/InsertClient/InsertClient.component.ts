@@ -166,11 +166,11 @@ export class InsertClientComponent implements OnInit {
         err => {
           // console.log(err.error);
 
-          Swal.fire({
-            icon: 'error',
-            title: 'خطأ',
-            text: err.error,
-          })
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: 'خطأ',
+          //   text: err.error,
+          // })
         }
       )
     }
@@ -216,11 +216,11 @@ export class InsertClientComponent implements OnInit {
       },
       err => {
         // console.log(err.error);
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: "هناك خطأ ما برجاء المحاولة مرة اخرى",
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: "هناك خطأ ما برجاء المحاولة مرة اخرى",
+        // })
       }
     )
   }
@@ -260,11 +260,11 @@ export class InsertClientComponent implements OnInit {
         });
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -279,11 +279,11 @@ export class InsertClientComponent implements OnInit {
         // this.Filtered_cities_List = response.data;
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -298,11 +298,11 @@ export class InsertClientComponent implements OnInit {
 
       },
       err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }

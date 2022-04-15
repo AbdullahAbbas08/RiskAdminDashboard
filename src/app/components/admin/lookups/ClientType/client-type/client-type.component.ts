@@ -73,11 +73,11 @@ export class ClientTypeComponent implements OnInit {
         this.router.navigateByUrl("content/admin/Get-client-type");
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
@@ -98,11 +98,11 @@ export class ClientTypeComponent implements OnInit {
         localStorage.removeItem("clientTypeTitle")
       },
       err=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'خطأ',
-          text: err.error,
-        })
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'خطأ',
+        //   text: err.error,
+        // })
       }
     )
   }
