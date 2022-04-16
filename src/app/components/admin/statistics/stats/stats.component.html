@@ -1,0 +1,195 @@
+<div class="container-fluid">
+     <div class="row pt-5 pb-5">
+          <h5 class="">
+               إحصائيات عن عدد  المكالمات 
+          </h5>
+     </div>
+     <div class="row d-flex align-items-center">
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="b-r-4 card-body">
+             <div class="media static-top-widget">
+               <!-- <div class="align-self-center text-center"><i data-feather="database"></i></div> -->
+               <div class="media-body">
+                    <span class="py-6" style="padding-top: 20px;padding-bottom: 20px;">مكالمات اليوم</span>
+                    <!-- <h4 class="mb-0 counter"></h4> -->
+                    <!-- <i class="icon-bg" data-feather="database"></i> -->
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-call"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call" _ngcontent-lhn-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0">الكل</span>
+                 <h4 class="mb-0 counter">{{StatsReport[0]?.all}}</h4>
+                 <!-- <i class="icon-bg" data-feather="phone-call"></i> -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call icon-bg" _ngcontent-ygm-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-secondary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-incoming"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming" _ngcontent-mgy-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0"> الواردة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[0]?.in}}</h4>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming icon-bg" _ngcontent-ufk-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing" _ngcontent-fvl-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+               <div class="media-body"><span class="m-0">الصادرة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[0]?.out}}</h4>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing icon-bg" _ngcontent-uao-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row d-flex align-items-center">
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="b-r-4 card-body">
+             <div class="media static-top-widget">
+               <!-- <div class="align-self-center text-center"><i data-feather="database"></i></div> -->
+               <div class="media-body">
+                    <span class="py-6" style="padding-top: 20px;padding-bottom: 20px;">مكالمات هذا الشهر</span>
+                    <!-- <h4 class="mb-0 counter"></h4> -->
+                    <!-- <i class="icon-bg" data-feather="database"></i> -->
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-call"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call" _ngcontent-lhn-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0">الكل</span>
+                 <h4 class="mb-0 counter">{{StatsReport[1]?.all}}</h4>
+                 <!-- <i class="icon-bg" data-feather="phone-call"></i> -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call icon-bg" _ngcontent-ygm-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-secondary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-incoming"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming" _ngcontent-mgy-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0"> الواردة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[1]?.in}}</h4>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming icon-bg" _ngcontent-ufk-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing" _ngcontent-fvl-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+               <div class="media-body"><span class="m-0">الصادرة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[1]?.out}}</h4>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing icon-bg" _ngcontent-uao-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row d-flex align-items-center">
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="b-r-4 card-body">
+             <div class="media static-top-widget">
+               <!-- <div class="align-self-center text-center"><i data-feather="database"></i></div> -->
+               <div class="media-body">
+                    <span class="py-6" style="padding-top: 20px;padding-bottom: 20px;">مكالمات هذا العام</span>
+                    <!-- <h4 class="mb-0 counter"></h4> -->
+                    <!-- <i class="icon-bg" data-feather="database"></i> -->
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-call"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call" _ngcontent-lhn-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0">الكل</span>
+                 <h4 class="mb-0 counter">{{StatsReport[2]?.all}}</h4>
+                 <!-- <i class="icon-bg" data-feather="phone-call"></i> -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call icon-bg" _ngcontent-ygm-c162=""><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-secondary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <!-- <i data-feather="phone-incoming"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming" _ngcontent-mgy-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+               <div class="media-body"><span class="m-0"> الواردة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[2]?.in}}</h4>
+                 <!-- <i class="icon-bg" data-feather="phone-incoming"></i> -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming icon-bg" _ngcontent-ufk-c162=""><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-6 col-xl-3 col-lg-6">
+         <div class="card o-hidden">
+           <div class="bg-primary b-r-4 card-body">
+             <div class="media static-top-widget">
+               <div class="align-self-center text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing" _ngcontent-fvl-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+               <div class="media-body"><span class="m-0">الصادرة</span>
+                 <h4 class="mb-0 counter">{{StatsReport[2]?.out}}</h4>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing icon-bg" _ngcontent-uao-c162=""><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+    
+   </div>

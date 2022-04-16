@@ -28,6 +28,9 @@ import { ClientsComponent } from './Reports/clients/clients.component';
 import { ClientCallComponent } from './Reports/client-call/client-call.component';
 import { ClientCallDetailsComponent } from './Reports/client-call-details/client-call-details.component';
 import { CallStartEndReportComponent } from './Reports/Call_Start_End/call-start-end-report.component';
+import { StatsComponent } from './statistics/stats/stats.component';
+import { AgentListStatComponent } from './statistics/agent-list-stat/agent-list-stat.component';
+import { CallReasonStatComponent } from './statistics/call-reason-stat/call-reason-stat.component';
 
 
 
@@ -54,7 +57,10 @@ import { CallStartEndReportComponent } from './Reports/Call_Start_End/call-start
     ClientsComponent,
     ClientCallComponent,
     ClientCallDetailsComponent,
-    CallStartEndReportComponent
+    CallStartEndReportComponent,
+    StatsComponent,
+    AgentListStatComponent,
+    CallReasonStatComponent
   ],
   imports: [
     CommonModule,

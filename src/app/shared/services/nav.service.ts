@@ -115,6 +115,13 @@ export class NavService implements OnDestroy {
 			]
 		},
 		{
+			title: 'الإحصائيات', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+				{ path: 'admin/statistics/stats', title: 'المكالمات', type: 'link' },
+				{ path: 'admin/statistics/agents', title: 'مكالمات العملاء', type: 'link' },
+				{ path: 'admin/statistics/CallReason', title: ' أسباب المكالمات', type: 'link' },
+			]
+		},
+		{
 			title: 'مسئولى النظام', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
 				{ path: 'admin/InsertEmployee', title: 'إضافة مسئول', type: 'link' },
 				{ path: 'admin/GetEmployee', title: 'قائمة المسئولين', type: 'link' },

@@ -30,7 +30,8 @@
     "./src/app/shared/Models/Client_Report.ts",
     "./src/app/shared/Models/Client_Call_Report.ts",
     "./src/app/shared/Models/Client_Call_Report_input.ts",
-    "./src/app/shared/Models/Call_Start_End_Report_input.ts"
+    "./src/app/shared/Models/Call_Start_End_Report_input.ts",
+    "./src/app/shared/Models/Stats_Report.ts"
   ],
   "include": [
     "src/**/*.d.ts"
