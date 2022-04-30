@@ -23,11 +23,11 @@ export class SidebarComponent implements OnInit {
   public rightArrowNone: boolean = false;
   // ReturenRole:string;
   // UserRole:string;
-  
+  Role:string;
 
   constructor(private router: Router, public navServices: NavService,
     public layout: LayoutService) {
-      // this.ReturenRole = localStorage.getItem('RiskRole');
+      this.Role = localStorage.getItem('RiskRole');
       // this.UserRole =  Roles.Agent;
     this.navServices.items.subscribe(menuItems => {
       this.menuItems = menuItems;

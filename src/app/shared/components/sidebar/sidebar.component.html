@@ -1,9 +1,9 @@
 <!-- Page Sidebar Start-->
-<div class="logo-wrapper">
-  <!-- <a routerLink='/'> -->
+<div class="logo-wrapper" *ngIf="Role == 'Admin';else ElseRole">
+  <a routerLink="/content/admin/statistics/stats" style="cursor: pointer;">
     <img class="img-fluid for-light" src="assets/images/logo/logo_alter.png"  alt="">
     <img class="img-fluid for-dark" src="assets/images/logo/logo_dark_alter.png"  alt="">
-  <!-- </a> -->
+  </a>
   <div class="back-btn" (click)="sidebarToggle()">
     <i class="fa fa-angle-left"></i>
   </div>
@@ -11,6 +11,20 @@
     <app-feather-icons [icon]="'grid'" class="status_toggle middle sidebar-toggle"></app-feather-icons>
   </div>
 </div>
+<ng-template #ElseRole>
+  <div class="logo-wrapper">
+    <!-- <a routerLink="/content/admin/statistics/stats" style="cursor: pointer;"> -->
+      <img class="img-fluid for-light" src="assets/images/logo/logo_alter.png"  alt="">
+      <img class="img-fluid for-dark" src="assets/images/logo/logo_dark_alter.png"  alt="">
+    <!-- </a> -->
+    <div class="back-btn" (click)="sidebarToggle()">
+      <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="toggle-sidebar" (click)="sidebarToggle()">
+      <app-feather-icons [icon]="'grid'" class="status_toggle middle sidebar-toggle"></app-feather-icons>
+    </div>
+  </div>
+</ng-template>
 <div class="logo-icon-wrapper">
   <a href="javascript:void(0)">
     <img class="img-fluid" src="assets/images/logo/logo-icon.png" alt="">

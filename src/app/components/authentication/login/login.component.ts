@@ -49,8 +49,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('RiskuserName',response['name'])
         // localStorage.setItem('Name',this.AuthenticatedUser.Data.Name);
         // localStorage.setItem("logo",this.AuthenticatedUser.Data.Image);
-        if(response['role'] == Roles.Admin)
-          this.router.navigate(["content/admin/client-report"]);
+        if(response['role'] == Roles.Admin){
+          this.router.navigate(["content/admin/statistics/stats"]);
+          setInterval(()=>{
+            window.location.reload();
+          },1000) ;
+        }
         else
           this.router.navigate(["/content/agent/main"]);
         this.toastr.success("تم تسجيل الدخول بنجاح", 'الحالة');
@@ -64,8 +68,9 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'خطأ',
-          text: err.error,
+          text: " تأكد من كتابة أسم المستخدم و كلمة المرور بشكل صحيح ثم حاول مرة أخرى",
         })
+
       }
     )
   }

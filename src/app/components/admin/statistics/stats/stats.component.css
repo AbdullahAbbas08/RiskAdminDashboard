@@ -1,0 +1,14 @@
+.container .row{
+     font-family: "Cairo" !important;
+}
+
+h5{font-weight: 600;}
+
+.cursor{
+
+}
+
+ul.cursor li{
+     cursor: pointer;
+}
+

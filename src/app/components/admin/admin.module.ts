@@ -31,6 +31,7 @@ import { CallStartEndReportComponent } from './Reports/Call_Start_End/call-start
 import { StatsComponent } from './statistics/stats/stats.component';
 import { AgentListStatComponent } from './statistics/agent-list-stat/agent-list-stat.component';
 import { CallReasonStatComponent } from './statistics/call-reason-stat/call-reason-stat.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 
@@ -69,6 +70,7 @@ import { CallReasonStatComponent } from './statistics/call-reason-stat/call-reas
     ArchwizardModule,
     SweetAlert2Module,
     RouterModule,
+    NgApexchartsModule,
     NgxPrintElementModule,
     NgMultiSelectDropDownModule.forRoot()
   ],

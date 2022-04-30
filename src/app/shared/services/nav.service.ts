@@ -104,7 +104,7 @@ export class NavService implements OnDestroy {
 
 	MENUITEMS_Admin: Menu[] = [
 		{
-			headTitle1: 'لوحة التحكم ', headTitle2: 'إدارة المحتويات الموجودة',
+			headTitle1: 'لوحة التحكم ', headTitle2: 'إدارة المحتويات الموجودة', 
 		},
 		{
 			title: 'التقارير', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
@@ -114,13 +114,13 @@ export class NavService implements OnDestroy {
 				{ path: 'admin/call-start-end-report', title: 'ملخص المكالمات', type: 'link' },
 			]
 		},
-		{
-			title: 'الإحصائيات', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
-				{ path: 'admin/statistics/stats', title: 'المكالمات', type: 'link' },
-				{ path: 'admin/statistics/agents', title: 'مكالمات العملاء', type: 'link' },
-				{ path: 'admin/statistics/CallReason', title: ' أسباب المكالمات', type: 'link' },
-			]
-		},
+		// {
+		// 	title: 'الإحصائيات', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
+		// 		{ path: 'admin/statistics/stats', title: 'المكالمات', type: 'link' },
+		// 		{ path: 'admin/statistics/agents', title: 'مكالمات العملاء', type: 'link' },
+		// 		{ path: 'admin/statistics/CallReason', title: ' أسباب المكالمات', type: 'link' },
+		// 	]
+		// },
 		{
 			title: 'مسئولى النظام', icon: 'home', type: 'sub', badgeType: 'success', active: true, children: [
 				{ path: 'admin/InsertEmployee', title: 'إضافة مسئول', type: 'link' },
